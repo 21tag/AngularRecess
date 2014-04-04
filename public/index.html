@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="angularApp">
+  <head>
+    <meta charset="utf-8" />
+    <title>OpenRecess</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/flat-ui.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forkit.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCedMF4wwQSrQDAw6nlYr7dS7ozhRSvYHQ&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="/lib/maps.js"></script>
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/lib/underscore.js"></script>
+    <script type="text/javascript" src="/lib/backbone.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+    <script type="text/javascript" src="/lib/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/js/angular_app.js"></script>
+    <script type="text/javascript" src="/js/angular_routes.js"></script>
+    <script type="text/javascript" src="/js/controllers/splashController.js"></script>
+  </head>
+  <body ng-controller="mainController">
+    <div>
+    nav bar
+      <a ui-sref=".seeAvailableGames">See Available Games</a>
+      <a ui-sref=".startNewGames">Start a New Game</a>
+      <a ui-sref=".manageGames">Manage Games</a>
+      <a ui-sref=".home"> Home </a>
+    </div>
+    <div ui-view> </div>
+    <p>{{text}}</p>
+<!--     <ui-view></ui-view>
+      <a ui-sref=".splashing">splashing</a>
+      <a ui-sref=".splashed">splashed</a> -->
+
+    <!-- </div> -->
+  </body>
+</html>

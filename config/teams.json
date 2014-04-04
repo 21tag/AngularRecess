@@ -1,0 +1,83 @@
+
+[
+  {
+    "name": "Spitball Wizards",
+    "managerName": "Phil Jackson",
+    "managerEmail": "test@test.com",
+    "roster": [
+      {
+        "name": "Kobe Bryant",
+        "phone": "+15133074346"
+      },
+      {
+        "name": "Dwight Howard",
+        "phone": "+1781640120"
+      }
+    ],
+    "rosterCount": 2,
+    "sport": "Basketball",
+    "createdAt": "2013-05-07T10:00:01Z",
+    "updatedAt": "2013-05-07T10:00:01Z"
+  },
+  {
+    "name": "SF Ajax",
+    "managerName": "Alex Ferguson",
+    "managerEmail": "test@test.com",
+    "roster": [
+      {
+        "name": "Mark Lee",
+        "phone": "+16502699118"
+      },
+      {
+        "name": "Wayne Rooney",
+        "phone": "+1234567890"
+      },
+      {
+        "name": "Chicarito",
+        "phone": "+15678904567"
+      }
+    ],
+    "rosterCount": 3,
+    "sport": "Soccer",
+    "createdAt": "2013-05-07T10:00:01Z",
+    "updatedAt": "2013-05-07T10:00:01Z"
+  },
+  {
+    "name": "Cleveland Brownbags",
+    "managerName": "Dan Sell",
+    "managerEmail": "test@test.com",
+    "roster": [
+      {
+        "name": "Brandon Weeden",
+        "phone": "+15133074346"
+      },
+      {
+        "name": "Trent Richardson",
+        "phone": "+1781640120"
+      }
+    ],
+    "rosterCount": 2,
+    "sport": "Football",
+    "createdAt": "2013-05-07T10:00:01Z",
+    "updatedAt": "2013-05-07T10:00:01Z"
+  },
+  {
+    "name": "Green Monsters",
+    "managerName": "Tony Singalong",
+    "managerEmail": "test@test.com",
+    "roster": [
+      {
+        "name": "Ruan Pethagoya",
+        "phone": "+15133074346"
+      },
+      {
+        "name": "Howard Tang",
+        "phone": "+1781640120"
+      }
+    ],
+    "rosterCount": 2,
+    "sport": "Cricket",
+    "createdAt": "2013-05-07T10:00:01Z",
+    "updatedAt": "2013-05-07T10:00:01Z"
+  },
+];
