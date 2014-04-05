@@ -1,3 +1,51 @@
+
+angular.module('angularAuth', [])
+.controller('authController', ['$scope', 'angularLogin', function($scope, angularLogin) {
+  $scope.user = {
+    email: 'undefined',
+    password: 'undefined'
+  };
+
+  $scope.submitTheForm = function(username, password) {
+    $scope.user.email = username;
+    $scope.user.password = password;
+    console.log($scope.user);
+    $scope.sendLogin($scope.user);
+  };
+
+  $scope.sendLogin = function(user) {
+    angularLogin.post('/login', user, function(data) {
+      console.log('posted');
+    });
+  };
+}])
+
+.factory('angularLogin', ['$http', function($http){
+  return{
+    post: function(url, userData, cb) {
+      var postData = $http.post(url, userData);
+      postData.success(function(data) {
+        cb(data);
+      });
+      postData.error(function(error) {
+        console.log(error);
+      });
+    }
+  };
+}]);
+
+
+
+// musicApp.factory('getData', ['$http', function($http) {
+//   return{
+//     get: function(url, cb) {
+//       var results = $http.get(url);
+//         results.success(function(data){cb(data)});
+//     }
+//   };
+
+
+
 //in other files, create form view, send users there when click login (in navbar) for now. require this controller in app module.
 //define module
 //define controller
@@ -14,5 +62,3 @@
 //login function posts user login object to '/login',
 //triggers redirect to page on success,
 //calls cb with error message string on err.
-
-
