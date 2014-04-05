@@ -20,19 +20,24 @@ angular.module('angularAppRoutes', ['ui.router'])
   })
   .state('seeAvailableGames', {
     url: '/availableGames',
-    templateUrl: 'js/angular_views/availableGames.html'
+    templateUrl: 'angular_views/availableGames.html'
   })
   .state('startNewGames', {
     url: '/startNewGames',
-    templateUrl: 'js/angular_views/startNewGames.html'
+    templateUrl: 'angular_views/startNewGames.html'
   })
   .state('manageGames', {
     url: '/manageGames',
-    templateUrl: 'js/angular_views/manageGames.html'
+    templateUrl: 'angular_views/manageGames.html'
   })
   .state('home', {
     url: '/',
     template: '<h1>home</h1>'
-  });
+  })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'angular_views/login.html'
+  })
+  ;
   $urlRouterProvider.otherwise('/angular_index.html');
 }]);
