@@ -1,26 +1,31 @@
 
-angular.module('angularAuth', [])
-.controller('authController', ['$scope', 'angularLogin', function($scope, angularLogin) {
+angular.module('angularSignup', [])
+.controller('signupController', ['$scope', 'angularSignup', function($scope, angularSignup) {
   $scope.user = {
+    display_name: 'undefined',
     email: 'undefined',
+    phone: 'undefined',
     password: 'undefined'
   };
 
-  $scope.submitTheForm = function(email, password) {
+  $scope.submitTheForm = function(fullname, email, phonenumber, password) {
+    $scope.user.display_name = fullname;
     $scope.user.email = email;
+    $scope.user.phone = phonenumber;
     $scope.user.password = password;
+
     console.log($scope.user);
-    $scope.sendLogin($scope.user);
+    $scope.sendSignup($scope.user);
   };
 
-  $scope.sendLogin = function(user) {
-    angularLogin.post('/login', user, function(data) {
+  $scope.sendSignup = function(user) {
+    angularSignup.post('/users', user, function(data) {
       console.log('posted');
     });
   };
 }])
 
-.factory('angularLogin', ['$http', function($http){
+.factory('angularSignup', ['$http', function($http){
   return{
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);

@@ -38,6 +38,11 @@ angular.module('angularAppRoutes', ['ui.router'])
     url: '/login',
     templateUrl: 'angular_views/login.html'
   })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'angular_views/signup.html'
+  })
+
   ;
   $urlRouterProvider.otherwise('/angular_index.html');
 }]);

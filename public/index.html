@@ -23,6 +23,7 @@
     <script type="text/javascript" src="/js/angular_routes.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/splashController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/authController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/signupController.js"></script>
   </head>
   <body ng-controller="mainController">
     <div>
@@ -32,6 +33,7 @@
       <a ui-sref=".manageGames">Manage Games</a>
       <a ui-sref=".home"> Home </a>
       <a ui-sref=".login"> login </a>
+      <a ui-sref=".signup"> signup </a>
     </div>
     <div ui-view> </div>
     <p>{{text}}</p>
