@@ -36,29 +36,22 @@ angular.module('angularAuth', [])
 
 
 
-// musicApp.factory('getData', ['$http', function($http) {
-//   return{
-//     get: function(url, cb) {
-//       var results = $http.get(url);
-//         results.success(function(data){cb(data)});
-//     }
-//   };
+      //   error: function(model, response, options) {
+      //     that.displayErrors('alert-error', response.responseText) ;
+      //   },
+      //   success: function(model, response, options) {
+      //     that.displayErrors('alert-success', 'SUCCESS! Account created!');
+      //     that.$('.input-field').val('');
+      //   }
+      // });
 
-
-
-//in other files, create form view, send users there when click login (in navbar) for now. require this controller in app module.
-//define module
-//define controller
-//trigger submit with a button, on click, call below method:
-//define method loginUser to get data from form and put it in an object
-//define method login to send that object using $http
-//post to '/login'
-//on success redirect to page, on err show err message.
-
-//old  version does by getting form input and value,
-//putting in an object {form.name: form.value},
-//passing that to model.login function,
-//along with a callback that only functions to display error.
-//login function posts user login object to '/login',
-//triggers redirect to page on success,
-//calls cb with error message string on err.
+  // displayErrors: function(className, html) {
+  //   var $form = this.$('form');
+  //   $form.find('.alert').remove();
+  //   $form.prepend('\
+  //     <div class="alert ' + className + '" id="alert">' +
+  //       '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+  //         html +
+  //     '</div>'
+  //   );
+  // },

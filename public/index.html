@@ -24,6 +24,7 @@
     <script type="text/javascript" src="/js/angular_controllers/splashController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/authController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/signupController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/gamesController.js"></script>
   </head>
   <body ng-controller="mainController">
     <div>
@@ -36,7 +37,7 @@
       <a ui-sref=".signup"> signup </a>
     </div>
     <div ui-view> </div>
-    <p>{{text}}</p>
+    <p>{{user.email}}</p>
 <!--     <ui-view></ui-view>
       <a ui-sref=".splashing">splashing</a>
       <a ui-sref=".splashed">splashed</a> -->
