@@ -14,8 +14,8 @@ angular.module('angularAuth', [])
   };
 
   $scope.sendLogin = function(user) {
-    angularLogin.post('/login', user, function(data) {
-      console.log('posted');
+    angularLogin.post('/login', user, function(response) {
+      $scope.response = response;
     });
   };
 }])
@@ -24,34 +24,14 @@ angular.module('angularAuth', [])
   return{
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
-      postData.success(function(data) {
-        cb(data);
+      postData.success(function() {
+        cb('Login Successful!');
       });
       postData.error(function(error) {
-        console.log(error);
+        error = error || 'Login Unsuccessful';
+        cb(error);
       });
     }
   };
 }]);
 
-
-
-      //   error: function(model, response, options) {
-      //     that.displayErrors('alert-error', response.responseText) ;
-      //   },
-      //   success: function(model, response, options) {
-      //     that.displayErrors('alert-success', 'SUCCESS! Account created!');
-      //     that.$('.input-field').val('');
-      //   }
-      // });
-
-  // displayErrors: function(className, html) {
-  //   var $form = this.$('form');
-  //   $form.find('.alert').remove();
-  //   $form.prepend('\
-  //     <div class="alert ' + className + '" id="alert">' +
-  //       '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-  //         html +
-  //     '</div>'
-  //   );
-  // },

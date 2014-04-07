@@ -19,8 +19,9 @@ angular.module('angularSignup', [])
   };
 
   $scope.sendSignup = function(user) {
-    angularSignup.post('/users', user, function(data) {
-      console.log('posted');
+    angularSignup.post('/users', user, function(response) {
+      console.log(response);
+      $scope.response = response;
     });
   };
 }])
@@ -29,11 +30,12 @@ angular.module('angularSignup', [])
   return{
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
-      postData.success(function(data) {
-        cb(data);
+      postData.success(function() {
+        cb('Account Created!');
       });
       postData.error(function(error) {
-        console.log(error);
+        error = error || 'Account Could Not Be Created';
+        cb(error);
       });
     }
   };
