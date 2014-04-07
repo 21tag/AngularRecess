@@ -16,6 +16,7 @@ angular.module('angularAuth', [])
   $scope.sendLogin = function(user) {
     angularLogin.post('/login', user, function(response) {
       $scope.response = response;
+      $state.go('home');
     });
   };
 }])
