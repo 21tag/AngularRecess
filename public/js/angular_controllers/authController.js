@@ -9,7 +9,6 @@ angular.module('angularAuth', [])
   $scope.submitTheForm = function(email, password) {
     $scope.user.email = email;
     $scope.user.password = password;
-    console.log($scope.user);
     $scope.sendLogin($scope.user);
   };
 

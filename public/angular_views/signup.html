@@ -1,12 +1,13 @@
 <div>
   <h1>Create Account</h1>
     <div ng-controller='signupController'>
-      <form>
-        Full name : <input type='text' name='fullName' ng-model='userInfo.fullName'>
-        Email : <input type='text' name='email' ng-model='userInfo.email'>
-        Phone Number : <input type='text' name='phoneNumber' ng-model='userInfo.phoneNumber'>
-        Password : <input type='password' name='password' ng-model='userInfo.password'>
-        <input type='submit' value='submit' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
+      <form name='signupForm'>
+        Full name : <input type='text' name='fullName' ng-model='userInfo.fullName'required>
+        Email : <input type='text' name='email' ng-model='userInfo.email' required>
+        Phone Number : <input type='text' name='phoneNumber' ng-model='userInfo.phoneNumber' required>
+        Password : <input type='password' name='password' ng-model='userInfo.password' required>
+        <span ng-show='signupForm.$error.required'>required!</span>
+        <input type='submit' value='submit' ng-disabled='signupForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
       </form>
       <div>{{response}}</div>
 	</div>

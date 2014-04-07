@@ -3,8 +3,8 @@
   <div ng-controller='authController'>
     <form>
     Email : <input type='text' name='email' ng-model='userInfo.email'>
-	  Password : <input type='password' name='password' ng-model='userInfo.password'>
-	  <input type='submit' value='submit' ng-click='submitTheForm(userInfo.email, userInfo.password)'>
+	  Password : <input type='password' name='password' ng-model='userInfo.password' required>
+	  <input type='submit' value='submit' ng-click='submitTheForm(userInfo.email, userInfo.password)' required>
 	  </form>
     <div>{{response}}</div>
   </div>
