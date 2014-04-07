@@ -1,24 +1,31 @@
 angular.module('angularGames', [])
 .controller('gamesController', ['$scope', 'angularGames', function($scope, angularGames) {
   $scope.game = {
-    name: 'undefined',
-    type: 'undefined'
+    gameName: 'undefined',
+    gameType: 'undefined',
+    description: 'undefined',
+    gameDate: 'undefined',
+    gameTime: 'undefined',
+    minimumPlayers: 'undefined',
+    playersLimit: 'undefined',
+    playerArray: 'undefined'
   };
 
-  $scope.submitTheForm = function(name, type) {
-    $scope.game.name = name;
-    $scope.game.type = type;
-    $scope.game.name = description;
-    $scope.game.type = day;
-    $scope.game.name = time;
-    $scope.game.type = minimum;
-    $scope.game.name = maximum;
+  $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
+    $scope.game.gameName = name;
+    $scope.game.gameType = type;
+    $scope.game.description = description;
+    $scope.game.gameDate = day;
+    $scope.game.gameTime = time;
+    $scope.game.minimumPlayers = minimum;
+    $scope.game.playersLimit = maximum;
+    $scope.game.playerArray  = invited;
     console.log($scope.game);
-    $scope.sendLogin($scope.game);
+    $scope.sendGame($scope.game);
   };
 
-  $scope.sendLogin = function(game) {
-    angularGames.post('/login', game, function(data) {
+  $scope.sendGame = function(game) {
+    angularGames.post('/game', game, function(data) {
       console.log('posted');
     });
   };
@@ -26,8 +33,8 @@ angular.module('angularGames', [])
 
 .factory('angularGames', ['$http', function($http){
   return{
-    post: function(url, userData, cb) {
-      var postData = $http.post(url, userData);
+    post: function(url, gameData, cb) {
+      var postData = $http.post(url, gameData);
       postData.success(function(data) {
         cb(data);
       });
