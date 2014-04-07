@@ -1,6 +1,6 @@
 
 angular.module('angularSignup', [])
-.controller('signupController', ['$scope', 'angularSignup', function($scope, angularSignup) {
+.controller('signupController', ['$scope', '$state' , 'angularSignup', function($scope, $state, angularSignup) {
   $scope.user = {
     display_name: 'undefined',
     email: 'undefined',
@@ -19,9 +19,10 @@ angular.module('angularSignup', [])
   };
 
   $scope.sendSignup = function(user) {
-    angularSignup.post('/users', user, function(response) {
+    angularSignup.post('/users', user, function(response, redirect) {
       console.log(response);
       $scope.response = response;
+      $state.go(redirect);
     });
   };
 }])
@@ -31,11 +32,11 @@ angular.module('angularSignup', [])
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
       postData.success(function() {
-        cb('Account Created!');
+        cb('Account Created!', 'home');
       });
       postData.error(function(error) {
         error = error || 'Account Could Not Be Created';
-        cb(error);
+        cb(error, 'signup');
       });
     }
   };
