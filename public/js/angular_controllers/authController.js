@@ -1,6 +1,6 @@
 
 angular.module('angularAuth', [])
-.controller('authController', ['$scope', '$state', 'angularLogin', function($scope, $state, angularLogin) {
+.controller('authController', ['$rootScope', '$scope', '$state', 'angularLogin', function($rootScope, $scope, $state, angularLogin) {
   $scope.user = {
     email: 'undefined',
     password: 'undefined'
@@ -13,7 +13,11 @@ angular.module('angularAuth', [])
   };
 
   $scope.sendLogin = function(user) {
-    angularLogin.post('/login', user, function(response, redirect) {
+    angularLogin.post('/login', user, function(response, redirect, data) {
+      if (data) {
+        $rootScope.currentUser = data;
+        console.log($rootScope.currentUser);
+      }
       $scope.response = response;
       $state.go(redirect);
     });
@@ -24,8 +28,8 @@ angular.module('angularAuth', [])
   return{
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
-      postData.success(function() {
-        cb('Login Successful!', 'home');
+      postData.success(function(data) {
+        cb('Login Successful!', 'home', data);
       });
       postData.error(function(error) {
         error = error || 'Login Unsuccessful';
@@ -34,4 +38,3 @@ angular.module('angularAuth', [])
     }
   };
 }]);
-

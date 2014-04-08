@@ -44,30 +44,3 @@ angular.module('angularGames', [])
     }
   };
 }]);
-
-
-
-
-// var GameSchema = new Schema({
-//   'invitedPlayers': Array, // make this an object of ObjectIds of users or game phone numbers
-//   'manager': Schema.Types.ObjectId,
-//   'gameCode': Number,
-//   'createdAt': { type: Date, 'default': Date.now },
-//   'updatedAt': Date,
-//   'gameDate': { type: Date, validate: [validatePresenceOf, 'please provide a game date'] },
-//   'gameTime': { type: String, validate: [validatePresenceOf, 'please provide a game time'] },  // TODO: change to date
-//   'gameName': { type: String, validate: [validatePresenceOf, 'please provide a game title'] },
-//   'gameType': { type: String, validate: [validatePresenceOf, 'please choose a game type'] }, // eventually convert this into a foreign key for a collection of gameTypes 
-//   // 'gameAddress': { type: String, validate: [validatePresenceOf, 'if you expect people to show up, you\'d better tell them where to go'] },
-//   'coord' : {
-//     'lat' : Number,
-//     'lon' : Number
-//   },
-//   'minimumPlayers': Number,
-//   'confirmedPlayers': Array,
-//   'confirmedPlayersCount' : Number,
-//   'playerLimit': Number,
-//   'minimumPlayersMet': Boolean,
-//   'playerLimitMet': Boolean,
-//   'messages': Schema.Types.ObjectId
-// });

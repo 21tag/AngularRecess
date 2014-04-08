@@ -26,6 +26,7 @@ module.exports = function(app){
     user.phone = req.user.phone;
     user.display_name = req.user.display_name;
     res.json(user);
+      console.log(req.isAuthenticated());
   });
 
   app.get('/login', function(req, res, next) {

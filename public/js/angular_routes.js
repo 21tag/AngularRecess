@@ -21,7 +21,7 @@ angular.module('angularAppRoutes', ['ui.router'])
   })
   .state('home', {
     url: '/',
-    template: '<h1>home</h1>'
+    template: '<h1>home</h1><h1>{{currentUser.display_name}}</h1>'
   })
   .state('login', {
     url: '/login',
@@ -30,6 +30,11 @@ angular.module('angularAppRoutes', ['ui.router'])
   .state('signup', {
     url: '/signup',
     templateUrl: 'angular_views/signup.html'
+  })
+
+  .state('logout', {
+    url: '/logout',
+    templateUrl: 'angular_views/logout.html'
   })
 
   ;

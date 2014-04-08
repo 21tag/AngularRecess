@@ -25,6 +25,7 @@
     <script type="text/javascript" src="/js/angular_controllers/authController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/signupController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/gamesController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/logoutController.js"></script>
   </head>
   <body ng-controller="mainController">
     <div>
@@ -34,7 +35,9 @@
       <a ui-sref=".manageGames">Manage Games</a>
       <a ui-sref=".home"> Home </a>
       <a ui-sref=".login"> login </a>
+      <a ui-sref=".logout"> logout </a>
       <a ui-sref=".signup"> signup </a>
+      <span>{{currentUser.display_name}}</span>
     </div>
     <div ui-view> </div>
     <p>{{user.email}}</p>
