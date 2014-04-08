@@ -66,7 +66,7 @@ passport.use(new LocalStrategy({
   },
   function(username, password, done) {
     User.login(username, password, function(err, user) {
-      // console.log(err, user);
+      //console.log('*****', err, user);
       return done(null, user);
     });
   })

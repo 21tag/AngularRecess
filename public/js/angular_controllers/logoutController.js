@@ -3,7 +3,7 @@ angular.module('angularLogout', [])
   $scope.logout = function(user) {
     angularLogout.get(user, function(response) {
       $scope.response = response;
-      $rootScope.currentUser = '';
+      $rootScope.currentUser = 'public';
     });
   };
   $scope.logout($rootScope.currentUser);

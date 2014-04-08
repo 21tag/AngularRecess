@@ -16,7 +16,6 @@ angular.module('angularAuth', [])
     angularLogin.post('/login', user, function(response, redirect, data) {
       if (data) {
         $rootScope.currentUser = data;
-        console.log($rootScope.currentUser);
       }
       $scope.response = response;
       $state.go(redirect);
