@@ -23,12 +23,12 @@ angular.module('angularAuth', [])
   };
 }])
 
-.factory('angularLogin', ['$http', function($http){
+.factory('angularLogin', ['$http', '$rootScope', function($http, $rootScope){
   return{
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
       postData.success(function(data) {
-        cb('Login Successful!', 'home', data);
+        cb('Login Successful!', $rootScope.redirectToState, data);
       });
       postData.error(function(error) {
         error = error || 'Login Unsuccessful';

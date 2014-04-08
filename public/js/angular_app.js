@@ -1,12 +1,12 @@
 angular.module('angularApp', ['angularAppRoutes','angularSplash', 'angularAuth', 'angularSignup', 'angularGames', 'angularLogout']).run(function($rootScope, $location, $state) {
   $rootScope.currentUser = 'public';
+  //checks if requested route is restricted on route change event, redirects to login if it is and user not logged in.
   $rootScope.$on('$stateChangeStart', function(e, goTo, goToParams, from, fromParams) {
-    //console.log($rootScope.currentUser);
     var restricted = ['game', 'manageGames'];
     if (_.contains(restricted, goTo.name) && $rootScope.currentUser === 'public') {
-      console.log('restricted');
+      $rootScope.redirectToState = goTo.name;
       e.preventDefault();
-      $state.transitionTo('login');
+      $state.go('login');
     }
   });
 })
