@@ -1,0 +1,18 @@
+<div>
+  <h1>listAGame view</h1>
+    <div>
+      <form>
+        Game Name : <input type='text' name='name' ng-model='gameInfo.name'>
+    	  Game Type : <input type='text' name='type' ng-model='gameInfo.type'>
+    	  Game Description : <input type='text' name='description' ng-model='gameInfo.description'>
+    	  When's It Happening : <input type='text' name='day' ng-model='gameInfo.day'>
+    	  Game Time : <input type='text' name='time' ng-model='gameInfo.time'>
+    	  Minimum Players : <input type='text' name='minimum' ng-model='gameInfo.minimum'>
+    	  Maximum Players : <input type='text' name='maximum' ng-model='gameInfo.maximum'>
+    	  Invited Players : <input type='text' name='invited' ng-model='gameInfo.invited'>
+    	  <input type='submit' value='submit' ng-click='submitTheForm(gameInfo.name, gameInfo.type, gameInfo.description, gameInfo.day, gameInfo.time, gameInfo.mimimum, gameInfo.maximum, gameInfo.invited)'>
+  	  </form>
+      <div>{{gameInfo.name}} {{gameInfo.type}}</div>
+	  </div>
+</div>
+

@@ -21,27 +21,23 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/js/angular_app.js"></script>
     <script type="text/javascript" src="/js/angular_routes.js"></script>
-    <script type="text/javascript" src="/js/angular_controllers/splashController.js"></script>
-    <script type="text/javascript" src="/js/angular_controllers/authController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/seeGameController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/loginController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/signupController.js"></script>
-    <script type="text/javascript" src="/js/angular_controllers/gamesController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/listAGameController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/logoutController.js"></script>
-    <script type="text/javascript" src="/js/angular_controllers/individualgameController.js"></script>
   </head>
   <body>
     <div>
-    nav bar
-      <a ui-sref=".seeAvailableGames">See Available Games</a>
-      <a ui-sref=".game">Start a New Game</a>
-      <a ui-sref=".manageGames">Manage Games</a>
-      <a ui-sref=".seegame">Join a game</a>
-      <a ui-sref=".home"> Home </a>
-      <a ui-sref=".login"> login </a>
-      <a ui-sref=".logout"> logout </a>
-      <a ui-sref=".signup"> signup </a>
+      <a ui-sref=".findGames">Find Games</a>
+      <a ui-sref=".listAGame">List A Game</a>
+      <a ui-sref=".myGames">My Games</a>
+      <a ui-sref=".seeGame">Join a game</a>
+      <a ui-sref=".login"> Login </a>
+      <a ui-sref=".logout"> Logout </a>
+      <a ui-sref=".signup"> Signup </a>
       <span>{{currentUser.display_name}}</span>
     </div>
     <div ui-view> </div>
-    <p>{{user.email}}</p>
   </body>
 </html>

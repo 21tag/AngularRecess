@@ -1,51 +1,51 @@
 angular.module('angularAppRoutes', ['ui.router'])
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    $stateProvider
 
+      .state('/', {
+        url: 'index.html',
+        templateUrl: 'index.html'
+      })
+      .state('findGames', {
+        url: '/findGames',
+        templateUrl: 'angular_views/findGames.html'
+      })
+      .state('listAGame', {
+        url: '/listAGame',
+        templateUrl: 'angular_views/listAGame.html',
+        controller: 'listAGameController'
+      })
+      .state('myGames', {
+        url: '/myGames',
+        templateUrl: 'angular_views/myGames.html'
+      })
 
-  .state('/', {
-    url: 'index.html',
-    templateUrl: 'index.html'
-  })
-  .state('seeAvailableGames', {
-    url: '/availableGames',
-    templateUrl: 'angular_views/availableGames.html'
-  })
-  .state('game', {
-    url: '/game',
-    templateUrl: 'angular_views/game.html'
-  })
-  .state('manageGames', {
-    url: '/manageGames',
-    templateUrl: 'angular_views/manageGames.html'
-  })
-  .state('home', {
-    url: '/',
-    template: '<h1>home</h1><h1>{{currentUser.display_name}}</h1>'
-  })
-  .state('login', {
-    url: '/login',
-    templateUrl: 'angular_views/login.html'
-  })
-  .state('signup', {
-    url: '/signup',
-    templateUrl: 'angular_views/signup.html'
-  })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'angular_views/login.html',
+        controller: 'loginController'
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'angular_views/signup.html',
+        controller: 'signupController'
+      })
 
-  .state('logout', {
-    url: '/logout',
-    templateUrl: 'angular_views/logout.html'
-  })
+      .state('logout', {
+        url: '/logout',
+        templateUrl: 'angular_views/logout.html',
+        controller: 'logoutController'
+      })
 
-  .state('seegame', {
-    url: '/seeGame',
-    templateUrl: 'angular_views/individualGame.html'
-  })
+      .state('seeGame', {
+        url: '/seeGame',
+        templateUrl: 'angular_views/seeGame.html',
+        controller: 'seeGameController'
+      });
 
-  ;
-  $urlRouterProvider.otherwise('/angular_index.html');
+      $urlRouterProvider.otherwise('/angular_index.html');
 
-}]);
+  }]);
 
 
 
