@@ -1,10 +1,13 @@
 angular.module('angularLogout', [])
 .controller('logoutController', ['$rootScope', '$scope', 'angularLogout', function($rootScope, $scope, angularLogout) {
+  $scope.response = 'Not logged in';
   $scope.logout = function(user) {
-    angularLogout.get(user, function(response) {
-      $scope.response = response;
-      $rootScope.currentUser = 'public';
-    });
+    if ($rootScope.currentUser !== 'public') {
+      angularLogout.get(user, function(response) {
+        $scope.response = response;
+        $rootScope.currentUser = 'public';
+      });
+    }
   };
   $scope.logout($rootScope.currentUser);
 }])

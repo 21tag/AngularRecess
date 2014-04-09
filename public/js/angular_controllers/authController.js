@@ -28,7 +28,8 @@ angular.module('angularAuth', [])
     post: function(url, userData, cb) {
       var postData = $http.post(url, userData);
       postData.success(function(data) {
-        cb('Login Successful!', $rootScope.redirectToState, data);
+        var redirect = $rootScope.redirectToState || 'home';
+        cb('Login Successful!', redirect, data);
       });
       postData.error(function(error) {
         error = error || 'Login Unsuccessful';
