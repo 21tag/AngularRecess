@@ -3,7 +3,7 @@ angular.module('angularGames', [])
   $scope.game = {
     gameName: 'undefined',
     gameType: 'undefined',
-    description: 'undefined',
+    gameDescription: 'undefined',
     gameDate: 'undefined',
     gameTime: 'undefined',
     minimumPlayers: 'undefined',
@@ -14,7 +14,7 @@ angular.module('angularGames', [])
   $scope.headers = [
     'gameName',
     'gameType',
-    'description',
+    'gameDescription',
     'gameDate',
     'gameTime',
     'minimumPlayers',
@@ -25,7 +25,7 @@ angular.module('angularGames', [])
   $scope.gameInfo = {
     gameName: 'undefined',
     gameType: 'undefined',
-    description: 'undefined',
+    gameDescription: 'undefined',
     gameDate: 'undefined',
     gameTime: 'undefined',
     minimumPlayers: 'undefined',
@@ -33,10 +33,57 @@ angular.module('angularGames', [])
     playerArray: 'undefined'
   };
 
+  $scope.sports = [
+    'Badminton',
+    'Baseball',
+    'Basketball',
+    'Billiards',
+    'Board Games',
+    'Bocce',
+    'Bowling',
+    'Capture the Flag',
+    'Cards',
+    'Checkers',
+    'Chess',
+    'Climbing',
+    'Cricket',
+    'D&D',
+    'Disc Golf',
+    'Dodgeball',
+    'Dominoes',
+    'Flag Football',
+    'Football',
+    'Foursquare',
+    'Go',
+    'Golf',
+    'Ice Hockey',
+    'Kickball',
+    'Lacrosse',
+    'Martial Arts',
+    'Quidditch',
+    'Racquetball',
+    'Rugby',
+    'Shuffleboard',
+    'Soccer',
+    'Softball',
+    'Speed-ball',
+    'Squash',
+    'Street Hockey',
+    'Tag',
+    'Tennis',
+    'Tennis (doubles)',
+    'Ultimate Frisbee',
+    'Volleyball',
+    'Water Polo',
+    'Wiffleball',
+    'Yoga',
+    'Other',
+  ];
+
   $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
     $scope.gameInfo.gameName = name;
     $scope.gameInfo.gameType = type;
-    $scope.gameInfo.description = description;
+    $scope.gameInfo.gameDescription = description;
     $scope.gameInfo.gameDate = day;
     $scope.gameInfo.gameTime = time;
     $scope.gameInfo.minimumPlayers = minimum;

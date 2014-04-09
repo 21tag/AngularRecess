@@ -94,6 +94,11 @@ module.exports = function(app){
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
+      
+      //added
+      gameDescription : req.body.gameDescription,
+      //
+
       coord: {lat: req.body.latitude, lon: req.body.longitude},
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit

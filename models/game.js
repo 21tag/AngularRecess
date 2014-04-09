@@ -26,6 +26,10 @@ var GameSchema = new Schema({
   'gameName': { type: String, validate: [validatePresenceOf, 'please provide a game title'] },
   'gameType': { type: String, validate: [validatePresenceOf, 'please choose a game type'] }, // eventually convert this into a foreign key for a collection of gameTypes 
   // 'gameAddress': { type: String, validate: [validatePresenceOf, 'if you expect people to show up, you\'d better tell them where to go'] },
+
+  //added field
+  'gameDescription': {type: String, validate: [validatePresenceOf, 'please provide a game description'] },
+
   'coord' : {
     'lat' : Number,
     'lon' : Number
