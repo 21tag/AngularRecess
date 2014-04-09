@@ -7,39 +7,41 @@ angular.module('angularAppRoutes', ['ui.router'])
     url: 'index.html',
     templateUrl: 'index.html'
   })
-  .state('seeAvailableGames', {
-    url: '/availableGames',
-    templateUrl: 'angular_views/availableGames.html'
+  .state('findGames', {
+    url: '/findGames',
+    templateUrl: 'angular_views/findGames.html'
   })
-  .state('game', {
-    url: '/game',
-    templateUrl: 'angular_views/game.html'
+  .state('listAGame', {
+    url: '/listAGame',
+    templateUrl: 'angular_views/listAGame.html',
+    controller: 'listAGameController'
   })
-  .state('manageGames', {
-    url: '/manageGames',
-    templateUrl: 'angular_views/manageGames.html'
+  .state('myGames', {
+    url: '/myGames',
+    templateUrl: 'angular_views/myGames.html'
   })
-  .state('home', {
-    url: '/',
-    template: '<h1>home</h1><h1>{{currentUser.display_name}}</h1>'
-  })
+
   .state('login', {
     url: '/login',
-    templateUrl: 'angular_views/login.html'
+    templateUrl: 'angular_views/login.html',
+    controller: 'loginController'
   })
   .state('signup', {
     url: '/signup',
-    templateUrl: 'angular_views/signup.html'
+    templateUrl: 'angular_views/signup.html',
+    controller: 'signupController'
   })
 
   .state('logout', {
     url: '/logout',
-    templateUrl: 'angular_views/logout.html'
+    templateUrl: 'angular_views/logout.html',
+    controller: 'logoutController'
   })
 
-  .state('seegame', {
+  .state('seeGame', {
     url: '/seeGame',
-    templateUrl: 'angular_views/individualGame.html'
+    templateUrl: 'angular_views/seeGame.html',
+    controller: 'seeGameController'
   })
 
   ;
