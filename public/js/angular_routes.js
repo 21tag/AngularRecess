@@ -37,7 +37,15 @@ angular.module('angularAppRoutes', ['ui.router'])
     templateUrl: 'angular_views/logout.html'
   })
 
+  .state('seegame', {
+    url: '/seeGame',
+    templateUrl: 'angular_views/individualGame.html'
+  })
+
   ;
   $urlRouterProvider.otherwise('/angular_index.html');
 
 }]);
+
+
+

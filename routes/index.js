@@ -25,8 +25,9 @@ module.exports = function(app){
     user.email = req.user.email;
     user.phone = req.user.phone;
     user.display_name = req.user.display_name;
+    user.gamesPlayed = req.user.gamesPlayed;
+    user.upcomingGames = req.user.upcomingGames;
     res.json(user);
-      console.log('%%%%%', req.session.passport.user);
   });
 
   app.get('/login', function(req, res, next) {
@@ -55,6 +56,8 @@ module.exports = function(app){
       user.email = req.user.email;
       user.phone = req.user.phone;
       user.display_name = req.user.display_name;
+      user.gamesPlayed = req.user.gamesPlayed;
+      user.upcomingGames = req.user.upcomingGames;
       return res.json(user);
     }
     else return res.json();

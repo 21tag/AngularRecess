@@ -1,4 +1,4 @@
-angular.module('angularApp', ['angularAppRoutes','angularSplash', 'angularAuth', 'angularSignup', 'angularGames', 'angularLogout']).run(function($rootScope, $location, $state, getCurrentUser) {
+angular.module('angularApp', ['angularAppRoutes','angularSplash', 'angularAuth', 'angularSignup', 'angularGames', 'angularLogout', 'angularIndividualGame']).run(function($rootScope, $location, $state, getCurrentUser) {
 
   //checks user on initial pageload to see if session is established, sets to public if not.
   $rootScope.checkUser = function() {
