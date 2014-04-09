@@ -8,20 +8,42 @@ angular.module('angularGames', [])
     gameTime: 'undefined',
     minimumPlayers: 'undefined',
     playersLimit: 'undefined',
+    playerArray: 'undefined',
+  };
+  
+  $scope.headers = [
+    'gameName',
+    'gameType',
+    'description',
+    'gameDate',
+    'gameTime',
+    'minimumPlayers',
+    'playersLimit',
+    'playerArray',
+  ];
+
+  $scope.gameInfo = {
+    gameName: 'undefined',
+    gameType: 'undefined',
+    description: 'undefined',
+    gameDate: 'undefined',
+    gameTime: 'undefined',
+    minimumPlayers: 'undefined',
+    playerLimit: 'undefined',
     playerArray: 'undefined'
   };
 
   $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
-    $scope.game.gameName = name;
-    $scope.game.gameType = type;
-    $scope.game.description = description;
-    $scope.game.gameDate = day;
-    $scope.game.gameTime = time;
-    $scope.game.minimumPlayers = minimum;
-    $scope.game.playersLimit = maximum;
-    $scope.game.playerArray  = invited;
-    console.log($scope.game);
-    $scope.sendGame($scope.game);
+    $scope.gameInfo.gameName = name;
+    $scope.gameInfo.gameType = type;
+    $scope.gameInfo.description = description;
+    $scope.gameInfo.gameDate = day;
+    $scope.gameInfo.gameTime = time;
+    $scope.gameInfo.minimumPlayers = minimum;
+    $scope.gameInfo.playerLimit = maximum;
+    $scope.gameInfo.playerArray  = invited;
+    console.log($scope.gameInfo);
+    $scope.sendGame($scope.gameInfo);
   };
 
   $scope.sendGame = function(game) {
@@ -29,6 +51,16 @@ angular.module('angularGames', [])
       console.log('posted');
     });
   };
+//4/8
+  $scope.retreiveGames = function(){
+    angularGames.get('/games', function(data) {
+      $scope.game = data;
+      console.log('list retrieve success');
+    });
+  };
+
+  $scope.retreiveGames();
+//
 }])
 
 .factory('angularGames', ['$http', function($http){
@@ -41,33 +73,19 @@ angular.module('angularGames', [])
       postData.error(function(error) {
         console.log(error);
       });
+    },
+//4/8
+    get: function(url ,cb) {
+      var getData = $http.get(url);
+      getData.success(function(data) {
+        cb(data);
+        console.log(data);
+      });
+      getData.error(function(error) {
+        console.log(error);
+      });
     }
+//
+
   };
 }]);
-
-
-
-
-// var GameSchema = new Schema({
-//   'invitedPlayers': Array, // make this an object of ObjectIds of users or game phone numbers
-//   'manager': Schema.Types.ObjectId,
-//   'gameCode': Number,
-//   'createdAt': { type: Date, 'default': Date.now },
-//   'updatedAt': Date,
-//   'gameDate': { type: Date, validate: [validatePresenceOf, 'please provide a game date'] },
-//   'gameTime': { type: String, validate: [validatePresenceOf, 'please provide a game time'] },  // TODO: change to date
-//   'gameName': { type: String, validate: [validatePresenceOf, 'please provide a game title'] },
-//   'gameType': { type: String, validate: [validatePresenceOf, 'please choose a game type'] }, // eventually convert this into a foreign key for a collection of gameTypes 
-//   // 'gameAddress': { type: String, validate: [validatePresenceOf, 'if you expect people to show up, you\'d better tell them where to go'] },
-//   'coord' : {
-//     'lat' : Number,
-//     'lon' : Number
-//   },
-//   'minimumPlayers': Number,
-//   'confirmedPlayers': Array,
-//   'confirmedPlayersCount' : Number,
-//   'playerLimit': Number,
-//   'minimumPlayersMet': Boolean,
-//   'playerLimitMet': Boolean,
-//   'messages': Schema.Types.ObjectId
-// });

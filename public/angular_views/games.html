@@ -1,3 +1,25 @@
 <div>
   <h1>Find Games view</h1>
-</div>
+	<div ng-controller='gamesController'>
+	  <!-- <button ng-click='retreiveGames()'>click</button> -->
+      <table>
+      <thead>
+      	<tr>
+      		<th ng-repeat='header in headers'>{{ header }}
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='games in game'>
+	      <td>{{ games.gameName }}</td>
+	      <td>{{ games.gameType }}</td>
+	      <td>{{ games.description }}</td>
+        <td>{{ games.gameDate }}</td>
+        <td>{{ games.gameTime }}</td>
+        <td>{{ games.minimumPlayers }}</td>
+        <td>{{ games.playerLimit }}</td>
+        <td>{{ games.invitedPlayers }}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+<div>
