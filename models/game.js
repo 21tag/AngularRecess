@@ -14,11 +14,10 @@ var validatePresenceOf = function(value) {
 //   'userId' : Schema.Types.ObjectId
 // });
 
-// TODO: Alert we need to validate the gameTime on the client before sending to the model as a Date.
+// TODO: Validate the gameTime on the client before sending to the model as a Date.
 var GameSchema = new Schema({
-  'invitedPlayers': Array, // make this an object of ObjectIds of users or user phone numbers
+  'invitedPlayers': [Schema.Types.ObjectId], // make this an object of ObjectIds of users or user phone numbers
   'manager': Schema.Types.ObjectId,
-  'gameCode': Number,
   'createdAt': { type: Date, 'default': Date.now },
   'updatedAt': Date,
   'gameDate': { type: Date, validate: [validatePresenceOf, 'please provide a game date'] },
@@ -35,12 +34,13 @@ var GameSchema = new Schema({
     'lon' : Number
   },
   'minimumPlayers': Number,
-  'confirmedPlayers': Array,
+  'confirmedPlayers': [Schema.Types.ObjectId],
   'confirmedPlayersCount' : Number,
   'playerLimit': Number,
   'minimumPlayersMet': Boolean,
   'playerLimitMet': Boolean,
-  'messages': Schema.Types.ObjectId
+  'messages': [Schema.Types.ObjectId],
+  'replyCode': String, // this is a code unique to each game that we will use for messaging
 });
 
 GameSchema.pre('save', function(next) {

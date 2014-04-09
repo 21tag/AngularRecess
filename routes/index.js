@@ -54,31 +54,23 @@ module.exports = function(app){
       user.email = req.user.email;
       user.phone = req.user.phone;
       user.display_name = req.user.display_name;
+      user.upcomingGames = req.user.upcomingGames;
+      user.gamesPlayed = req.user.gamesPlayed;
       return res.json(user);
     }
     else return res.json();
   });
 
   app.get('/logout', function(req, res, next){
-    // req.logout()
+    // req.logout()  // I believe we'll need this line of code ~Andrew
     res.redirect('/');
   });
-
-  /***********
-  *** TEAM ***
-  ***********/
-
-  app.get('/teams', teams.findTeams);
-  app.put('/teams', teams.updateTeam);
-  app.delete('/teams', teams.deleteTeam);
 
   /***********
   *** GAME ***
   ***********/
 
-  // app.get('/game', ensureAuthenticated, function(req, res, next) {
   app.get('/game', function(req, res, next) {
-    // if(!req.isAuthenticated()) res.redirect('/login');
     res.render('game');
   });
 
