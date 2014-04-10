@@ -12,7 +12,7 @@ angular.module('angularSeeGame', [])
   .factory('angularGetGame', ['$http', function($http) {
     return {
       get: function(cb) {
-        var getGames = $http.get('/games', cb);
+        var getGames = $http.get('/game', cb);
         getGames.success(function(data) {
           cb(data);
         });

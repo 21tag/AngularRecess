@@ -17,7 +17,8 @@ angular.module('angularAppRoutes', ['ui.router'])
       })
       .state('myGames', {
         url: '/myGames',
-        templateUrl: 'angular_views/myGames.html'
+        templateUrl: 'angular_views/myGames.html',
+        controller: 'myGamesController'
       })
 
       .state('login', {

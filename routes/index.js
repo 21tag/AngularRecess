@@ -3,8 +3,7 @@ var passport = require('passport'),
     mongoose = require('mongoose'),
     users = require('./users.js'),
     moment = require('moment'),
-    config = require('../config/config.js'),
-    teams = require('./teams.js');
+    config = require('../config/config.js');
 
 module.exports = function(app){
   var db = app.set('db');
@@ -25,8 +24,8 @@ module.exports = function(app){
     user.email = req.user.email;
     user.phone = req.user.phone;
     user.display_name = req.user.display_name;
-    user.gamesPlayed = req.user.gamesPlayed;
     user.upcomingGames = req.user.upcomingGames;
+    user.gamesPlayed = req.user.gamesPlayed;
     res.json(user);
   });
 
@@ -56,33 +55,23 @@ module.exports = function(app){
       user.email = req.user.email;
       user.phone = req.user.phone;
       user.display_name = req.user.display_name;
-      user.gamesPlayed = req.user.gamesPlayed;
       user.upcomingGames = req.user.upcomingGames;
+      user.gamesPlayed = req.user.gamesPlayed;
       return res.json(user);
     }
     else return res.json();
   });
 
   app.get('/logout', function(req, res, next){
-    // req.logout()
+    // req.logout()  // I believe we'll need this line of code ~Andrew
     res.redirect('/');
   });
-
-  /***********
-  *** TEAM ***
-  ***********/
-
-  app.get('/teams', teams.findTeams);
-  app.put('/teams', teams.updateTeam);
-  app.delete('/teams', teams.deleteTeam);
 
   /***********
   *** GAME ***
   ***********/
 
-  // app.get('/game', ensureAuthenticated, function(req, res, next) {
   app.get('/game', function(req, res, next) {
-    // if(!req.isAuthenticated()) res.redirect('/login');
     res.render('game');
   });
 
@@ -98,6 +87,11 @@ module.exports = function(app){
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
+      
+      //added
+      gameDescription : req.body.gameDescription,
+      //
+
       coord: {lat: req.body.latitude, lon: req.body.longitude},
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit

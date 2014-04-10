@@ -6,11 +6,13 @@ var mongoose = require('mongoose'),
 
 
 var MessageSchema = new mongoose.Schema({
-  'sid': String,
+  'twilioSID': String, // SMS only
+  'subject': String, // email only 
   'body': String,
-  'recipient': Schema.Types.ObjectId,
-  'sender': Number,
-  'processed': { type: Boolean}
+  'reply-to': String, // email only with a format like this: OpenRecess+[Game.replyCode]@gmail.com
+  'recipient': Schema.Types.ObjectId, // this is the game ObjectId
+  'sender': Schema.Types.ObjectId, // this is the user ObjectId
+  'processed': {type: Boolean} // this boolean is set once the message is posted
 });
 
 MessageSchema.pre('save', function(next) {
