@@ -1,0 +1,19 @@
+<div>
+  <h1>myGames view</h1>
+    <div ng-click='showUpcoming=!showUpcoming'>
+      <h3>My Upcoming Games</h3>
+      <ul ng-repeat='game in myUpcomingGames'  ng-hide='showUpcoming'>
+        <li>
+          {{game}}
+        </li>
+      </ul>
+    </div>
+    <div ng-click='showPlayed=!showPlayed'>
+      <h3>My Played Games</h3>
+      <ul ng-repeat='game in myPlayedGames'  ng-hide='showPlayed'>
+        <li>
+          {{game}}
+        </li>
+      </ul>
+    </div>
+</div>
