@@ -1,3 +1,4 @@
+
 angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup', 'angularListAGame', 'angularLogout', 'angularSeeGame','angularMyGames'])
 
   .run(function($rootScope, $location, $state, getCurrentUser) {
@@ -34,5 +35,4 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
       }
     };
   }]);
-
 
