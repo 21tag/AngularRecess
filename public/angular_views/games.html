@@ -1,0 +1,27 @@
+<div>
+  <h1>Find Games view</h1>
+	<div ng-controller='gamesController'>
+	  <!-- <button ng-click='retreiveGames()'>click</button> -->
+    Search by gameType: <input type='text' ng-model='search.gameType'> <br>
+    Search by gameDate: <input type='text' ng-model='search.gameDate'> <br>
+      <table>
+      <thead>
+      	<tr>
+      		<th ng-repeat='header in headers'>{{ header }}
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='games in game | filter:search:strict'>
+	      <td>{{ games.gameName }}</td>
+	      <td>{{ games.gameType }}</td>
+	      <td>{{ games.gameDescription }}</td>
+        <td>{{ games.gameDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ games.gameTime }}</td>
+        <td>{{ games.minimumPlayers }}</td>
+        <td>{{ games.playerLimit }}</td>
+        <td>{{ games.invitedPlayers }}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+<div>

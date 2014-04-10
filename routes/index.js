@@ -96,11 +96,17 @@ module.exports = function(app){
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit
     });
+
     newGame.save(function(err, data) {
       if(err)
         res.json(403, {err: 'Invalid params'});
       else
         res.json(200, {gameId: data._id});
+      //added4/9
+        User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames: data._id}}, function(err, manager){
+          console.log(err);
+        });
+      //  
     });
   });
 

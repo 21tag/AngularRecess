@@ -47,6 +47,3 @@ angular.module('angularAppRoutes', ['ui.router'])
       $urlRouterProvider.otherwise('/angular_index.html');
 
   }]);
-
-
-
