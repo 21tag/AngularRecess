@@ -26,6 +26,7 @@ module.exports = function(app){
     user.display_name = req.user.display_name;
     user.upcomingGames = req.user.upcomingGames;
     user.gamesPlayed = req.user.gamesPlayed;
+    user.id = req.user._id;
     res.json(user);
   });
 
@@ -57,6 +58,7 @@ module.exports = function(app){
       user.display_name = req.user.display_name;
       user.upcomingGames = req.user.upcomingGames;
       user.gamesPlayed = req.user.gamesPlayed;
+      user.id = req.user._id;
       return res.json(user);
     }
     else return res.json();
@@ -80,7 +82,7 @@ module.exports = function(app){
     var temp = Math.floor(Math.random() * 1000);
     newGame = new Game({
       invitedPlayers: req.body.playerArray.split(','),
-      manager: req.user._id,
+      manager: req.body.user,
       gameCode : temp,
       gameDate : req.body.gameDate,
       gameTime : req.body.gameTime,

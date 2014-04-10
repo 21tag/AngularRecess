@@ -1,5 +1,5 @@
 angular.module('angularListGames', [])
-.controller('listGamesController', ['$scope', 'angularListGames', function($scope, angularListGames) {
+.controller('listGamesController', ['$scope', 'angularListGames', '$rootScope', function($scope, angularListGames, $rootScope) {
   // $scope.game = {
   //   gameName: 'undefined',
   //   gameType: 'undefined',
@@ -10,7 +10,7 @@ angular.module('angularListGames', [])
   //   playersLimit: 'undefined',
   //   playerArray: 'undefined',
   // };
-  
+
   $scope.headers = [
     'gameName',
     'gameType',
@@ -81,6 +81,7 @@ angular.module('angularListGames', [])
   ];
 
   $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
+    $scope.gameInfo.user = $rootScope.currentUser.id;
     $scope.gameInfo.gameName = name;
     $scope.gameInfo.gameType = type;
     $scope.gameInfo.gameDescription = description;
@@ -96,6 +97,7 @@ angular.module('angularListGames', [])
   $scope.sendGame = function(game) {
     angularListGames.post('/game', game, function(data) {
       console.log('posted');
+          console.log('$rootScope.currentUser');
     });
   };
 //4/8

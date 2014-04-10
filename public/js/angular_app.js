@@ -13,6 +13,7 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
         });
       };
 
+
     $rootScope.checkUser();
     //checks if requested route is restricted on route change event, redirects to login if it is and user not logged in.
     $rootScope.$on('$stateChangeStart', function(e, goTo, goToParams, from, fromParams) {
