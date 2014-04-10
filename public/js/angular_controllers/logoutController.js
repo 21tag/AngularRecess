@@ -6,6 +6,7 @@ angular.module('angularLogout', [])
         angularGetLogout.get(user, function(response) {
           $scope.response = response;
           $rootScope.currentUser = 'public';
+          $rootScope.showLogin = true;
         });
       }
     };

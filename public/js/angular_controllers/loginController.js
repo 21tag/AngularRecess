@@ -30,6 +30,7 @@ angular.module('angularLogin', [])
         postData.success(function(data) {
           var redirect = $rootScope.redirectToState || 'myGames';
           cb('Login Successful!', redirect, data);
+          $rootScope.showLogin = false;
         });
         postData.error(function(error) {
           error = error || 'Login Unsuccessful';

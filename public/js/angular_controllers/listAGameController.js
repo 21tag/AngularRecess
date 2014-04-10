@@ -1,46 +1,137 @@
 angular.module('angularListAGame', [])
-  .controller('listAGameController', ['$scope', 'angularPostGame', function($scope, angularPostGame) {
-    $scope.game = {
-      gameName: 'undefined',
-      gameType: 'undefined',
-      description: 'undefined',
-      gameDate: 'undefined',
-      gameTime: 'undefined',
-      minimumPlayers: 'undefined',
-      playersLimit: 'undefined',
-      playerArray: 'undefined'
-    };
+.controller('listAGameController', ['$scope', 'angularListGames', function($scope, angularListGames) {
+  // $scope.game = {
+  //   gameName: 'undefined',
+  //   gameType: 'undefined',
+  //   gameDescription: 'undefined',
+  //   gameDate: 'undefined',
+  //   gameTime: 'undefined',
+  //   minimumPlayers: 'undefined',
+  //   playersLimit: 'undefined',
+  //   playerArray: 'undefined',
+  // };
 
-    $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
-      $scope.game.gameName = name;
-      $scope.game.gameType = type;
-      $scope.game.description = description;
-      $scope.game.gameDate = day;
-      $scope.game.gameTime = time;
-      $scope.game.minimumPlayers = minimum;
-      $scope.game.playersLimit = maximum;
-      $scope.game.playerArray  = invited;
-      console.log($scope.game);
-      $scope.sendGame($scope.game);
-    };
+  $scope.headers = [
+    'gameName',
+    'gameType',
+    'gameDescription',
+    'gameDate',
+    'gameTime',
+    'minimumPlayers',
+    'playersLimit',
+    'playerArray',
+  ];
 
-    $scope.sendGame = function(game) {
-      angularPostGame.post('/game', game, function(data) {
-        console.log('posted');
+  $scope.gameInfo = {
+    gameName: 'undefined',
+    gameType: 'undefined',
+    gameDescription: 'undefined',
+    gameDate: 'undefined',
+    gameTime: 'undefined',
+    minimumPlayers: 'undefined',
+    playerLimit: 'undefined',
+    playerArray: 'undefined'
+  };
+
+  $scope.sports = [
+    'Badminton',
+    'Baseball',
+    'Basketball',
+    'Billiards',
+    'Board Games',
+    'Bocce',
+    'Bowling',
+    'Capture the Flag',
+    'Cards',
+    'Checkers',
+    'Chess',
+    'Climbing',
+    'Cricket',
+    'D&D',
+    'Disc Golf',
+    'Dodgeball',
+    'Dominoes',
+    'Flag Football',
+    'Football',
+    'Foursquare',
+    'Go',
+    'Golf',
+    'Ice Hockey',
+    'Kickball',
+    'Lacrosse',
+    'Martial Arts',
+    'Quidditch',
+    'Racquetball',
+    'Rugby',
+    'Shuffleboard',
+    'Soccer',
+    'Softball',
+    'Speed-ball',
+    'Squash',
+    'Street Hockey',
+    'Tag',
+    'Tennis',
+    'Tennis (doubles)',
+    'Ultimate Frisbee',
+    'Volleyball',
+    'Water Polo',
+    'Wiffleball',
+    'Yoga',
+    'Other',
+  ];
+
+  $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
+    $scope.gameInfo.gameName = name;
+    $scope.gameInfo.gameType = type;
+    $scope.gameInfo.gameDescription = description;
+    $scope.gameInfo.gameDate = day;
+    $scope.gameInfo.gameTime = time;
+    $scope.gameInfo.minimumPlayers = minimum;
+    $scope.gameInfo.playerLimit = maximum;
+    $scope.gameInfo.playerArray  = invited;
+    console.log($scope.gameInfo);
+    $scope.sendGame($scope.gameInfo);
+  };
+
+  $scope.sendGame = function(game) {
+    angularListGames.post('/game', game, function(data) {
+      console.log('posted');
+    });
+  };
+//4/8
+  // $scope.retreiveGames = function(){
+  //   angularGames.get('/games', function(data) {
+  //     $scope.game = data;
+  //     console.log('list retrieve success');
+  //   });
+  // };
+
+  // $scope.retreiveGames();
+//
+}])
+
+.factory('angularListGames', ['$http', function($http){
+  return{
+    post: function(url, gameData, cb) {
+      var postData = $http.post(url, gameData);
+      postData.success(function(data) {
+        cb(data);
       });
-    };
-  }])
+      postData.error(function(error) {
+        console.log(error);
+      });
+    },
+//4/8
+    // get: function(url ,cb) {
+    //   var getData = $http.get(url);
+    //   getData.success(function(data) {
+    //     cb(data);
+    //   });
+    //   getData.error(function(error) {
+    //     console.log(error);
+    //   });
+    // }
+//
 
-  .factory('angularPostGame', ['$http', function($http){
-    return{
-      post: function(url, gameData, cb) {
-        var postData = $http.post(url, gameData);
-        postData.success(function(data) {
-          cb(data);
-        });
-        postData.error(function(error) {
-          console.log(error);
-        });
-      }
-    };
-  }]);
+  };
+}]);

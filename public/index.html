@@ -27,18 +27,21 @@
     <script type="text/javascript" src="/js/angular_controllers/listAGameController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/logoutController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/myGamesController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/listAGameController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/findGamesController.js"></script>
+    <script type="text/javascript" src="/js/angular_controllers/navbarController.js"></script>
 
-    
+
   </head>
   <body>
-    <div>
+    <div ng-controller="navbarController">
       <a ui-sref=".findGames">Find Games</a>
       <a ui-sref=".listAGame">List A Game</a>
       <a ui-sref=".myGames">My Games</a>
       <a ui-sref=".seeGame">Join a game</a>
-      <a ui-sref=".login"> Login </a>
-      <a ui-sref=".logout"> Logout </a>
-      <a ui-sref=".signup"> Signup </a>
+      <a ui-sref=".login" ng-show="showLogin"> Login </a>
+      <a ui-sref=".logout" ng-show="!showLogin"> Logout </a>
+      <a ui-sref=".signup" ng-show="showLogin"> Signup </a>
       <span>{{currentUser.display_name}}</span>
     </div>
     <div ui-view> </div>

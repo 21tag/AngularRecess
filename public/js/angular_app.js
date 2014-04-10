@@ -1,5 +1,5 @@
 
-angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup', 'angularListAGame', 'angularLogout', 'angularSeeGame','angularMyGames'])
+angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup', 'angularListAGame', 'angularLogout', 'angularSeeGame','angularMyGames', 'angularFindGames', 'angularNavbar'])
 
   .run(function($rootScope, $location, $state, getCurrentUser) {
 
@@ -7,6 +7,9 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
     $rootScope.checkUser = function() {
         getCurrentUser.get(function(user) {
           $rootScope.currentUser = user || 'public';
+          if ($rootScope.currentUser !== 'public') {
+            $rootScope.showLogin = false;
+          }
         });
       };
 

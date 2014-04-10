@@ -8,7 +8,8 @@ angular.module('angularAppRoutes', ['ui.router'])
       })
       .state('findGames', {
         url: '/findGames',
-        templateUrl: 'angular_views/findGames.html'
+        templateUrl: 'angular_views/findGames.html',
+        controller: 'findGamesController'
       })
       .state('listAGame', {
         url: '/listAGame',
