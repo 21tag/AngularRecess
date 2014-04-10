@@ -45,6 +45,6 @@ angular.module('angularAppRoutes', ['ui.router'])
         controller: 'seeGameController'
       });
 
-      $urlRouterProvider.otherwise('/angular_index.html');
+      $urlRouterProvider.otherwise('/findGames.html');
 
   }]);

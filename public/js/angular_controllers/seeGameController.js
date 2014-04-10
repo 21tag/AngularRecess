@@ -1,24 +1,35 @@
 angular.module('angularSeeGame', [])
-  .controller('seeGameController', ['$rootScope', '$scope', 'angularGetGame', function($rootScope, $scope, angularGetGame) {
-    $scope.getUserGames = function () {
-      angularGetGame.get(function(data) {
-        console.log(data);
+  .controller('seeGameController', ['$rootScope', '$scope', 'angularPutGame', function($rootScope, $scope, angularPutGame) {
+    $scope.addToGame = function() {
+      angularPutGame.put($scope.game, function(result, response) {
+        $scope.response = response;
+        if (result === 'success') {
+          $rootScope.currentUser.upcomingGames.push($scope.game.code);
+        }
       });
     };
-    $scope.getUserGames();
+    $scope.joinGame = function () {
+      console.log('joined!');
+      $scope.game = {};
+      $scope.game.code = 123;
+      $scope.game.phone = $rootScope.currentUser.phone;
+      $scope.addToGame();
+    };
+
   }])
 
 
-  .factory('angularGetGame', ['$http', function($http) {
+  .factory('angularPutGame', ['$http', function($http) {
     return {
-      get: function(cb) {
-        var getGames = $http.get('/game', cb);
-        getGames.success(function(data) {
-          cb(data);
+      put: function(gameData, cb) {
+        var putGame = $http.put('/game', gameData, cb);
+        putGame.success(function() {
+          cb('success', 'Joined Game!');
         });
-        getGames.error(function() {
-          cb('Something went wrong, please try again');
+        putGame.error(function() {
+          cb('error', 'Something went wrong, please try again');
         });
       }
     };
   }]);
+

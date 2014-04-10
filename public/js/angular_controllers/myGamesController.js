@@ -3,13 +3,12 @@ angular.module('angularMyGames', [])
     $scope.showUpcoming = true;
     $scope.showPlayed = true;
     $scope.getMyGames = function () {
-    $rootScope.currentUser.upcomingGames.push('sample upcoming game');
-    $rootScope.currentUser.gamesPlayed.push('sample played game');
-    $scope.myUpcomingGames = $rootScope.currentUser.upcomingGames;
-    $scope.myPlayedGames = $rootScope.currentUser.gamesPlayed;
-      };
+      $rootScope.currentUser.gamesPlayed.push('sample played game');
+      $scope.myUpcomingGames = $rootScope.currentUser.upcomingGames;
+      $scope.myPlayedGames = $rootScope.currentUser.gamesPlayed;
+    };
     $scope.getMyGames();
-  }])
+  }]);
 
 
   // .factory('angularGetMyGames', ['$http', function($http) {
