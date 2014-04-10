@@ -1,5 +1,5 @@
 angular.module('angularUserProfile', [])
-  .controller('userProfileController', ['$scope', '$state' , 'angularPutUser', function($scope, $state, angularPutUser) {
+  .controller('userProfileController', ['$scope', '$state' , 'angularPutUpdateUser', function($scope, $state, angularPutUpdateUser) {
     $scope.user = {
       display_name: 'undefined',
       email: 'undefined',
@@ -16,13 +16,13 @@ angular.module('angularUserProfile', [])
     };
 
     $scope.updateUser = function(user) {
-      angularPutUser.put('/users', user, function(response) {
+      angularPutUpdateUser.put('/users', user, function(response) {
         $scope.response = response;
       });
     };
   }])
 
-  .factory('angularPutUser', ['$http', function($http){
+  .factory('angularPutUpdateUser', ['$http', function($http){
     return{
       put: function(url, userData, cb) {
         var putData = $http.put(url, userData);
