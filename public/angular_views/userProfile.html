@@ -2,10 +2,10 @@
   <h1>Update Account</h1>
     <div>
       <form name='updateForm'>
-          Full name : <input type='text' name='fullName' ng-model='userInfo.fullName' required>
-          Email : <input type='text' name='email' ng-model='userInfo.email' required>
-          Phone Number : <input type='text' name='phoneNumber' ng-model='userInfo.phoneNumber' required>
-          Password : <input type='password' name='password' ng-model='userInfo.password' required>
+          Full name : <input type='text' name='fullName' ng-model='currentUser.display_name' required>
+          Email : <input type='text' name='email' ng-model='currentUser.email' required>
+          Phone Number : <input type='text' name='phoneNumber' ng-model='currentUser.phone' required>
+          Password : <input type='password' name='password' ng-model='currentUser.password' required>
           <span ng-show='signupForm.$error.required'>required!</span>
           <input type='submit' value='Update Profile' ng-disabled='updateForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
       </form>
