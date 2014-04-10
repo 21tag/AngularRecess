@@ -103,6 +103,16 @@ module.exports = function(app){
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit
     });
+
+    //aaded4/9
+    // console.log('hit', User.find;
+    // User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames}}, function(err, manager){
+      
+    //   console.log('game');
+    // });
+    // console.log('hit', User);
+    //
+
     newGame.save(function(err, data) {
       if(err)
         res.json(403, {err: 'Invalid params'});

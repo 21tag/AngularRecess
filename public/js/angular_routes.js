@@ -30,9 +30,9 @@ angular.module('angularAppRoutes', ['ui.router'])
     url: '/manageGames',
     templateUrl: 'angular_views/manageGames.html'
   })
-  .state('home', {
+  .state('about', {
     url: '/',
-    template: '<h1>home</h1>'
+    template: '<h1>Open Recess is a sports activity organizer</h1>'
   })
   .state('login', {
     url: '/login',

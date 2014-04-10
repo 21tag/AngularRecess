@@ -126,7 +126,6 @@ angular.module('angularGames', [])
       var getData = $http.get(url);
       getData.success(function(data) {
         cb(data);
-        console.log(data);
       });
       getData.error(function(error) {
         console.log(error);
