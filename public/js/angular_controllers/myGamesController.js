@@ -1,8 +1,12 @@
 angular.module('angularMyGames', [])
   .controller('myGamesController', ['$rootScope', '$scope', function($rootScope, $scope) {
+    $scope.showUpcoming = true;
+    $scope.showPlayed = true;
     $scope.getMyGames = function () {
-    $rootScope.currentUser.upcomingGames.push('sample game');
-    $scope.myGames = $rootScope.currentUser.upcomingGames;
+    $rootScope.currentUser.upcomingGames.push('sample upcoming game');
+    $rootScope.currentUser.gamesPlayed.push('sample played game');
+    $scope.myUpcomingGames = $rootScope.currentUser.upcomingGames;
+    $scope.myPlayedGames = $rootScope.currentUser.gamesPlayed;
       };
     $scope.getMyGames();
   }])
