@@ -43,7 +43,14 @@ angular.module('angularAppRoutes', ['ui.router'])
         url: '/seeGame',
         templateUrl: 'angular_views/seeGame.html',
         controller: 'seeGameController'
-      });
+      })
+
+      .state('userProfile', {
+        url: '/userProfile',
+        templateUrl: 'angular_views/userProfile.html',
+        controller: 'userProfileController'
+      })
+      ;
 
       $urlRouterProvider.otherwise('/findGames.html');
 

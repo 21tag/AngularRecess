@@ -1,4 +1,3 @@
-
 angular.module('angularSignup', [])
   .controller('signupController', ['$scope', '$state' , 'angularPostSignup', function($scope, $state, angularPostSignup) {
     $scope.user = {

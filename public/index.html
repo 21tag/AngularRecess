@@ -30,7 +30,7 @@
     <script type="text/javascript" src="/js/angular_controllers/listAGameController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/findGamesController.js"></script>
     <script type="text/javascript" src="/js/angular_controllers/navbarController.js"></script>
-
+    <script type="text/javascript" src="/js/angular_controllers/userProfileController.js"></script>
 
   </head>
   <body>
@@ -42,7 +42,7 @@
       <a ui-sref=".login" ng-show="showLogin"> Login </a>
       <a ui-sref=".logout" ng-show="!showLogin"> Logout </a>
       <a ui-sref=".signup" ng-show="showLogin"> Signup </a>
-      <span>{{currentUser.display_name}}</span>
+      <span ng-click="updateUser()">{{currentUser.display_name}}</span>
     </div>
     <div ui-view> </div>
   </body>

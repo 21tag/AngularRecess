@@ -78,7 +78,6 @@ module.exports = function(app){
   app.post('/game', function(req, res, next) {
     // possible collision alert!: this generates a random 3 digit code for every game:
     var temp = Math.floor(Math.random() * 1000);
-    console.log(req.body);
     newGame = new Game({
       invitedPlayers: req.body.playerArray.split(','),
       manager: req.user._id,
@@ -87,7 +86,7 @@ module.exports = function(app){
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
-      
+
       //added
       gameDescription : req.body.gameDescription,
       //
@@ -106,7 +105,7 @@ module.exports = function(app){
         User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames: data._id}}, function(err, manager){
           console.log(err);
         });
-      //  
+      //
     });
   });
 
