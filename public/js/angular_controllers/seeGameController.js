@@ -14,6 +14,7 @@ angular.module('angularSeeGame', [])
         $scope.response = response;
         if (result === 'success') {
           $rootScope.currentUser.upcomingGames.push($scope.game.code);
+          $rootScope.currentUser.gamesPlayed.push($scope.game.code);
           angularPutUser.put($rootScope.currentUser, function(data) {
             console.log(data);
           });
