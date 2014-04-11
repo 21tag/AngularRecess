@@ -2,6 +2,7 @@ var passport = require('passport'),
     twil = require('../src/twilio.js'),
     mongoose = require('mongoose'),
     users = require('./users.js'),
+    games = require('./games.js'),
     moment = require('moment'),
     config = require('../config/config.js');
 
@@ -26,6 +27,7 @@ module.exports = function(app){
     user.display_name = req.user.display_name;
     user.upcomingGames = req.user.upcomingGames;
     user.gamesPlayed = req.user.gamesPlayed;
+    user.id = req.user._id;
     res.json(user);
   });
 
@@ -57,6 +59,7 @@ module.exports = function(app){
       user.display_name = req.user.display_name;
       user.upcomingGames = req.user.upcomingGames;
       user.gamesPlayed = req.user.gamesPlayed;
+      user.id = req.user._id;
       return res.json(user);
     }
     else return res.json();
@@ -74,13 +77,15 @@ module.exports = function(app){
   app.get('/game', function(req, res, next) {
     res.render('game');
   });
+///Emily added
+  app.get('/games/:id', games.findById);
 
   app.post('/game', function(req, res, next) {
     // possible collision alert!: this generates a random 3 digit code for every game:
     var temp = Math.floor(Math.random() * 1000);
     newGame = new Game({
       invitedPlayers: req.body.playerArray.split(','),
-      manager: req.user._id,
+      manager: req.body.user,
       gameCode : temp,
       gameDate : req.body.gameDate,
       gameTime : req.body.gameTime,
@@ -102,7 +107,7 @@ module.exports = function(app){
       else
         res.json(200, {gameId: data._id});
       //added4/9
-        User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames: data._id}}, function(err, manager){
+        User.findOneAndUpdate({ _id: req.body.user}, {$push: {upcomingGames: data._id}}, function(err, manager){
           console.log(err);
         });
       //
