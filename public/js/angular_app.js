@@ -9,6 +9,13 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
           $rootScope.currentUser = user || 'public';
           if ($rootScope.currentUser !== 'public') {
             $rootScope.showLogin = false;
+            return $rootScope.currentUser;
+          } else {
+            //checks route on refresh
+            var restricted = ['/listAGame', '/myGames', '/seeGame', '/userProfile'];
+            if (_.contains(restricted, $location.$$path)) {
+              $state.go('login');
+            }
           }
         });
       };
@@ -16,7 +23,7 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
 
     $rootScope.checkUser();
     //checks if requested route is restricted on route change event, redirects to login if it is and user not logged in.
-    $rootScope.$on('$stateChangeStart', function(e, goTo, goToParams, from, fromParams) {
+    $rootScope.$on('$stateChangeStart', function(e, goTo) {
       var restricted = ['listAGame', 'myGames', 'seeGame', 'userProfile'];
       if (_.contains(restricted, goTo.name) && $rootScope.currentUser === 'public') {
         $rootScope.redirectToState = goTo.name;
