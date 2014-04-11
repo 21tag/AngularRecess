@@ -54,19 +54,52 @@
 
   </head>
   <body>
-    <div ng-controller="navbarController">
-      <span>OPEN RECESS LOGO</span>
+    <div id="outer-wrap">
+    <div id="inner-wrap">
+    <header id="top" role="banner">
+      <div class="block">
+        <h1 class="block-title">Open Recess</h1>
+        <a class="nav-btn" id="nav-open-btn" href="#nav">Navigation</a>
+      </div>
+    </header>
+    <nav id="nav" role="navigation" ng-controller="navbarController">
+              <div class="row">
+          <div class="small-12 columns">
+            <div class="block">
+              <h1><a href="#">OpenRecess</a></h1>
+      <ul>
+      <li>
       <a ui-sref=".findGames">Find Games</a>
-      <a ui-sref=".listAGame">List A Game</a>
-      <a ui-sref=".myGames">My Games</a>
-      <a ui-sref=".seeGame">Join a game</a>
+      </li>
+      <li>
+            <a ui-sref=".listAGame">List A Game</a>
+            </li>
+           <li> 
+                 <a ui-sref=".myGames">My Games</a>
+                 </li>
+      <li>
+            <a ui-sref=".seeGame">Join a game</a>
+      </li>
       <a ui-sref=".login" ng-show="showLogin"> Login </a>
+      <li>
       <a ui-sref=".logout" ng-show="!showLogin"> Logout </a>
+      </li>
+      <li>
       <a ui-sref=".signup" ng-show="showLogin"> Signup </a>
+      </li>
+      <li>
       <span ng-click="updateUser()">{{currentUser.display_name}}</span>
-    </div>
+      </li>
+      </ul>
+      <a class="close-btn" id="nav-close-btn" href="#top">Return to Content</a>
+      </div>
+      </div>
+      </div>
+    </nav>
     <div ui-view> </div>
     <div>OPEN RECESS about | contact us</div>
+    </div>
+    </div>
   </body>
 
     <!-- /////// END CONTENT /////////////////////////////////// -->         
