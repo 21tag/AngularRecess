@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	
+  <title>XXX</title>
+	
+  <meta name="description" content="XXX">
+	<meta property="og:title" content="XXX" />
+	<meta property="og:type" content="video.movie" /> <!-- http://ogp.me/#types -->
+	<meta property="og:url" content="http://www.example.com/" /> <!-- The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "http://www.imdb.com/title/tt0117500/" -->
+	<meta property="og:image" content="http://example.com/sample.jpg" /> <!-- An image URL which should represent your object within the graph -->
+
+	<link rel="canonical" href="XXX" /> <!-- Same as meta property og:url -->
+	<link rel="stylesheet" href="js/vendor/chosen-1.0.0/chosen.css">
+  <link rel="stylesheet" href="stylesheets/screen.css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	
+  <!-- This script MUST be in the head -->
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  <!-- This script SHOULD be in the head -->
+  <script src="js/vendor/respond-1.3.min.js"></script>
+
+  <!-- Typekit -->
+  <script type="text/javascript" src="//use.typekit.net/tay3lpc.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <!-- LiveReload - REMOVE WHEN DONE -->
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</head>
+
+<body>
+
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+	<!-- /////// START CONTENT /////////////////////////////////// -->	
+
+  <div id="outer-wrap">
+    <div id="inner-wrap">
+
+      <header id="top" role="banner">
+        <div class="block">
+          <h1 class="block-title">Page Title</h1>
+          <a class="nav-btn" id="nav-open-btn" href="#nav">Navigation</a>
+        </div>
+      </header>
+
+      <nav id="nav" role="navigation">
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="block">
+              <h1><a href="#">OpenRecess</a></h1>
+              <ul>
+                <li class="selected">
+                  <a href="#">Find Games</a>
+                </li>
+                <li>
+                  <a href="#">List a Game</a>
+                </li>
+                <li>
+                  <a href="#">My Games</a>
+                </li>
+                <li>
+                  <a href="#">Log In / Sign Up</a>
+                </li>
+              </ul>
+              <a class="close-btn" id="nav-close-btn" href="#top">Return to Content</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div id="main" role="main">
+          
+        <div class="intro-strip">
+          <div class="row">
+            <div class="small-12 columns">
+              <h1>
+                Play games with awesome people just like you. Join up, meet new people, and start having fun. Free!
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="homepage top-filter-bar">
+          <div class="row">
+            <form>
+              <div class="small-12 columns show-for-small show-me">
+                Show me:
+              </div>
+              <div class="small-12 large-5 columns game-type-container">
+                <select class="game-type chosen-select">
+                  <option value="all-games">All Games</option>
+                  <option value="baseball">Baseball</option>
+                  <option value="baseball">Tennis</option>
+                  <option value="football">Football</option>
+                </select>
+              </div>
+              <div class="large-1 columns in hide-for-small">
+                in
+              </div>
+              <div class="small-12 columns located-in show-for-small">
+                Located in:
+              </div>
+              <div class="small-9 large-5 columns location">
+                <input type="text" />
+              </div>
+              <div class="small-3 large-1 columns search">
+                <input type="submit" value="M" />
+              </div>
+            </form>
+          </div>
+        </div>
+
+        
+        <div class="google-map"></div>
+
+        <div class="row hide-for-small sub-filter-bar">
+          <div class="small-12 columns">
+            <div class="option filter-by">
+              <span>Filter games by:</span>
+            </div>
+            <div class="option date">
+              <input type="text" class="datepicker" placeholder="Date" />
+            </div>
+            <div class="option players-needed">
+              <input class="checkbox" type="checkbox" /> <span>Players Needed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mobile-sub-filter hide-for-medium hide-for-large hide-for-xlarge">
+          <div class="small-12 columns">
+            <a class="button medium teal filter-games" href="#">Filter Games (2)</a>
+          </div>
+        </div>
+        
+
+        <div class="game-tiles js-masonry"
+          data-masonry-options='{ "columnWidth": 292, "itemSelector": ".item", "gutter": 20 }'>
+          <div class="item">
+            <a href="#">
+            <img src="img/sample-940x940.jpg" alt="#" />
+              <div class="caption">
+                <h2 class="hide-for-small">Baseball</h2>
+                <h1>Marina Baseball Battle</h1>
+                <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </a>
+          </div><div class="item">
+            <a href="#">
+            <img src="img/sample-940x940.jpg" alt="#" />
+              <div class="caption">
+                <h2 class="hide-for-small">Baseball</h2>
+                <h1>Marina Baseball Battle</h1>
+                <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </a>
+          </div><div class="item">
+            <a href="#">
+            <img src="img/sample-940x940.jpg" alt="#" />
+              <div class="caption">
+                <h2 class="hide-for-small">Baseball</h2>
+                <h1>Marina Baseball Battle</h1>
+                <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </a>
+          </div><div class="item">
+            <a href="#">
+            <img src="img/sample-940x940.jpg" alt="#" />
+              <div class="caption">
+                <h2 class="hide-for-small">Baseball</h2>
+                <h1>Marina Baseball Battle</h1>
+                <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </a>
+          </div><div class="item">
+            <a href="#">
+            <img src="img/sample-940x940.jpg" alt="#" />
+              <div class="caption">
+                <h2 class="hide-for-small">Baseball</h2>
+                <h1>Marina Baseball Battle</h1>
+                <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="row game-detail">
+          <div class="small-12 columns">
+            <img src="img/sample-290x290.jpg" alt="#" />
+            <div class="primary-info">
+              <h2 class="hide-for-small">Baseball</h2>
+              <h1>Game Detail Marina Baseball Battle</h1>
+              <time datetime="2009-11-13T20:00Z"><span class="hide-for-medium hide-for-large hide-for-xlarge">Baseball · </span>Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              <div class="button-group">
+                <a class="button teal medium join-this-game" href="#">Join this game</a>
+                <div class="settings-holder">
+                  <ul class="button grey medium settings">
+                    <li class="icon">&#9881;</li>
+                    <li class="settings-container">
+                      <ul>
+                        <li><a href="#"><span>D</span> Message Gamers</a></li>
+                        <li class="selected"><a href="#"><span>r</span> Notification Prefs</a></li>
+                        <li><a href="#"><span>D</span> Cancel Game</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+              </div>
+            </div>
+            
+            <div class="players">
+              <h1>12 Joined · 2 Players Needed</h1>
+              <div class="player-list">
+                <div class="player">Name Here</div>
+                <div class="player">Name Here</div>
+                <div class="player">Name Here</div>
+                <div class="player">Name Here</div>
+                <div class="player">Name Here</div>
+                <div class="player">Name Here</div>
+              </div>
+            </div>
+
+            <div class="comments">
+              <form class="comment-form">
+                <h1>Leave a Comment</h1>
+                <textarea class="comment-entry" rows="4" cols="50"></textarea>
+                <div class="functions">
+                  <div class="alert-me">
+                    <input class="checkbox" type="checkbox" />
+                    <span>Alert me when someone posts a comment</span>
+                  </div>
+                  <input type="submit" class="button teal medium" value="Post">
+                </div>
+              </form>
+              <div class="comment">
+                <h1>Username</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <time datetime="2009-11-13T20:00Z">Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+              <div class="comment">
+                <h1>Username</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <time datetime="2009-11-13T20:00Z">Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+              <div class="comment">
+                <h1>Username</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <time datetime="2009-11-13T20:00Z">Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+              <div class="comment">
+                <h1>Username</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla purus a lacus dictum, id fringilla sem bibendum. Nulla facilisi. Praesent molestie lectus sapien. Sed ultrices est at vestibulum mollis. Vivamus facilisis mauris id iaculis molestie.</p>
+                <time datetime="2009-11-13T20:00Z">Sun, Dec. 20 · 3pm</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      
+        <form class="open-recess-form">
+          
+          <div class="row">
+            <div class="small-12 large-6 columns">
+              <div class="form-label">What kind of game?</div>
+              <select class="game-type chosen-select">
+                <option value="all-games">All Games</option>
+                <option value="baseball">Baseball</option>
+                <option value="baseball">Tennis</option>
+                <option value="football">Football</option>
+              </select>
+            </div>
+            <div class="small-12  large-6 columns">
+              <div class="form-label">Give it a catchy title</div>
+              <input type="text" />
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="form-label">Give it an exciting description:</div>
+              <textarea></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="form-label">Where is it? Click the map to drop a pin.</div>
+              <div class="small-12 columns google-map"></div>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="small-12 large-6 columns">
+              <div class="form-label">When's it happening?</div>
+              <input type="text" class="datepicker" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-12 large-6 columns">
+              <div class="form-label">What time?</div>
+              <input type="text" />
+            </div>
+          </div>
+
+          <div class="row">
+            
+            <div class="small-12 large-6 columns">
+              <div class="form-label">Minimum players</div>
+              <select class="players chosen-select">
+                <option value="all-games">Any</option>
+                <option value="baseball">1</option>
+                <option value="baseball">2</option>
+                <option value="football">3</option>
+              </select>
+            </div>
+
+            <div class="small-12 large-6 columns">
+              <div class="form-label">Maximum players</div>
+              <select class="players chosen-select">
+                <option value="all-games">Any</option>
+                <option value="baseball">1</option>
+                <option value="baseball">2</option>
+                <option value="football">3</option>
+              </select>
+            </div>
+
+          </div>
+
+        </form>
+
+
+        <div class="row">
+          <div class="small-12 columns">
+            <!-- <ul class="inline-list sub-nav">
+              <li class="selected"><a href="#">Games Listed</a></li>
+              <li><a href="#">Games Joined</a></li>
+            </ul> -->
+
+            <dl class="sub-nav">
+              <dt></dt>
+              <dd class="first active"><a href="#">Games Listed</a></dd>
+              <dd><a href="#">Games Joined</a></dd>
+            </dl>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 columns">
+            <table class="open-recess-table my-games">
+              <thead class="hide-for-small">
+                <tr>
+                  <th class="status">Status</th>
+                  <th>Type</th>
+                  <th>Title</th>
+                  <th>Date & Time</th>
+                  <th>Confirmed Players</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="status">
+                    <div class="label rounded green">Confirmed</div>
+                    <a class="invite-players">Invite Players</a>
+                  </td>
+                  <td class="game-type">Tennis</td>
+                  <td class="game-title">Let's Go Swinging</td>
+                  <td class="game-type">Tue., Aug. 6, 3:00pm</td>
+                  <td class="confirmed-players">2 of 4<span class="show-for-small"> Players</span></td>
+                </tr>
+                <tr>
+                  <td class="status">
+                    <div class="label rounded orange">Pending</div>
+                    <a class="invite-players">Invite Players</a>
+                  </td>
+                  <td>Tennis</td>
+                  <td>Let's Go Swinging</td>
+                  <td>Tue., Aug. 6, 3:00pm</td>
+                  <td>2 of 4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- /////// END CONTENT /////////////////////////////////// -->         
+
+	<!-- START SCRIPTS -->
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-10.10.2.min.js"><\/script>')</script>
+  <script src="js/vendor/retina-0.0.2.js"></script>
+  <script src="js/vendor/off-canvas.js"></script>
+  <script src="js/vendor/chosen-1.0.0/chosen.jquery.min.js"></script>
+  <script src="js/main-ck.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+	<!-- Google Analytics -->
+	<script>
+	    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
+	<!-- END SCRIPTS -->
+    
+</body>
+</html>

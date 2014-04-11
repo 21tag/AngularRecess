@@ -32,7 +32,13 @@ module.exports = {
   },
 
   findById: function(req, res, next) {
-    res.json(200, 'GetUser stub');
+    var id = req.param.id;
+    User.findById(id, function(err, user) {
+      if (err) {
+        console.log(err);
+      }
+      res.json(200, user);
+    });
   },
 
   findAll: function(req, res, next) {

@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".service:nth-child(4n+1)").addClass("no-left-margin");$(".chosen-select").chosen();$(".datepicker").datepicker()});

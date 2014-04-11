@@ -2,6 +2,7 @@ var passport = require('passport'),
     twil = require('../src/twilio.js'),
     mongoose = require('mongoose'),
     users = require('./users.js'),
+    games = require('./games.js'),
     moment = require('moment'),
     config = require('../config/config.js');
 
@@ -76,6 +77,8 @@ module.exports = function(app){
   app.get('/game', function(req, res, next) {
     res.render('game');
   });
+///Emily added
+  app.get('/games/:id', games.findById);
 
   app.post('/game', function(req, res, next) {
     // possible collision alert!: this generates a random 3 digit code for every game:

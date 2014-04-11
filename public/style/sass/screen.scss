@@ -1,0 +1,1080 @@
+@import "_normalize2.1.2", "foundation", "_tools", "_layout";
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// FOUNDATION OVERRIDES ///////////////////////////////////////////////////////////////
+
+ul, ol, dl {
+	margin:0;
+	list-style:none;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// COLORS /////////////////////////////////////////////////////////////////////////////
+
+$lightest-grey:#dadada;
+$light-grey:#bfbfbf;
+$medium-grey:#808080;
+$dark-grey: #333333;
+$teal-lighter: #0697c7;
+$teal: #0584ad;
+$teal-darker: #045874;
+$green: #0ea023;
+$orange: #ef7805;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// FONTS //////////////////////////////////////////////////////////////////////////////
+
+@mixin sans-serif-regular {
+	font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+	font-weight: 400;
+}
+@mixin sans-serif-medium {
+	font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+	font-weight: 500;
+}
+@mixin sans-serif-bold {
+	font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+	font-weight: 700;
+}
+
+@mixin serif-regular {
+	font-family: "adobe-text-pro", georgia, times, sans-serif;
+	font-weight: 400;
+}
+@mixin serif-bold {
+	font-family: "adobe-text-pro", georgia, times, sans-serif;
+	font-weight: 700;
+}
+
+@font-face {
+  font-family: 'heydings_iconsregular';
+  src: url('../fonts/heydings_icons-webfont.eot');
+  src: url('../fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/heydings_icons-webfont.woff') format('woff'),
+       url('../fonts/heydings_icons-webfont.ttf') format('truetype'),
+       url('../fonts/heydings_icons-webfont.svg#heydings_iconsregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+ }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// BUTTONS ////////////////////////////////////////////////////////////////////////////
+
+.button {
+	@include sans-serif-medium;
+	color:white;
+	border-radius: 10px;
+	border:none;
+	padding:.5em 1em;
+	display:inline-block;
+	line-height:1;
+	a {
+		color:white;
+	}
+	&:hover {
+		@include single-transition(background-color);
+		a {
+			color:white;
+		}
+	}
+	&.teal {
+		background-color:$teal;
+		&:hover {background-color:$teal-lighter}
+	}
+	&.grey {
+		background-color:$dark-grey;
+		&:hover {background-color:$medium-grey}
+	}
+	// &.green {
+	// 	background-color:$green;
+	// 	&:hover {background-color:$medium-green}
+	// }
+	// Desktop sizes
+	@include media(desktop) {
+		&.medium {
+			font-size:em-calc(18);
+			color:white;
+		}
+		&.large {
+			font-size:em-calc(24);
+			color:white;
+		}
+	}
+	// Mobile sizes
+	@include media(mobile) {
+		&.medium {
+			font-size:em-calc(18);
+			color:white;
+		}
+		&.large {
+			font-size:em-calc(24);
+			color:white;
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// LABELS ////////////////////////////////////////////////////////////////////////////
+
+.label {
+	border-radius:$global-radius; // overrides default Zurb label radius
+	&.green {
+		background-color:$green;
+	}
+	&.orange {
+		background-color:$orange;
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// CUSTOM FORM STYLES /////////////////////////////////////////////////////////////////////////
+
+
+.open-recess-form { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
+	.form-label {
+		@include sans-serif-medium;
+		font-size:em-calc(24);
+		margin-bottom:em-calc(10, 24);
+	}
+	input[type="text"] {
+		font-size:em-calc(24);
+		@include serif-regular;
+		height:em-calc(48, 24);
+	}
+	textarea {
+		font-size:em-calc(24);
+		@include serif-regular;
+		height:em-calc(100, 24);
+	}
+	.chosen-container {
+ 		@include sans-serif-medium;
+ 		font-size:em-calc(24);
+ 		height:em-calc(48, 24);
+ 		width:100% !important;
+ 		margin-bottom:1em; // This matches the default Zurb input bottom margin of 1em so adjust in tandem with Zurb if necessary
+ 		.chosen-results li {
+ 			padding:em-calc(10);
+ 		}
+ 		a.chosen-single {
+ 			height: em-calc(43, 24);
+	 		span {
+	 			color: $dark-grey;
+	 			margin-top:em-calc(9, 24);
+	 			margin-left:em-calc(10, 24);
+	 		}
+	 	}
+	 	.chosen-single div b {
+ 			margin-top: 17px;
+ 		}
+ 		.no-results {
+ 			line-height:1.4;
+ 		}
+ 	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// CUSTOM TABLE STYLES ////////////////////////////////////////////////////////////////////////////
+
+.open-recess-table { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
+	width:100%;
+	@include sans-serif-medium;
+	thead {
+		text-transform: uppercase;
+	}
+	td {
+		
+		&.status {
+		
+		@include media(desktop) {
+			padding-left:em-calc(10);
+		}
+
+	}
+
+	}
+	tr {
+		vertical-align:top;
+		border-bottom:1px solid $medium-grey;
+	
+		@include media(mobile) {
+		margin:em-calc(30) 0; 
+			td {
+				padding: 0;
+				display:block;
+				width:100%;
+				&.confirmed-players {
+					padding-bottom:em-calc(30);
+					span {
+						display:inline !important;
+					}
+				}
+				&.status {
+					padding-top:em-calc(30);
+					margin-bottom:em-calc(10);
+					.invite-players {
+						font-size:em-calc(14);
+						display:inline;
+						margin-left:em-calc(8, 14);
+					}
+				}
+				&.game-type {
+					font-size:em-calc(18);
+					margin-bottom:em-calc(5, 18);
+				}
+				&.game-title {
+					font-size:em-calc(24);
+					line-height:1.1;
+					margin-bottom:em-calc(5, 24);
+				}
+			}
+		}
+
+		&:last-child {
+			border-bottom:none;
+		}
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// NAV BAR ////////////////////////////////////////////////////////////////////////////
+
+#nav {
+	@include sans-serif-regular;
+	padding: em-calc(10) 0;
+	background-color:$teal;
+	.block {
+		background-color:$teal;
+	}
+	h1 {
+		@include sans-serif-regular;
+		font-size:em-calc(35);
+		position:relative;
+		bottom:em-calc(-6, 35);
+	}
+	ul {
+		font-size:em-calc(18);
+		li {
+			padding-bottom:em-calc(3, 18);
+			height:em-calc(35, 18);
+			position:relative;
+			bottom:em-calc(-10, 18);
+			&.selected, &:hover {
+			background: url('../img/nav-triangle-small.png') no-repeat 64% bottom;
+			}
+		}
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// HOMEPAGE INTRO /////////////////////////////////////////////////////////////////////
+
+.intro-strip {
+	background-color:$dark-grey;
+	.row {
+		background-image: url('../img/player.svg');
+		background-repeat: no-repeat;
+		padding-top:em-calc(12);
+		padding-bottom:em-calc(16);
+
+		@include media(desktop) {
+			background-size: auto 92%;
+			background-position: right bottom;
+
+		}
+
+		@include media(mobile) {
+			background-position: 98% bottom;
+			background-size: auto 90%;
+		}
+
+	}
+	h1 {
+		@include serif-regular;
+		font-style: italic;
+		color:white;
+
+		@include media(desktop) {
+			padding:0 116px 0 0;
+			font-size: em-calc(30);
+			line-height:1.4;
+		}
+
+		@include media(mobile) {
+			padding: 0 23% 0 0;
+			font-size: em-calc(24);
+			text-shadow: 0 0 4px rgba(0,0,0,1);
+		}
+
+	}
+}
+
+.no-svg .intro-strip .row { // Fallback for non-SVG compliant browsers
+	background-image: url('../img/player.png');
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// TOP FILTER BAR /////////////////////////////////////////////////////////////////////
+
+
+.top-filter-bar {
+	@include sans-serif-bold;
+	padding: em-calc(20) 0 em-calc(18) 0;
+ 	background-color:#dce5eb;
+ 	border-bottom:em-calc(2) solid #acb5bb;
+ 	form { 
+ 		
+ 		@include media(desktop) {
+ 			font-size:em-calc(24);
+ 		}
+
+ 		@include media(mobile) {
+ 			font-size:em-calc(18);
+ 		}
+ 		
+ 		input {
+ 			width:100%;
+ 			padding-left:.3em;
+ 			padding-top:.3em;
+ 			color:$dark-grey;
+ 			@include sans-serif-bold;
+ 			border: 1px solid #aaa;
+		  border-radius: 5px;
+		  background-color: #fff;
+
+		  @include media(desktop) {
+				height: em-calc(63, 24);
+		  }
+
+		  @include media(mobile) {
+	 			height:em-calc(48, 18);
+	 		}
+
+ 		}
+ 	}
+ 	.chosen-container-single .chosen-search input[type="text"] {
+ 		background:none;
+ 	}
+ 	.chosen-container {
+ 		width:100% !important;
+ 		.chosen-results li {
+ 			padding:em-calc(10);
+ 		}
+ 		a.chosen-single {
+ 			height: em-calc(55, 24);
+	 		span {
+	 			color: $dark-grey;
+	 			margin-top:em-calc(10.5);
+	 			margin-left:em-calc(10, 24);
+	 		}
+	 	}
+	 	.chosen-single div b {
+ 			margin-top: 17px;
+ 		}
+ 		.no-results {
+ 			line-height:1.4;
+ 		}
+ 	}
+ 	.location {
+ 		input {
+ 			padding-bottom:em-calc(5, 24);
+ 			padding-left:em-calc(15, 24);
+ 			margin-bottom:0;
+ 		}
+ 	}
+ 	.in {
+ 		text-align: center;
+ 	}
+ 	.search input {
+ 		font-family:"heydings_iconsregular"; 
+ 		width:100%;
+ 		background-color: $teal;
+ 		color:white;
+ 		box-shadow: none;
+ 		border: none;
+ 		padding-bottom:em-calc(8, 24);
+
+ 		@include media(desktop) {
+ 			height:em-calc(54, 24);
+ 		}
+
+ 		@include media(mobile) {
+ 			height:em-calc(42, 18);
+ 		}
+
+ 		&:hover {
+ 			background-color:$teal-lighter;
+ 			@include single-transition;
+ 		}
+ 	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// SUB NAV //////////////////////////////////////////////////////////////////////////
+
+	.sub-nav {
+		@include sans-serif-medium;
+		dd.first {
+			margin-left:0;
+		}
+		font-size:em-calc(24);
+
+		@include media(desktop) {
+			margin-bottom:em-calc(20, 24);
+		}
+
+		a {
+			color:$dark-grey !important;
+		}
+		.active a {
+			color:white !important;
+			font-weight:normal !important;
+			border-radius:em-calc($global-radius, 24) !important;
+		}
+	}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// GOOGLE MAP //////////////////////////////////////////////////////////////////////////
+
+.google-map {
+	height:500px;
+	background:url('../img/sample-google-map.png') no-repeat 50% 25%;
+	margin-bottom:em-calc(20);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// GAME TILE /////////////////////////////////////////////////////////////////////////
+	
+	.game-tiles {
+		
+		@include media(desktop) {
+			margin: 0 0 em-calc(20) em-calc(-20);
+		}
+
+		@include media(mobile) {
+			margin: 0 0 em-calc(20) 0;
+		}
+
+		.item {
+			
+			@include media(desktop) {
+				width:292px;
+				position:relative;
+				margin-bottom:em-calc(20);
+				margin-left:em-calc(20);
+				display: inline-block;
+				vertical-align:top;
+			}
+
+			a, a:hover, a:focus {
+				color:$dark-grey;
+			}
+			
+			@include media(mobile) {
+				@include clearfix;
+				width:100%;
+				position:relative;
+				margin-bottom:em-calc(20);
+				border-bottom:1px solid $lightest-grey;
+				padding-bottom:em-calc(20);
+				padding-left:15px;
+				padding-right:15px;
+			}
+
+
+			.caption {
+				
+				@include media(desktop) {
+					position:absolute;
+					bottom:0;
+					background-color:white;
+					opacity:.9;
+					width:100%;
+					padding:em-calc(10);
+
+					&:hover {
+						img {
+							@include single-transition;
+							opacity: .7;
+						}
+						.caption {
+							opacity:1;
+							background-color:$teal;
+							color:white;
+							h1, h2 {
+								color:white;
+							}
+						}
+					}
+
+				}
+				
+				h2 {
+					@include sans-serif-bold;
+					font-size:em-calc(12);
+					text-transform:uppercase;
+					margin-bottom:em-calc(5,12)
+				}
+				h1 {
+					@include sans-serif-bold;
+					
+					@include media(desktop) {
+						font-size:em-calc(24);
+						margin-bottom:em-calc(5,24)
+					}
+
+					@include media(mobile) {
+						font-size:em-calc(24);
+						line-height: 1.1;
+						margin-bottom:em-calc(5, 24);
+					}
+
+				}
+				time {
+					@include sans-serif-medium;
+					
+					@include media(desktop) {
+						font-size:em-calc(18);
+					}
+
+					@include media(mobile) {
+						font-size:em-calc(18);
+						line-height:1.2;
+					}
+
+				}
+			}
+			@include media(mobile) {
+				img {
+					float:right;
+					width:25%;
+					margin-left:20px;
+				}
+			}
+
+		}
+	}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// GAME DETAIL /////////////////////////////////////////////////////////////////////////
+
+.game-detail {
+	img {
+		border:1px solid $lightest-grey;
+		float:right;
+		margin:0 0 20px 20px;
+		width:33.3333%;
+	}
+	.primary-info {
+		h2 {
+			@include sans-serif-medium;
+			text-transform: uppercase;
+			font-size: em-calc(14);
+			margin-bottom:em-calc(10, 14);
+
+		}
+		h1 {
+			@include sans-serif-bold;
+			
+			@include media(desktop) {
+				font-size:em-calc(36);
+				margin-bottom:em-calc(10, 36);
+			}
+
+			@include media(mobile) {
+				font-size:em-calc(30);
+				margin-bottom:em-calc(10, 30);
+			}
+
+		}
+		time {
+			@include sans-serif-medium;
+			display:block;	
+			font-size: em-calc(24);
+			margin-bottom: em-calc(20, 24);
+			
+			@include media(mobile) {
+				span {
+					display:inline !important;
+				}
+			}
+
+		}
+		.button-group {
+			margin-bottom: em-calc(20);			
+			.settings-holder {
+				
+				@include media(desktop) {
+					display:inline;
+				}
+
+				@include media(mobile) {
+				display:block;
+				margin:em-calc(20 0)
+				}
+
+			}
+
+			.settings {
+				
+				height:2em;
+				vertical-align: bottom;
+				position:relative;
+				&:hover {
+					cursor: pointer;
+					ul {
+						display:block !important;
+					}
+				}
+				.icon {
+					font-family:"heydings_iconsregular";
+					top:.1em;
+					
+					@include media(desktop) {
+						font-size:2em;
+						padding:0;
+					}
+
+					@include media(mobile) {
+						font-size:1.7em;
+						padding:.05em 0 0 0;
+					}
+
+					line-height: 0;
+					position:relative;
+				}
+				.settings-container {
+					position:absolute;
+					bottom:0;
+					left:-1.2em;
+					ul {
+						display:none;
+						position:absolute;
+						background-color:$dark-grey;
+						li {
+							@include sans-serif-medium;
+							@include clearfix;
+							white-space: nowrap;
+							padding: .5em 1em .8em .8em;
+							line-height:1em;
+							&.selected, &:hover {
+								background-color:$medium-grey;
+								cursor: pointer;
+								@include single-transition;
+							}
+							a {
+								display:block;
+								@include clearfix;
+							}
+							span {
+								font-family:"heydings_iconsregular";
+								font-size: 1.4em;
+								top:.18em;
+								position:relative;
+								margin-right:.3em;
+							}
+						}
+					}
+				}
+			}
+		}
+		.description {
+			@include serif-regular;		
+			font-size:em-calc(24);
+			p {
+				margin-bottom: em-calc(24, 24);
+			}
+		}
+		.join-this-game {
+			
+			@include media(desktop){
+				margin-right:em-calc(5)
+			}
+
+			@include media(mobile) {
+				margin-right:em-calc(5);
+			}
+
+		}
+	}
+	.players {
+		@include sans-serif-medium;
+		h1 {
+			@include sans-serif-medium;
+			background-color:$dark-grey;
+			color:white;
+			text-transform: uppercase;
+
+			@include media(desktop) {
+				font-size:em-calc(14);
+				padding:em-calc(10, 14) em-calc(20, 14);
+			}
+
+			@include media(mobile) {
+				font-size:em-calc(18);
+				padding:em-calc(10, 18) em-calc(10, 18);
+			}
+
+		}
+		.player-list {
+			background-color:$lightest-grey;	
+			font-size:em-calc(18);
+			margin-bottom:em-calc(40, 18);
+			
+			@include media(desktop) {
+				padding-top:em-calc(10, 18);
+				padding-bottom:em-calc(30, 18);
+			}
+
+			@include media(mobile) {
+				padding-top:em-calc(0, 18);
+				padding-bottom:em-calc(10, 18);
+			}
+
+			.player {
+				display:inline-block;
+				vertical-align:top;
+
+				@include media(desktop) {
+					width:em-calc(272, 18);
+					margin: em-calc(10, 18) 0 0 em-calc(20, 18);
+				}
+
+				@include media(mobile) {
+					width:em-calc(256, 18);
+					margin: em-calc(10, 18) 0 0 em-calc(10, 18);
+				}
+
+			}
+		}
+	}
+	.comments {
+		border-top:em-calc(2) solid $dark-grey;
+		padding-top:em-calc(20);
+		.comment-form {
+			h1 {
+				@include sans-serif-bold;
+				text-transform:uppercase;
+
+				@include media(desktop) {
+					font-size:em-calc(14);
+					margin-bottom:em-calc(20, 14);
+				}
+
+				@include media(mobile) {
+					font-size:em-calc(18);
+					margin-bottom:em-calc(20, 18);
+				}
+
+			}
+			.comment-entry {
+				@include serif-regular;
+				width:100%;
+
+				@include media(desktop) {
+					font-size:em-calc(24);
+					padding:em-calc(20, 24)
+				}
+
+				@include media(mobile) {
+					font-size:em-calc(18);
+					padding:em-calc(20, 18);
+				}
+
+			}
+		}
+		.functions {
+			@include clearfix;
+			margin: em-calc(20) 0;
+			.alert-me {
+				@include sans-serif-medium;
+				float:left;
+
+				@include media(desktop) {
+					font-size:em-calc(14);
+				}
+
+				@include media(mobile) {
+					font-size:em-calc(18);
+					span {
+						line-height:1.2;
+					}
+					.checkbox {
+						margin-bottom:0;
+					}
+				}
+
+			}
+			.button {
+				float:right;
+			}
+		}
+		.comment {
+			border-top:1px solid $dark-grey;
+			padding:em-calc(30) 0;
+			h1 {
+				@include sans-serif-medium;	
+				@include sans-serif-bold;
+				font-size:em-calc(18);
+			}
+			p {
+				@include serif-regular;
+				font-size:em-calc(18);
+				&:nth-last-child(2) {
+					margin-bottom:0
+				}
+			}
+			time {
+				@include sans-serif-medium;
+
+				@include media(desktop) {
+					font-size:em-calc(12);
+				}
+
+				@include media(mobile) {
+					font-size:em-calc(14);
+					margin-top:em-calc(4, 14);
+					display:block;
+				}
+
+			}
+		}
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// MY GAMES /////////////////////////////////////////////////////////////////////////
+
+.my-games {
+	.label {
+
+		@include media(desktop) {
+			font-size:em-calc(14, 18);
+			padding:em-calc(8 15, 18)
+		}
+
+	}
+	.invite-players {
+		
+		text-decoration:underline;
+		display:block;
+		color:$dark-grey;
+		
+		@include media(desktop) {
+			margin-top:em-calc(5, 18);
+			font-size:em-calc(12, 18);
+		}
+	
+	}
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+//  
+//  ______ _____ _____ _   _______ ___________ 
+//  |  _  \  ___/  ___| | / /_   _|  _  | ___ \
+//  | | | | |__ \ `--.| |/ /  | | | | | | |_/ /
+//  | | | |  __| `--. \    \  | | | | | |  __/ 
+//  | |/ /| |___/\__/ / |\  \ | | \ \_/ / |    
+//  |___/ \____/\____/\_| \_/ \_/  \___/\_|    
+//  
+//   ___________ _____ _____ ___________ _____ _____ 
+//  /  ___| ___ \  ___/  __ \_   _|  ___|_   _/  __ \
+//  \ `--.| |_/ / |__ | /  \/ | | | |_    | | | /  \/
+//   `--. \  __/|  __|| |     | | |  _|   | | | |    
+//  /\__/ / |   | |___| \__/\_| |_| |    _| |_| \__/\
+//  \____/\_|   \____/ \____/\___/\_|    \___/ \____/
+//  
+//
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+@include media(desktop) {
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// TOP FILTER BAR //////////////////////////////////////////////////////////////////////
+
+ 	.in, .located-in, .show-me {
+ 		margin-top:em-calc(11);
+ 		text-align: left;
+ 	}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// START SUB-NAV BAR ///////////////////////////////////////////////////////////////////////
+
+	.sub-filter-bar {
+		padding:em-calc(15) 10px; 
+		margin:0 auto em-calc(20) auto;
+		border:1px solid $light-grey;
+		background-color:$lightest-grey;
+		.option {
+			float:left;
+			font-size:em-calc(14);
+			margin-right:em-calc(15, 14);
+			&.filter-by, &.players-needed {
+				position:relative;
+				top:em-calc(10, 14);
+			}
+			&.date {
+				@include sans-serif-medium;
+				input {
+					padding-left: em-calc(5, 14);
+					height: em-calc(33, 14);
+					background: white url(../img/calendar-icon.svg) no-repeat 95% center;
+					background-size: auto 60%;
+					margin-bottom:0;
+				}
+			}
+			&.filter-by {
+				@include sans-serif-bold;
+				text-transform: uppercase;
+			}
+			&.players-needed {
+				input {
+					position:relative;
+					// top:em-calc(-1);
+				}
+				span {
+					@include sans-serif-medium;
+					margin-left:em-calc(5, 14);
+				}
+			}
+		}
+	}
+
+	// Jquery UI Date picker custom styles
+	#ui-datepicker-div {
+		@include sans-serif-regular;
+		.ui-datepicker-calendar {
+			border:none;
+		}
+		.ui-datepicker-header {
+			background:$lightest-grey;
+			border:none;
+		}
+		a {
+			&.ui-state-default {
+			background:$lightest-grey;
+				&:hover {
+					border:1px solid $teal;
+					background:$teal;
+					color:white;
+				}
+			}
+			&.ui-state-highlight, &.ui-state-active {
+				border:1px solid $teal;
+				background:$teal;
+				color:white
+			}
+			&.ui-state-hover {
+				background:none;
+				border:none;
+				top:2px;
+			}
+			&.ui-datepicker-prev-hover {
+				left:2px;
+			}
+			&.ui-datepicker-next-hover {
+				right:2px;
+			}
+		}
+	}
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+// 
+// ___  ______________ _____ _      _____ 
+// |  \/  |  _  | ___ \_   _| |    |  ___|
+// | .  . | | | | |_/ / | | | |    | |__  
+// | |\/| | | | | ___ \ | | | |    |  __| 
+// | |  | \ \_/ / |_/ /_| |_| |____| |___ 
+// \_|  |_/\___/\____/ \___/\_____/\____/ 
+// 
+//  ___________ _____ _____ ___________ _____ _____ 
+// /  ___| ___ \  ___/  __ \_   _|  ___|_   _/  __ \
+// \ `--.| |_/ / |__ | /  \/ | | | |_    | | | /  \/
+//  `--. \  __/|  __|| |     | | |  _|   | | | |    
+// /\__/ / |   | |___| \__/\_| |_| |    _| |_| \__/\
+// \____/\_|   \____/ \____/\___/\_|    \___/ \____/
+//
+//
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+@include media(mobile) {
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// GENERAL /////////////////////////////////////////////////////////////////////
+	
+	p {
+		line-height:1.2;
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// NAV BAR /////////////////////////////////////////////////////////////////////
+
+	#top {
+		background-color:$teal;
+		border-bottom:2px solid $teal-darker;
+		h1 {
+			@include sans-serif-bold;
+			font-size:em-calc(16)
+		}
+		.block-title {
+			font-size:em-calc(35);
+		}
+		.nav-btn {
+			top: 1.7em;
+			background: $teal url("../img/nav-icon-1.svg") left center no-repeat;
+		}
+	}
+
+	#nav {
+		padding:0;
+		.row {
+			padding:0;
+		}
+		ul li {
+			padding-left:1em;
+			padding-bottom:3em;
+			a {
+				padding-left:0;
+			}
+		}
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// TOP FILTER BAR //////////////////////////////////////////////////////////////////////
+
+	.show-me, .located-in {
+		margin-bottom:em-calc(8, 14);
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// SUB FILTER BAR //////////////////////////////////////////////////////////////////////
+
+	.mobile-sub-filter {
+		margin:em-calc(-20) 0 em-calc(20) 0;
+		background-color:$lightest-grey;
+		padding: em-calc(20) 0 em-calc(20) 10px;
+	}
+
+}

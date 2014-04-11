@@ -1,0 +1,28 @@
+// SETS UP RESPONSIVE BREAKPOINT MIXINS
+
+	@mixin media($type) {
+	
+	  @if $type == desktop {
+	
+	      @media only screen and (min-width:$small-screen) {
+	          @content;
+	      }
+	
+	  }
+	  @else if $type == mobile {
+	
+	      @media only screen and (max-width:$small-screen){
+	          @content;
+	      }
+	
+	  }
+	
+	}
+
+// SETS UP RETINA INQUIRY
+
+@mixin retina	{
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	  @content;
+			}
+}
