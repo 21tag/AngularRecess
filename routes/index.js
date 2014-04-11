@@ -118,6 +118,9 @@ module.exports = function(app){
         res.json(403, {err: 'Invalid params'});
       else
         res.json(200, {gameId: data._id});
+        User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames: data._id}}, function(err, manager){
+          console.log(err);
+        });
     });
   });
 
