@@ -3,8 +3,9 @@ angular.module('angularAppRoutes', ['ui.router'])
     $stateProvider
 
       .state('/', {
-        url: 'index.html',
-        templateUrl: 'index.html'
+        url: '/findGames',
+        templateUrl: 'angular_views/findGames.html',
+        controller: 'findGamesController'
       })
       .state('findGames', {
         url: '/findGames',

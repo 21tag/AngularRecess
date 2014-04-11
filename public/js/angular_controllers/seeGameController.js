@@ -4,7 +4,7 @@ angular.module('angularSeeGame', [])
       angularPutGame.put($scope.game, function(result, response) {
         $scope.response = response;
         if (result === 'success') {
-          $rootScope.currentUser.upcomingGames.push($scope.game.code);
+          $scope.addGameToUser();
         }
       });
     };
@@ -27,7 +27,6 @@ angular.module('angularSeeGame', [])
       $scope.game.code = 123;
       $scope.game.phone = $rootScope.currentUser.phone;
       $scope.addToGame();
-      $scope.addGameToUser();
     };
 
   }])

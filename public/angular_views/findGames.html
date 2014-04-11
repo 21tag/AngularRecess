@@ -1,9 +1,18 @@
 <div>
-  <h1>Find Games view</h1>
+  <h6>Play games with awesome people just like you. Join up, meet new people, and start having fun. Free!</h6>
+  <div>
+    <input type='text' placeholder='All Games' ng-model='search.gameType'>
+    in: <input type='text' placeholder='San Francisco, Ca (TODO)'>
+    <button>search</button>
+  </div>
+  <div>
+    MAP GOES HERE
+  </div>
   <div>
     <!-- <button ng-click='retreiveGames()'>click</button> -->
-    Search by gameType: <input type='text' ng-model='search.gameType'> <br>
-    Search by gameDate: <input type='text' ng-model='search.gameDate'> <br>
+
+    Filter Games By: <input type='text' ng-model='search.gameDate' placeholder='Date'>
+    <span>Players needed (TODO)</span>
       <table>
       <thead>
         <tr>
