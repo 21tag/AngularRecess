@@ -1,16 +1,17 @@
 <div>
   <h1>myGames view</h1>
-    <div ng-click='showUpcoming=!showUpcoming'>
-      <h3>My Upcoming Games</h3>
-      <ul ng-repeat='game in myUpcomingGames track by $index'  ng-hide='showUpcoming'>
+    <div>
+      <span>{{response}}</span>
+      <h3 ng-click='show=!show'>My Upcoming Games</h3>
+      <ul ng-repeat='game in myUpcomingGames track by $index'  ng-hide='show'>
         <li>
-          {{game}}
+          {{game.gameName}} {{game.gameDescription}} {{game.gameType}} {{game.gameTime}} {{game.gameDate}}
         </li>
       </ul>
     </div>
-    <div ng-click='showPlayed=!showPlayed'>
-      <h3>My Played Games</h3>
-      <ul ng-repeat='game in myPlayedGames track by $index'  ng-hide='showPlayed'>
+    <div>
+      <h3 ng-click='show=!show'>My Played Games</h3>
+      <ul ng-repeat='game in myPlayedGames track by $index'  ng-hide='!show'>
         <li>
           {{game}}
         </li>
