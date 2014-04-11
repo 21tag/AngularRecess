@@ -49,7 +49,7 @@ passport.serializeUser(function(user, done) {
   console.log('User serialize');
   console.log(user);
   console.log(user.email);
-  done(null, user);
+  done(null, user.email);
 });
 
 passport.deserializeUser(function(email, done) {
