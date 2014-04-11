@@ -97,7 +97,6 @@ angular.module('angularListGames', [])
   $scope.sendGame = function(game) {
     angularListGames.post('/game', game, function(data) {
       console.log('posted');
-          console.log('$rootScope.currentUser');
     });
   };
 //4/8

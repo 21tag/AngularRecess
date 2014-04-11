@@ -104,7 +104,7 @@ module.exports = function(app){
       else
         res.json(200, {gameId: data._id});
       //added4/9
-        User.findOneAndUpdate({ _id: req.user._id}, {$push: {upcomingGames: data._id}}, function(err, manager){
+        User.findOneAndUpdate({ _id: req.body.user}, {$push: {upcomingGames: data._id}}, function(err, manager){
           console.log(err);
         });
       //
