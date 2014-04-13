@@ -12,7 +12,23 @@ module.exports = {
       }
       res.json(200, game);
     });
+  },
+
+  findOneAndUpdate: function(req, res) {
+    var id = req.params.id;
+
+    Games.findOneAndUpdate(id, function(err, game) {
+      if (err) {
+        console.log(err);
+      }
+      console.log('&&&&&&', game);
+      res.json(200, game);
+    });
   }
 
 };
+
+
+
+
 

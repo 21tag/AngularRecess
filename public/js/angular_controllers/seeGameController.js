@@ -1,10 +1,28 @@
 angular.module('angularSeeGame', [])
-  .controller('seeGameController', ['$rootScope', '$scope', 'angularPutGame', 'angularPutUser', function($rootScope, $scope, angularPutGame, angularPutUser) {
-    $scope.addToGame = function() {
-      angularPutGame.put($scope.game, function(result, response) {
+  .controller('seeGameController', ['$rootScope', '$scope', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, angularPutGame, angularPutUser, angularGetGames) {
+    
+    $scope.gameId = '5349b47091a19649f0000001';
+
+    $scope.getGameById = function() {
+      angularGetGames.get($scope.gameId, function(returnedGame, response) {
+        if (returnedGame) {
+          console.log(returnedGame)
+          $scope.game = returnedGame;
+          $scope.game.playersNeeded = ($scope.game.playerLimit - $scope.game.confirmedPlayers.length);
+        } else {
+          console.log('error');
+        }
+      });
+    }
+
+    $scope.getGameById();
+
+    $scope.addUserToGame = function() {
+      angularPutGame.put($scope.gameToSend, function(result, response) {
         $scope.response = response;
         if (result === 'success') {
           $scope.addGameToUser();
+          $scope.getGameById();
         }
       });
     };
@@ -14,7 +32,6 @@ angular.module('angularSeeGame', [])
         $scope.response = response;
         if (result === 'success') {
           $rootScope.currentUser.upcomingGames.push($scope.game.code);
-          $rootScope.currentUser.gamesPlayed.push($scope.game.code);
           angularPutUser.put($rootScope.currentUser, function(data) {
             console.log(data);
           });
@@ -23,13 +40,27 @@ angular.module('angularSeeGame', [])
     };
 
     $scope.joinGame = function () {
-      console.log('joined!');
-      $scope.game = {};
-      $scope.game.code = 123;
-      $scope.game.phone = $rootScope.currentUser.phone;
-      $scope.addToGame();
+      $scope.gameToSend = {};
+      $scope.gameToSend.code = $scope.gameId;
+      $scope.gameToSend.phone = $rootScope.currentUser.phone;
+      $scope.addUserToGame();
     };
 
+  }])
+
+
+  .factory('angularGetGames', ['$http', function($http) {
+    return {
+      get: function(gameId, cb) {
+        var getGames = $http.get('/games/' + gameId, cb);
+        getGames.success(function(data) {
+          cb(data);
+        });
+        getGames.error(function() {
+          cb(undefined, 'Could not retrieve games');
+        });
+      }
+    };
   }])
 
 

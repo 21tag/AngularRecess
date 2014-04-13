@@ -1,7 +1,9 @@
-<div>
-  <h1>Update Account</h1>
+<div class="row">
+  <div class="small-12 columns">
+  <h1 class="open-recess-table">Update Account</h1>
+  </br>
     <div>
-      <form name='updateForm'>
+      <form  class="open-recess-table" name='updateForm'>
           Full name : <input type='text' name='fullName' ng-model='currentUser.display_name' required>
           Email : <input type='text' name='email' ng-model='currentUser.email' required>
           Phone Number : <input type='text' name='phoneNumber' ng-model='currentUser.phone' required>
@@ -10,5 +12,6 @@
           <input type='submit' value='Update Profile' ng-disabled='updateForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
       </form>
       <div>{{response}}</div>
+    </div>
   </div>
 </div>

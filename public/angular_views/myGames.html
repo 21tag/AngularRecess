@@ -1,20 +1,24 @@
-<div>
-  <h1>myGames view</h1>
-    <div>
-      <span>{{response}}</span>
-      <h3 ng-click='show=!show'>My Upcoming Games</h3>
-      <ul ng-repeat='game in myUpcomingGames track by $index'  ng-hide='show'>
-        <li>
-          {{game.gameName}} {{game.gameDescription}} {{game.gameType}} {{game.gameTime}} {{game.gameDate}}
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h3 ng-click='show=!show'>My Played Games</h3>
-      <ul ng-repeat='game in myPlayedGames track by $index'  ng-hide='!show'>
-        <li>
-          {{game}}
-        </li>
-      </ul>
+<div class="row">
+  <div class="small-12 columns">
+      <table class="open-recess-table my-games">
+        <thead class="hide-for-small">
+          <tr>
+            <th class="status">Game</th>
+            <th>Description</th>
+            <th>Game Type</th>
+            <th>Date & Time</th>
+            <th>Invited Players</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat='game in myUpcomingGames track by $index'>
+            <td>{{game.gameName}}</td> 
+            <td>{{game.gameDescription}}</td> 
+            <td>{{game.gameType}}</td> 
+            <td>{{game.gameTime}} </br> {{game.gameDate}}</td>
+            <td>{{game.invitedPlayers}}</td>  
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>

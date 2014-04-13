@@ -1,18 +1,20 @@
 angular.module('angularMyGames', [])
   .controller('myGamesController', ['$rootScope', '$scope', 'angularGetGames', function($rootScope, $scope, angularGetGames) {
     $scope.show = true;
-    $scope.gameId = '53480c943aa36f7b54000001';
-    $scope.getMyGames = function () {
-      angularGetGames.get($scope.gameId, function(returnedGame, response) {
+    $scope.myUpcomingGames = [];
+    $scope.getMyGames = function (game) {
+      angularGetGames.get(game, function(returnedGame, response) {
         if (returnedGame) {
-          console.log(returnedGame)
-          $scope.myUpcomingGames = [returnedGame];
+          $scope.myUpcomingGames.push(returnedGame);
         } else {
           $scope.response = response || 'No games found';
         }
       });
     };
-    $scope.getMyGames();
+
+    _.each($rootScope.currentUser.upcomingGames, function(game) {
+      $scope.getMyGames(game)
+    });
   }])
 
   .factory('angularGetGames', ['$http', function($http) {

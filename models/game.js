@@ -34,12 +34,12 @@ var GameSchema = new Schema({
     'lon' : Number
   },
   'minimumPlayers': Number,
-  'confirmedPlayers': [Schema.Types.ObjectId],
+  'confirmedPlayers': Array,
   'confirmedPlayersCount' : Number,
   'playerLimit': Number,
   'minimumPlayersMet': Boolean,
   'playerLimitMet': Boolean,
-  'messages': [Schema.Types.ObjectId],
+  'messages': Array,
   'replyCode': String, // this is a code unique to each game that we will use for messaging
 });
 

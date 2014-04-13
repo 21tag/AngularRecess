@@ -66,7 +66,7 @@
             <div class="row">
               <div class="small-12 columns">
                 <div class="block">
-                  <h1><a href="#">OpenRecess</a></h1>
+                  <h1><a ui-sref=".findgames">OpenRecess</a></h1>
                   <ul>
                     <li>
                       <a ui-sref=".findGames">Find Games</a>
@@ -96,8 +96,9 @@
             </div>
           </div>
         </nav>
-        <div ui-view> </div>
-        <div>OPEN RECESS about | contact us</div>
+        <div id="main" role="main">
+          <div ui-view> </div>
+        </div>
       </div>
     </div>
   </body>

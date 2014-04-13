@@ -120,7 +120,7 @@ module.exports = function(app){
     var digits = req.body.phone;
     Game.findOneAndUpdate(
     {
-      gameCode : code,
+      _id : code,
       confirmedPlayers : { $nin: [digits] }
     },
     {
@@ -130,10 +130,11 @@ module.exports = function(app){
     },
     function(err, thisGame){
       if(err) {
-        return 'no such game found';
+        console.log('error', err);
+        //return 'no such game found';
       } else {
         console.log(thisGame);
-        twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);
+        //twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);
       }
     });
     res.json(200, 'Done and done');
