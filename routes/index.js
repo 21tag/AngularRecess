@@ -47,7 +47,27 @@ module.exports = function(app){
   app.get('/users/:id', users.findById);
   app.get('/users', users.findAll);
   app.post('/users', users.createUser);
-  app.put('/users', users.updateUser);
+  app.put('/users', function(req, res, next) {
+
+    var id = req.body.id;
+    var game = req.body.game;
+    User.findOneAndUpdate(
+    {
+      _id : id,
+      upcomingGames : { $nin: [game] }
+    },
+    {
+      $addToSet : { upcomingGames : game }
+    },
+    function(err, thisUser){
+      if(err) {
+        console.log('error', err);
+      } else {
+        console.log(thisUser);
+      }
+    });
+    res.json(200, 'user updated');
+  });
   app.delete('/users/:id', users.deleteUser);
 
   app.get('/user/current', function(req, res ,next){
@@ -137,7 +157,7 @@ module.exports = function(app){
         //twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);
       }
     });
-    res.json(200, 'Done and done');
+    res.json(200, 'updated game');
   });
 
   app.get('/games', function(req, res, next) {

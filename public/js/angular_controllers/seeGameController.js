@@ -6,7 +6,6 @@ angular.module('angularSeeGame', [])
     $scope.getGameById = function() {
       angularGetGames.get($scope.gameId, function(returnedGame, response) {
         if (returnedGame) {
-          console.log(returnedGame)
           $scope.game = returnedGame;
           $scope.game.playersNeeded = ($scope.game.playerLimit - $scope.game.confirmedPlayers.length);
         } else {
@@ -28,15 +27,11 @@ angular.module('angularSeeGame', [])
     };
 
     $scope.addGameToUser = function() {
-      angularPutGame.put($scope.game, function(result, response) {
-        $scope.response = response;
-        if (result === 'success') {
-          $rootScope.currentUser.upcomingGames.push($scope.game.code);
-          angularPutUser.put($rootScope.currentUser, function(data) {
-            console.log(data);
-          });
-        }
+      $rootScope.currentUser.upcomingGames.push($scope.gameToSend.code);
+      angularPutUser.put($scope.userToSend, function(data) {
+        console.log(data);
       });
+
     };
 
     $scope.joinGame = function () {
@@ -44,6 +39,9 @@ angular.module('angularSeeGame', [])
       $scope.gameToSend.code = $scope.gameId;
       $scope.gameToSend.phone = $rootScope.currentUser.phone;
       $scope.addUserToGame();
+      $scope.userToSend = {};
+      $scope.userToSend.id = $rootScope.currentUser.id;
+      $scope.userToSend.game = $scope.gameId;
     };
 
   }])

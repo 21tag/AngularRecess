@@ -7,7 +7,7 @@
             <th>Description</th>
             <th>Game Type</th>
             <th>Date & Time</th>
-            <th>Invited Players</th>
+            <th>Confirmed Players</th>
           </tr>
         </thead>
         <tbody>
@@ -15,8 +15,8 @@
             <td>{{game.gameName}}</td> 
             <td>{{game.gameDescription}}</td> 
             <td>{{game.gameType}}</td> 
-            <td>{{game.gameTime}} </br> {{game.gameDate}}</td>
-            <td>{{game.invitedPlayers}}</td>  
+            <td>{{game.gameTime | date: h:mma}} </br> {{game.gameDate | date: yyyy-MM-dd}}</td>
+            <td>{{game.confirmedPlayers}}</td>  
           </tr>
         </tbody>
       </table>

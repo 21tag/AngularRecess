@@ -15,6 +15,7 @@ angular.module('angularMyGames', [])
     _.each($rootScope.currentUser.upcomingGames, function(game) {
       $scope.getMyGames(game)
     });
+    console.log($rootScope.currentUser);
   }])
 
   .factory('angularGetGames', ['$http', function($http) {
