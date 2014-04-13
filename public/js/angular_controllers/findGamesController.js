@@ -13,8 +13,8 @@ angular.module('angularFindGames', [])
 
   //apr12 added
   $scope.filterOrg = function(data){
-    console.log('data._id', data._id)
-    console.log('$rootScope.currentUser.upcomingGames', $rootScope.currentUser.upcomingGames)
+    // console.log('data._id', data._id)
+    // console.log('$rootScope.currentUser.upcomingGames', $rootScope.currentUser.upcomingGames)
     return !_.contains($rootScope.currentUser.upcomingGames, data._id);
   };
   

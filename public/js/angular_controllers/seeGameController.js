@@ -1,8 +1,18 @@
 angular.module('angularSeeGame', [])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
     
-    //apr12 added
-    $scope.gameId = $rootScope.joinGameList._id;
+
+    //apr13 added
+    $scope.moveToFindGames = function(){
+      $location.path('/findGames');
+      alert('select a game to join first');
+    };
+
+    if($rootScope.joinGameList === undefined){
+      $scope.moveToFindGames();
+    }else{
+      $scope.gameId = $rootScope.joinGameList._id;
+    }
 
 
     $scope.getGameById = function() {
