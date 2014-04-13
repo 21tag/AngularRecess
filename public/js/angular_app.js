@@ -20,6 +20,8 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
         });
       };
 
+    //apr12
+    $rootScope.joinGameList = [];
 
     $rootScope.checkUser();
     //checks if requested route is restricted on route change event, redirects to login if it is and user not logged in.

@@ -1,5 +1,18 @@
 angular.module('angularSeeGame', [])
-  .controller('seeGameController', ['$rootScope', '$scope', 'angularPutGame', 'angularPutUser', function($rootScope, $scope, angularPutGame, angularPutUser) {
+  .controller('seeGameController', ['$rootScope', '$scope', '$location','angularPutGame', 'angularPutUser', function($rootScope, $scope, $location, angularPutGame, angularPutUser) {
+    
+    //apr12 added
+    $scope.headers = [
+      'gameName',
+      'gameType',
+      'gameDescription',
+      'gameDate',
+      'gameTime',
+      'minimumPlayers',
+      'playersLimit',
+      'playerArray',
+    ];
+
     $scope.addToGame = function() {
       angularPutGame.put($scope.game, function(result, response) {
         $scope.response = response;
@@ -13,20 +26,34 @@ angular.module('angularSeeGame', [])
       angularPutGame.put($scope.game, function(result, response) {
         $scope.response = response;
         if (result === 'success') {
-          $rootScope.currentUser.upcomingGames.push($scope.game.code);
-          $rootScope.currentUser.gamesPlayed.push($scope.game.code);
-          angularPutUser.put($rootScope.currentUser, function(data) {
+
+          //apr12 added
+          for(var i=0; i < $scope.game.length; i++){
+            $rootScope.currentUser.upcomingGames.push($scope.game[i].id);            
+          }
+          // $rootScope.currentUser.upcomingGames.push($scope.game.code);
+          // $rootScope.currentUser.gamesPlayed.push($scope.game.code);
+          angularPutUser.put($rootScope.currentUser, function(data) {                  
             console.log(data);
           });
+
+          //apr12 added
+          $rootScope.joinGameList = [];
+          $location.path('/myGames');
+
         }
       });
     };
 
+    //apr12 added
+    $scope.game = $rootScope.joinGameList;
+
     $scope.joinGame = function () {
       console.log('joined!');
-      $scope.game = {};
-      $scope.game.code = 123;
-      $scope.game.phone = $rootScope.currentUser.phone;
+      
+      // $scope.game.code = 123;
+      // $scope.game.phone = $rootScope.currentUser.phone;
+
       $scope.addToGame();
     };
 

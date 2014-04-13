@@ -1,11 +1,15 @@
 angular.module('angularMyGames', [])
   .controller('myGamesController', ['$rootScope', '$scope', 'angularGetGames', function($rootScope, $scope, angularGetGames) {
     $scope.show = true;
-    $scope.gameId = '53480c943aa36f7b54000001';
+
+    //apr12 added
+    $scope.gameId = $rootScope.currentUser.id;
+    console.log($scope.gameId);
+    
     $scope.getMyGames = function () {
       angularGetGames.get($scope.gameId, function(returnedGame, response) {
         if (returnedGame) {
-          console.log(returnedGame)
+          console.log(returnedGame);
           $scope.myUpcomingGames = [returnedGame];
         } else {
           $scope.response = response || 'No games found';

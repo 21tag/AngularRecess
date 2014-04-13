@@ -13,14 +13,17 @@
 
     Filter Games By: <input type='text' ng-model='search.gameDate' placeholder='Date'>
     <span>Players needed (TODO)</span>
+      <br>
+      <br>
       <table>
       <thead>
+        Games open
         <tr>
           <th ng-repeat='header in headers'>{{ header }}
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat='games in game | filter:search:strict'>
+        <tr ng-repeat='games in game | filter:search:strict' ng-click='selectGame(games, $index)'>
         <td>{{ games.gameName }}</td>
         <td>{{ games.gameType }}</td>
         <td>{{ games.gameDescription }}</td>
@@ -32,5 +35,30 @@
         </tr>
       </tbody>
       </table>
+      <br>
+
+      <table>
+      <thead>
+        Games selected
+        <tr>
+          <th ng-repeat='header in headers'>{{ header }}
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='games in joinGameList'>
+        <td>{{ games.gameName }}</td>
+        <td>{{ games.gameType }}</td>
+        <td>{{ games.gameDescription }}</td>
+        <td>{{ games.gameDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ games.gameTime }}</td>
+        <td>{{ games.minimumPlayers }}</td>
+        <td>{{ games.playerLimit }}</td>
+        <td>{{ games.invitedPlayers }}</td>
+        </tr>
+      </tbody>
+      </table>
+      <br>
+      
+      <button ng-click='moveToJoinGame()'>Let's go to join a game</button>
     </div>
 <div>

@@ -1,5 +1,5 @@
 angular.module('angularFindGames', [])
-.controller('findGamesController', ['$scope', 'angularGames', function($scope, angularGames) {
+.controller('findGamesController', ['$scope', '$rootScope', '$location','angularGames', function($scope, $rootScope, $location, angularGames) {
   $scope.game = {
     gameName: 'undefined',
     gameType: 'undefined',
@@ -11,16 +11,16 @@ angular.module('angularFindGames', [])
     playerArray: 'undefined',
   };
   
-  // $scope.headers = [
-  //   'gameName',
-  //   'gameType',
-  //   'gameDescription',
-  //   'gameDate',
-  //   'gameTime',
-  //   'minimumPlayers',
-  //   'playersLimit',
-  //   'playerArray',
-  // ];
+  $scope.headers = [
+    'gameName',
+    'gameType',
+    'gameDescription',
+    'gameDate',
+    'gameTime',
+    'minimumPlayers',
+    'playersLimit',
+    'playerArray',
+  ];
 
   // $scope.gameInfo = {
   //   gameName: 'undefined',
@@ -102,8 +102,27 @@ angular.module('angularFindGames', [])
   $scope.retreiveGames = function(){
     angularGames.get('/games', function(data) {
       $scope.game = data;
+
+      //apr12 added
+      console.log($scope.game);
       console.log('list retrieve success');
     });
+  };
+
+//apr12 added
+  $scope.selectGame = function(data, index){
+    console.log('hit scope.game', $scope.game);
+    console.log('hit data', data);
+    console.log('hit index', index);
+
+    $rootScope.joinGameList.push(data);
+    $scope.game.splice(index, 1);
+    
+    console.log($rootScope.joinGameList);
+  };
+
+  $scope.moveToJoinGame = function(){
+    $location.path('/seeGame');
   };
 
   $scope.retreiveGames();

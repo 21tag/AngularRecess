@@ -155,6 +155,7 @@ module.exports = function(app){
         },
         json: function() {
           console.log('json response - ', results.length);
+          console.log(results);
           res.json(results);
         }
       });

@@ -1,5 +1,5 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', 'angularListGames', function($scope, angularListGames) {
+.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', function($scope, $rootScope, angularListGames) {
   // $scope.game = {
   //   gameName: 'undefined',
   //   gameType: 'undefined',
@@ -30,7 +30,10 @@ angular.module('angularListAGame', [])
     gameTime: 'undefined',
     minimumPlayers: 'undefined',
     playerLimit: 'undefined',
-    playerArray: 'undefined'
+    playerArray: 'undefined',
+
+    //apr11 added
+    user: 'undefined'
   };
 
   $scope.sports = [
@@ -90,6 +93,11 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.playerLimit = maximum;
     $scope.gameInfo.playerArray  = invited;
     console.log($scope.gameInfo);
+    
+    //apr11 added
+    console.log('$rootScope.currentUser', $rootScope.currentUser);
+    $scope.gameInfo.user = $rootScope.currentUser.id;
+
     $scope.sendGame($scope.gameInfo);
   };
 
