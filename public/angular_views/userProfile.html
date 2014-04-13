@@ -1,17 +1,18 @@
-<div class="row">
-  <div class="small-12 columns">
-  <h1 class="open-recess-table">Update Account</h1>
-  </br>
-    <div>
-      <form  class="open-recess-table" name='updateForm'>
-          Full name : <input type='text' name='fullName' ng-model='currentUser.display_name' required>
-          Email : <input type='text' name='email' ng-model='currentUser.email' required>
-          Phone Number : <input type='text' name='phoneNumber' ng-model='currentUser.phone' required>
-          Password : <input type='password' name='password' ng-model='currentUser.password' required>
-          <span ng-show='signupForm.$error.required'>required!</span>
-          <input type='submit' value='Update Profile' ng-disabled='updateForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
-      </form>
+<form class="open-recess-form" name="signupForm">
+  <div class="row">
+    <div class="small-12 large-6 columns">
+      <div class="form-label">Update Account</div>
+      </br>
+      <div class="form-label">Name:</div>
+      <input type='text' name='fullName' ng-model='currentUser.display_name' required>
+      <div class="form-label">Email:</div>
+      <input type='text' name='email' ng-model='currentUser.email' required>
+      <div class="form-label">Phone Number:</div><input type='text' name='phoneNumber' ng-model='currentUser.phone' required>
+      <div class="form-label">Password:</div>
+      <input type='password' name='password' ng-model='currentUser.password' required>
+      <input type='submit' value='submit' ng-disabled='signupForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
       <div>{{response}}</div>
     </div>
   </div>
-</div>
+</form>
+
