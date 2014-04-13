@@ -64,8 +64,8 @@
 
 <!--         <ul> -->
             <!-- <li ng-repeat='games in game | filter:search:strict'> -->
-              <div class="item" ng-repeat="games in game | filter:search:strict">
-                    <a ui-sref="#">
+              <div class="item" ng-repeat="games in game | filter:search:strict | filter:filterOrg" ng-click='selectGame(games, $index)'>
+                    <!-- <a ui-sref="#"> -->
                     <img src="style/img/sample-940x940.jpg" alt="#" />
                       <div class="caption">
                       <h2 class="hide-for-small">{{ games.gameName }}</h2>

@@ -1,7 +1,9 @@
 angular.module('angularSeeGame', [])
-  .controller('seeGameController', ['$rootScope', '$scope', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, angularPutGame, angularPutUser, angularGetGames) {
+  .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
     
-    $scope.gameId = '5349b47091a19649f0000001';
+    //apr12 added
+    $scope.gameId = $rootScope.joinGameList._id;
+
 
     $scope.getGameById = function() {
       angularGetGames.get($scope.gameId, function(returnedGame, response) {
@@ -34,6 +36,10 @@ angular.module('angularSeeGame', [])
         console.log(data);
       });
 
+      //apr12 added
+      $location.path('/myGames');
+
+
     };
 
     $scope.joinGame = function () {
@@ -44,6 +50,7 @@ angular.module('angularSeeGame', [])
       $scope.userToSend = {};
       $scope.userToSend.id = $rootScope.currentUser.id;
       $scope.userToSend.game = $scope.gameId;
+
     };
 
   }])

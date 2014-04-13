@@ -1,5 +1,5 @@
 angular.module('angularFindGames', [])
-.controller('findGamesController', ['$scope', 'angularGames', function($scope, angularGames) {
+.controller('findGamesController', ['$scope', '$rootScope', '$location', 'angularGames', function($scope, $rootScope, $location, angularGames) {
   $scope.game = {
     gameName: 'undefined',
     gameType: 'undefined',
@@ -9,6 +9,13 @@ angular.module('angularFindGames', [])
     minimumPlayers: 'undefined',
     playersLimit: 'undefined',
     playerArray: 'undefined',
+  };
+
+  //apr12 added
+  $scope.filterOrg = function(data){
+    console.log('data._id', data._id)
+    console.log('$rootScope.currentUser.upcomingGames', $rootScope.currentUser.upcomingGames)
+    return !_.contains($rootScope.currentUser.upcomingGames, data._id);
   };
   
   // $scope.headers = [
@@ -105,6 +112,23 @@ angular.module('angularFindGames', [])
       console.log('list retrieve success');
     });
   };
+
+  //apr12 added
+  $scope.selectGame = function(data, index){
+    // console.log('hit scope.game', $scope.game);
+    // console.log('hit data', data);
+    // console.log('hit index', index);
+    $rootScope.joinGameList = undefined; 
+    $rootScope.joinGameList = data;
+    // $scope.game.splice(index, 1);
+    console.log($rootScope.joinGameList);
+    $location.path('/seeGame');
+  };
+  
+  console.log($rootScope.currentUser);
+  // $scope.moveToJoinGame = function(){
+  //   $location.path('/seeGame');
+  // };
 
   $scope.retreiveGames();
 //
