@@ -27,7 +27,9 @@ angular.module('angularSeeGame', [])
     };
 
     $scope.addGameToUser = function() {
-      $rootScope.currentUser.upcomingGames.push($scope.gameToSend.code);
+      if (!_.contains($rootScope.currentUser.upcomingGames, $scope.gameToSend.code)) {
+        $rootScope.currentUser.upcomingGames.push($scope.gameToSend.code);
+      }
       angularPutUser.put($scope.userToSend, function(data) {
         console.log(data);
       });
