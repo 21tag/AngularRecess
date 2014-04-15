@@ -7,7 +7,7 @@
                     <option value=''>-- select your sport --</option>
                   </select>
     Game Description : <input type='text' name='desc' ng-model='game.desc' required>
-    When's It Happening : <input type='date' name='date' ng-model='game.date' min='2014-04-15' max='2015-04-15' required>
+    When's It Happening : <input type='date' name='date' ng-model='game.date' min='{{date.start}}' max='{{date.end}}' required>
     Game Time : <input type='time' name='time' ng-model='game.time' required>
     Minimum Players : <input type='number' min='0' name='min' ng-model='game.min' required>
     Maximum Players : <input type='number' min='0' name='max' ng-model='game.max' required>
