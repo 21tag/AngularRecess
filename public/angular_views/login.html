@@ -1,15 +1,13 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h1 class="open-recess-table">Login</h1>
-    </br>
-    <div>
-      <form>
-        <span class="open-recess-table">Email : </span><input type='text' name='email' ng-model='userInfo.email'>
-        <span class="open-recess-table">Password : </span><input type='password' name='password' ng-model='userInfo.password' required>
-        <input type='submit' value='submit' ng-click='submitTheForm(userInfo.email, userInfo.password)' class="small-3 large-1 columns search" required>
-      </form>
-      <div>{{response}}</div>
-      <a class="open-recess-table" ui-sref="signup">Create an account</a>
+<form class="open-recess-form">
+  <div class="row">
+    <div class="small-12 large-6 columns">
+        <div class="form-label">Please Login</div>
+        </br>
+        <div class="form-label">Email:</div><input type='text' name='email' ng-model='userInfo.email'>
+        <div class="form-label">Password:</div><input type='password' name='password' ng-model='userInfo.password' required>
+        <input type='submit' value='submit' ng-click='submitTheForm(userInfo.email, userInfo.password)' required>
+      <div class="form-label">{{response}}</div>
+      <a class="form-label" ui-sref="signup">Create an account</a>
     </div>
   </div>
-</div>
+</form>
