@@ -2,18 +2,17 @@
   <h1>list a game view</h1>
     <div>
     <form>
-      Game Name : <input type='text' name='name' ng-model='game.name'>
-    Game Type : <select ng-options='sport for sport in sports' ng-model='game.type'>
-                    <option value="">-- select your sport --</option>
+    Game Name : <input type='text' name='name' ng-model='game.name' required>
+    Game Type : <select ng-options='sport for sport in sports' ng-model='game.type' required>
+                    <option value=''>-- select your sport --</option>
                   </select>
-    Game Description : <input type='text' name='desc' ng-model='game.desc'>
-    When's It Happening : <input type='date' name='date' ng-model='game.date'>
-    Game Time : <input type='time' name='time' ng-model='game.time'>
-    Minimum Players : <input type='number' name='min' ng-model='game.min'>
-    Maximum Players : <input type='number' name='max' ng-model='game.max'>
-    Invited Players : <input type='text' name='invite' ng-model='game.invite'>
+    Game Description : <input type='text' name='desc' ng-model='game.desc' required>
+    When's It Happening : <input type='date' name='date' ng-model='game.date' min='2014-04-15' max='2015-04-15' required>
+    Game Time : <input type='time' name='time' ng-model='game.time' required>
+    Minimum Players : <input type='number' min='0' name='min' ng-model='game.min' required>
+    Maximum Players : <input type='number' min='0' name='max' ng-model='game.max' required>
+    Invited Players : <input type='text' name='invite' ng-model='game.invite' required>
     <input type='submit' value='submit' ng-click='submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)'>
     </form>
     </div>
 </div>
-

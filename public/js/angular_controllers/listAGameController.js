@@ -10,6 +10,21 @@ angular.module('angularListAGame', [])
   //   playersLimit: 'undefined',
   //   playerArray: 'undefined',
   // };
+  $scope.date = {
+    start: 'undefined',
+    end: 'undefined'
+  }
+
+  var newDate = new Date();
+  var convertTwoDigit = function(num){
+    return num > 9 ? '' + num : '0' + num;
+  };
+  var dateMaker = function(y, m, d){
+    return (newDate.getFullYear() + y) + '-' +   convertTwoDigit((newDate.getMonth() + 1) + m) + '-' + convertTwoDigit(newDate.getDate() + d);
+  }
+  $scope.date.start = dateMaker(0,0,0);
+  $scope.date.end = dateMaker(1,0,0);
+  console.log($scope.date);
 
   $scope.headers = [
     'gameName',
@@ -98,7 +113,10 @@ angular.module('angularListAGame', [])
     console.log('$rootScope.currentUser', $rootScope.currentUser);
     $scope.gameInfo.user = $rootScope.currentUser.id;
 
-    $scope.sendGame($scope.gameInfo);
+    //apr14 added
+    if(!_.contains($scope.gameInfo, undefined)){
+      $scope.sendGame($scope.gameInfo);
+    }
   };
 
   $scope.sendGame = function(game) {
