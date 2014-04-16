@@ -100,9 +100,8 @@ angular.module('angularListAGame', [])
 
 
   //apr16 added
-
-
-  $scope.allAvailableUsers = $rootScope.allUsers;
+  // console.log($rootScope.allUsers);
+  $scope.allAvailableUsers = _.filter($rootScope.allUsers, function(item){return item._id !== $rootScope.currentUser.id});
 
   $scope.addToInvitePlayer = function(user){
     $scope.gameInfo.playerArray.push(user);
@@ -130,13 +129,17 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.gameTime = time;
     $scope.gameInfo.minimumPlayers = minimum;
     $scope.gameInfo.playerLimit = maximum;
-    $scope.gameInfo.playerArray  = invited;
+    // $scope.gameInfo.playerArray  = invited;
+    console.log($scope.gameInfo.playerArray);
+    // if($scope.gameInfo.playerArray.length ){
+    //   $scope.gameInfo.playerArray = undefined;
+    // }
     console.log($scope.gameInfo);
 
     //apr12 added
     console.log('$rootScope.currentUser', $rootScope.currentUser);
     $scope.gameInfo.user = $rootScope.currentUser.id;
-
+    console.log('$scope.gameInfo', $scope.gameInfo);
     //apr14 added
     if(!_.contains($scope.gameInfo, undefined)){
       $scope.sendGame($scope.gameInfo);
@@ -149,7 +152,7 @@ angular.module('angularListAGame', [])
     });
   };
 
-
+  
 //4/8
   // $scope.retreiveGames = function(){
   //   angularGames.get('/games', function(data) {
@@ -190,8 +193,8 @@ angular.module('angularListAGame', [])
 
 .factory('angularGetQueryUser', ['$http', function($http) {
     return {
-      get: function(gameId, cb) {
-        var getGames = $http.get('/users/' + gameId, cb);
+      get: function(name, cb) {
+        var getGames = $http.get('/users/' + name, cb);
         getGames.success(function(data) {
           cb(data);
         });

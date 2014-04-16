@@ -33,7 +33,7 @@
   <div class="row">
     <div class="small-12 large-6 columns">
       <div class="form-label">When's it happening?</div>
-      <input class="datepicker" type='date' name='date' ng-model='game.date' />
+      <input class="datepicker" type='date' name='date' ng-model='game.date' min='{{date.start}}' max='{{date.end}}' />
     </div>
     <div class="small-12 large-6 columns">
       <div class="form-label">What time?</div>
@@ -60,7 +60,7 @@
     <div class="small-12 large-6 columns">
       <div class="form-label">Invited Players</div>
       <h1 style='color:blue;'> click on names to add to the Invited Players list</h1>
-      <div ng-repeat='user in allAvailableUsers' ng-click='addToInvitePlayer(user) ;removeFromAllusers($index)'> 
+      <div ng-repeat='user in allAvailableUsers | filter' ng-click='addToInvitePlayer(user) ;removeFromAllusers($index)'> 
         <h2> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
       </div>
       <h1 style='color:blue;'> Invited Players list </h1>
