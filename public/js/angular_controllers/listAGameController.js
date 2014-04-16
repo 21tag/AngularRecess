@@ -1,5 +1,5 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', '$rootScope','angularListGames', function($scope, $rootScope, angularListGames) {
+.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser',function($scope, $rootScope, angularListGames) {
   // $scope.game = {
   //   gameName: 'undefined',
   //   gameType: 'undefined',
@@ -45,7 +45,7 @@ angular.module('angularListAGame', [])
     gameTime: 'undefined',
     minimumPlayers: 'undefined',
     playerLimit: 'undefined',
-    playerArray: 'undefined',
+    playerArray: [],
 
     //12apr added
     user: 'undefined'
@@ -98,6 +98,30 @@ angular.module('angularListAGame', [])
     'Other',
   ];
 
+
+  //apr16 added
+
+
+  $scope.allAvailableUsers = $rootScope.allUsers;
+
+  $scope.addToInvitePlayer = function(user){
+    $scope.gameInfo.playerArray.push(user);
+  };
+
+  $scope.removeFromAllusers = function(index){
+    $scope.allAvailableUsers[index].refNo = index;
+    $scope.allAvailableUsers.splice(index, 1);
+  };
+  
+  $scope.addToAllUsers = function(user){
+    $scope.allAvailableUsers.splice(user.refNo, 0, user);
+  };
+
+  $scope.removeFromInvitePlayer = function(index){
+    $scope.gameInfo.playerArray.splice(index,1);
+  };
+
+
   $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
     $scope.gameInfo.gameName = name;
     $scope.gameInfo.gameType = type;
@@ -124,6 +148,8 @@ angular.module('angularListAGame', [])
       console.log('posted');
     });
   };
+
+
 //4/8
   // $scope.retreiveGames = function(){
   //   angularGames.get('/games', function(data) {
@@ -160,4 +186,20 @@ angular.module('angularListAGame', [])
 //
 
   };
+}])
+
+.factory('angularGetQueryUser', ['$http', function($http) {
+    return {
+      get: function(gameId, cb) {
+        var getGames = $http.get('/users/' + gameId, cb);
+        getGames.success(function(data) {
+          cb(data);
+        });
+        getGames.error(function() {
+          cb(undefined, 'Could not retrieve games');
+        });
+      }
+    };
 }]);
+
+

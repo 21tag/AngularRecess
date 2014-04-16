@@ -42,6 +42,34 @@ module.exports = {
   },
 
   findAll: function(req, res, next) {
-    res.json(200, 'GetAllUser stub');
+    
+    //apr16 added
+    User.find({}, function(err, users){
+      if (err) {
+        console.log(err);
+        res.json(400);
+      }
+      res.json(200, users);
+    });
+    // res.json(200, 'Get allUser stub');
+  },
+
+
+  //apr16 added
+  findQuery:function(req, res) {
+    var regex = new RegExp(req.params.id, 'i');
+    var query = User.find({display_name: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+        
+      // Execute query in a callback and return users list
+    query.exec(function(err, users) {
+      if (!err) {
+        // Method to construct the json result set
+        // var result = buildResultSet(users); 
+        res.json(200, users);
+      } else {
+        console.log(err);
+        res.json(400);
+      }
+   });
   }
 };

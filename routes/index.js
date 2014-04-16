@@ -46,6 +46,10 @@ module.exports = function(app){
 
   app.get('/users/:id', users.findById);
   app.get('/users', users.findAll);
+
+  //apr16 added
+  app.get('/usersQuery/:id', users.findQuery);
+
   app.post('/users', users.createUser);
   app.put('/users', function(req, res, next) {
 
@@ -104,7 +108,10 @@ module.exports = function(app){
     // possible collision alert!: this generates a random 3 digit code for every game:
     var temp = Math.floor(Math.random() * 1000);
     newGame = new Game({
-      invitedPlayers: req.body.playerArray.split(','),
+      // invitedPlayers: req.body.playerArray.split(','),
+
+      //apr16 added
+      invitedPlayers: req.body.playerArray,
       manager: req.body.user,
       gameCode : temp,
       gameDate : req.body.gameDate,

@@ -1,7 +1,7 @@
 
 angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup', 'angularListAGame', 'angularLogout', 'angularSeeGame','angularMyGames', 'angularFindGames', 'angularNavbar', 'angularUserProfile'])
 
-  .run(function($rootScope, $location, $state, getCurrentUser) {
+  .run(function($rootScope, $location, $state, getCurrentUser, getAllUsers) {
 
     //checks user on initial pageload to see if session is established, sets to public if not.
     $rootScope.checkUser = function() {
@@ -23,6 +23,17 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
     //apr12 added 
     $rootScope.joinGameList = undefined;
 
+
+    //apr16 added
+    $rootScope.getUsers = function(){
+      getAllUsers.get(function(users){
+        $rootScope.allUsers = users;
+        console.log('$rootScope.allUser', $rootScope.allUsers);
+      });
+    };
+
+
+    $rootScope.getUsers();
 
     $rootScope.checkUser();
     //checks if requested route is restricted on route change event, redirects to login if it is and user not logged in.
@@ -48,5 +59,19 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
         });
       }
     };
+  }])
+  //apr16 added
+  .factory('getAllUsers', ['$http', function($http){
+    return{
+      get: function(cb) {
+        var getUser = $http.get('/users');
+        getUser.success(function(data) {
+          cb(data);
+        });
+        getUser.error(function(error) {
+          console.log(error);
+        });
+      }
+  //
+    };
   }]);
-
