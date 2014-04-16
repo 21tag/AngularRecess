@@ -1,10 +1,12 @@
 <div class="row game-detail">
   <div class="small-12 columns">
+    <div class="google-map"></div>
     <img src="/img/sample-290x290.jpg" alt="#" />
-    <div class="primary-info">
+    <div class="primary-info row">
       <h2 class="hide-for-small">{{game.gameType}}</h2>
       <h1>Game details for {{game.gameName}}</h1>
-      <time ><span class="hide-for-medium hide-for-large hide-for-xlarge"></span>{{game.gameDate | date: yyyy-MM-dd}} {{game.gameTime | date: h:mma}}</time> <!-- See http://html5doctor.com/the-time-element/ for more info -->
+      <div><span class="hide-for-medium hide-for-large hide-for-xlarge"></span>{{game.gameDate | date: shortDate}} {{game.gameTime | date: shortTime}}</div> 
+      </br>
       <div class="button-group">
         <a class="button teal medium join-this-game" ng-click="joinGame()">Join this game!</a>
         <div class="settings-holder">
@@ -20,16 +22,19 @@
           </ul>
         </div>
       </div>
-       <span>{{response}}</span>
+      <span>{{response}}</span>
+      <a class="form-label" ui-sref="myGames">See your games</a>
       <div class="description">
         <p>{{game.gameDescription}}</p>
       </div>
     </div>
     
-    <div class="players">
-      <h1>{{game.confirmedPlayers.length}} Joined · {{game.playersNeeded}} Players needed</h1>
-      <div class="player-list">
-        <div class="player" ng-repeat="player in game.confirmedPlayers">{{player}}</div>
+    <div class="row">
+      <div class="players">
+        <h1>{{game.confirmedPlayers.length}} Joined · {{game.playersNeeded}} Players needed</h1>
+        <div class="player-list">
+          <div class="player" ng-repeat="player in game.confirmedPlayers">{{player}}</div>
+        </div>
       </div>
     </div>
 

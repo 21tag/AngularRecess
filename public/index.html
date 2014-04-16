@@ -15,7 +15,7 @@
 
   <link rel="canonical" href="XXX" /> <!-- Same as meta property og:url -->
   <link rel="stylesheet" href="/lib/vendor/chosen-1.0.0/chosen.css">
-  <link rel="stylesheet" href="/stylesheets/screen.css">
+  <link rel="stylesheet" href="/stylesheets/sass/screen.css">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   
   <!-- This script MUST be in the head -->
@@ -77,9 +77,6 @@
                     <li> 
                       <a ui-sref=".myGames">My Games</a>
                     </li>
-                    <li>
-                      <a ui-sref=".seeGame">Join a game</a>
-                    </li>
                       <a ui-sref=".login" ng-show="showLogin"> Login </a>
                     <li>
                       <a ui-sref=".logout" ng-show="!showLogin"> Logout </a>
@@ -98,9 +95,13 @@
         </nav>
         <div id="main" role="main">
           <div ui-view> </div>
+          <div class="push"></div>
         </div>
       </div>
     </div>
+        <div class="footer">
+          <span>Open Recess</span>
+        </div>
   </body>
 
     <!-- /////// END CONTENT /////////////////////////////////// -->         

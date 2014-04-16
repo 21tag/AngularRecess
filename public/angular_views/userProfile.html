@@ -10,7 +10,8 @@
       <div class="form-label">Phone Number:</div><input type='text' name='phoneNumber' ng-model='currentUser.phone' required>
       <div class="form-label">Password:</div>
       <input type='password' name='password' ng-model='currentUser.password' required>
-      <input type='submit' value='submit' ng-disabled='signupForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
+      <input class="button teal medium join-this-game" type='submit' value='submit' ng-disabled='signupForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
+      <br>
       <div>{{response}}</div>
     </div>
   </div>
