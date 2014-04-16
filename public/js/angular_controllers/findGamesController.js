@@ -1,15 +1,63 @@
 angular.module('angularFindGames', [])
 .controller('findGamesController', ['$scope', '$rootScope', '$location', 'angularGames', function($scope, $rootScope, $location, angularGames) {
-  $scope.game = {
-    gameName: 'undefined',
-    gameType: 'undefined',
-    gameDescription: 'undefined',
-    gameDate: 'undefined',
-    gameTime: 'undefined',
-    minimumPlayers: 'undefined',
-    playersLimit: 'undefined',
-    playerArray: 'undefined',
-  };
+  // $scope.game = {
+  //   gameName: 'undefined',
+  //   gameType: 'undefined',
+  //   gameDescription: 'undefined',
+  //   gameDate: 'undefined',
+  //   gameTime: 'undefined',
+  //   minimumPlayers: 'undefined',
+  //   playersLimit: 'undefined',
+  //   playerArray: 'undefined',
+  // };
+  $scope.game = [];
+
+  $scope.sports = [
+    'Badminton',
+    'Baseball',
+    'Basketball',
+    'Billiards',
+    'Board Games',
+    'Bocce',
+    'Bowling',
+    'Capture the Flag',
+    'Cards',
+    'Checkers',
+    'Chess',
+    'Climbing',
+    'Cricket',
+    'D&D',
+    'Disc Golf',
+    'Dodgeball',
+    'Dominoes',
+    'Flag Football',
+    'Football',
+    'Foursquare',
+    'Go',
+    'Golf',
+    'Ice Hockey',
+    'Kickball',
+    'Lacrosse',
+    'Martial Arts',
+    'Quidditch',
+    'Racquetball',
+    'Rugby',
+    'Shuffleboard',
+    'Soccer',
+    'Softball',
+    'Speed-ball',
+    'Squash',
+    'Street Hockey',
+    'Tag',
+    'Tennis',
+    'Tennis (doubles)',
+    'Ultimate Frisbee',
+    'Volleyball',
+    'Water Polo',
+    'Wiffleball',
+    'Yoga',
+    'Other',
+  ];
 
   //apr12 added
   $scope.filterOrg = function(data){
@@ -110,6 +158,13 @@ angular.module('angularFindGames', [])
     angularGames.get('/games', function(data) {
       $scope.game = data;
       console.log('list retrieve success');
+      _.each($scope.game, function(item, index){
+        console.log('item', item);
+        console.log('item.minimumPlayers', item.minimumPlayers);
+        console.log('item.confirmedPlayers', item.confirmedPlayers);
+        item.playersNeeded = item.minimumPlayers - item.confirmedPlayers.length;
+        console.log('item.playersNeeded', item.playersNeeded);
+      });
     });
   };
 

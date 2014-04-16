@@ -14,7 +14,15 @@
         Show me:
       </div>
       <div class="small-12 large-5 columns game-type-container">
-      <input type='text' placeholder='All Games' ng-model='search.gameType'>
+      <!-- <input type='text' placeholder='All Games' ng-model='search.gameType'> -->
+      
+
+      <!-- 15Apr added -->
+      <select class="game-type chosen-select" ng-options='sport for sport in sports' ng-model='search.gameType'>
+        <option value="">All Games</option>
+      </select>
+
+
       </div>
       <div class="large-1 columns in hide-for-small">
         in
@@ -43,10 +51,17 @@
     <div class="option date"> 
       <input type='text' class="datepicker" ng-model='search.gameDate' placeholder='Date'>
     </div>
-    <div class="option players-needed">
-      <input class="checkbox" type="checkbox" /> 
-      <span>Players Needed (TODO)</span>
+
+    
+    <!-- 15Apr added -->
+    <div class="option filter-by">
+      <span>Players Needed: </span>
     </div>
+    <div class="option players-needed">
+      <input type='text' ng-model='search.playersNeeded'>
+    </div>
+
+
   </div>
 </div>
 
