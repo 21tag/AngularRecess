@@ -2997,40 +2997,54 @@ ul, ol, dl {
   .label.orange {
     background-color: #ef7805; }
 
-.open-recess-form .form-label {
+.open-recess-form {
+  margin-top: 2.5em; }
+  .open-recess-form .form-label {
+    font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 0.41667em; }
+  .open-recess-form input[type="text"] {
+    font-size: 1.5em;
+    font-family: "adobe-text-pro", georgia, times, sans-serif;
+    font-weight: 400;
+    height: 2em; }
+  .open-recess-form textarea {
+    font-size: 1.5em;
+    font-family: "adobe-text-pro", georgia, times, sans-serif;
+    font-weight: 400;
+    height: 4.16667em; }
+  .open-recess-form .chosen-container {
+    font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    height: 2em;
+    width: 100% !important;
+    margin-bottom: 1em; }
+    .open-recess-form .chosen-container .chosen-results li {
+      padding: 0.625em; }
+    .open-recess-form .chosen-container a.chosen-single {
+      height: 1.79167em; }
+      .open-recess-form .chosen-container a.chosen-single span {
+        color: #333333;
+        margin-top: 0.375em;
+        margin-left: 0.41667em; }
+    .open-recess-form .chosen-container .chosen-single div b {
+      margin-top: 17px; }
+    .open-recess-form .chosen-container .no-results {
+      line-height: 1.4; }
+
+.listagame {
+  float: right;
+  vertical-align: bottom;
+  margin-top: 2.5em; }
+
+.mygames {
   font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
-  font-weight: 500;
-  font-size: 1.5em;
-  margin-bottom: 0.41667em; }
-.open-recess-form input[type="text"] {
-  font-size: 1.5em;
-  font-family: "adobe-text-pro", georgia, times, sans-serif;
   font-weight: 400;
-  height: 2em; }
-.open-recess-form textarea {
-  font-size: 1.5em;
-  font-family: "adobe-text-pro", georgia, times, sans-serif;
-  font-weight: 400;
-  height: 4.16667em; }
-.open-recess-form .chosen-container {
-  font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
-  font-weight: 500;
-  font-size: 1.5em;
-  height: 2em;
-  width: 100% !important;
-  margin-bottom: 1em; }
-  .open-recess-form .chosen-container .chosen-results li {
-    padding: 0.625em; }
-  .open-recess-form .chosen-container a.chosen-single {
-    height: 1.79167em; }
-    .open-recess-form .chosen-container a.chosen-single span {
-      color: #333333;
-      margin-top: 0.375em;
-      margin-left: 0.41667em; }
-  .open-recess-form .chosen-container .chosen-single div b {
-    margin-top: 17px; }
-  .open-recess-form .chosen-container .no-results {
-    line-height: 1.4; }
+  font-size: 0.625em;
+  position: relative;
+  bottom: -0.17143em; }
 
 .open-recess-table {
   width: 100%;
@@ -3095,11 +3109,28 @@ ul, ol, dl {
       #nav ul li.selected, #nav ul li:hover {
         background: url("../img/nav-triangle-small.png") no-repeat 64% bottom; }
 
+* {
+  margin: 0; }
+
+html, body {
+  height: 100%; }
+
+#main {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em auto; }
+
+.footer, .push {
+  height: 4em; }
+
 .footer {
-  background-color: #333333; }
+  background-color: #333333;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
   .footer .row {
-    padding-top: 0.75em;
-    padding-bottom: 1em; }
+    padding-top: 0.75em; }
     @media only screen and (min-width: 768px) {
       .footer .row {
         background-size: auto 92%; } }

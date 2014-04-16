@@ -132,6 +132,7 @@ $orange: #ef7805;
 
 
 .open-recess-form { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
+	margin-top: em-calc(40);
 	.form-label {
 		@include sans-serif-medium;
 		font-size:em-calc(24);
@@ -173,9 +174,21 @@ $orange: #ef7805;
  	}
 }
 
+.listagame {
+	float: right;
+	vertical-align: bottom;
+	margin-top: em-calc(40);
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// CUSTOM TABLE STYLES ////////////////////////////////////////////////////////////////////////////
 
+.mygames {
+		@include sans-serif-regular;
+		font-size:em-calc(10);
+		position:relative;
+		bottom:em-calc(-6, 35);
+}
 .open-recess-table { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
 	width:100%;
 	@include sans-serif-medium;
@@ -268,13 +281,35 @@ $orange: #ef7805;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+/////// PUSH FOOTER /////////////////////////////////////////////////////////////////////
+
+* {
+margin: 0;
+}
+html, body {
+height: 100%;
+}
+#main {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em auto;
+}
+.footer, .push {
+height: 4em;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 /////// FOOTER /////////////////////////////////////////////////////////////////////
 
 .footer {
 	background-color:$dark-grey;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 	.row {
 		padding-top:em-calc(12);
-		padding-bottom:em-calc(16);
+
 
 		@include media(desktop) {
 			background-size: auto 92%;

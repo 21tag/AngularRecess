@@ -2,8 +2,6 @@
 <form class="open-recess-form">
   
   <div class="row">
-    <div class="form-label">List a Game</div>
-    </br>
     <div class="small-12 large-6 columns">
       <div class="form-label">What kind of game?</div>
       <select class="game-type chosen-select" ng-options='sport for sport in sports' ng-model='game.type'>
@@ -59,7 +57,7 @@
       <div class="form-label">Invited Players</div>
       <input type='text' name='invite' ng-model='game.invite'>
     </div>
-    <input type='submit' value='submit' ng-click='submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)'>
+    <input class="button teal medium join-this-game listagame" type='submit' value='submit' ng-click='submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)'>
   </div>
 </form>
 
