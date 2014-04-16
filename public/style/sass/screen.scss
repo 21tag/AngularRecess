@@ -452,7 +452,7 @@ $orange: #ef7805;
 	.game-tiles {
 		
 		@include media(desktop) {
-			margin: 0 0 em-calc(20) em-calc(-20);
+			margin: 0 0 em-calc(2000) 0;
 		}
 
 		@include media(mobile) {
@@ -466,6 +466,7 @@ $orange: #ef7805;
 				position:relative;
 				margin-bottom:em-calc(20);
 				margin-left:em-calc(20);
+				margin-right:em-calc(20);
 				display: inline-block;
 				vertical-align:top;
 			}
