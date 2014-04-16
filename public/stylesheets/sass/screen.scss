@@ -267,6 +267,41 @@ $orange: #ef7805;
 	}
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// FOOTER /////////////////////////////////////////////////////////////////////
+
+.footer {
+	background-color:$dark-grey;
+	.row {
+		padding-top:em-calc(12);
+		padding-bottom:em-calc(16);
+
+		@include media(desktop) {
+			background-size: auto 92%;
+		}
+
+		@include media(mobile) {
+			background-position: 98% bottom;
+			background-size: auto 90%;
+		}
+
+	}
+	span {
+		@include serif-regular;
+		color:white;
+
+		@include media(desktop) {
+			font-size: em-calc(16);
+			line-height:.5;
+		}
+
+		@include media(mobile) {
+			font-size: em-calc(12);
+			text-shadow: 0 0 4px rgba(0,0,0,1);
+		}
+
+	}
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// HOMEPAGE INTRO /////////////////////////////////////////////////////////////////////
@@ -274,7 +309,7 @@ $orange: #ef7805;
 .intro-strip {
 	background-color:$dark-grey;
 	.row {
-		background-image: url('../img/player.svg');
+		background-image: url('/img/player.svg');
 		background-repeat: no-repeat;
 		padding-top:em-calc(12);
 		padding-bottom:em-calc(16);
@@ -452,7 +487,7 @@ $orange: #ef7805;
 	.game-tiles {
 		
 		@include media(desktop) {
-			margin: 0 0 em-calc(2000) 0;
+			margin:0 auto em-calc(20) auto;
 		}
 
 		@include media(mobile) {
@@ -462,11 +497,9 @@ $orange: #ef7805;
 		.item {
 			
 			@include media(desktop) {
-				width:292px;
+				width: em-calc(285);
 				position:relative;
-				margin-bottom:em-calc(20);
-				margin-left:em-calc(20);
-				margin-right:em-calc(20);
+				margin: 0 em-calc(20) 0 auto;
 				display: inline-block;
 				vertical-align:top;
 			}

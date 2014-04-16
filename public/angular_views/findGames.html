@@ -72,7 +72,7 @@
 </div>
 
 
-<div class="game-tiles js-masonry"
+<div class="row game-tiles js-masonry"
       data-masonry-options='{ "columnWidth": 292, "itemSelector": ".item", "gutter": 20 }'>
   <div class="item" ng-repeat="games in game | filter:search:strict | filter:filterOrg" ng-click='selectGame(games, $index)'>
     <img src="/img/sample-940x940.jpg" alt="#" />
