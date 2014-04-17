@@ -2691,7 +2691,7 @@ a.th {
   padding: 0;
   border: 0;
   outline: none;
-  background: #333333 url("../img/close-btn.svg") left center no-repeat;
+  background: #333333 url("/img/close-btn.svg") left center no-repeat;
   background-size: 1.875em 1.875em;
   overflow: hidden;
   white-space: nowrap;
@@ -2946,8 +2946,8 @@ ul, ol, dl {
 
 @font-face {
   font-family: 'heydings_iconsregular';
-  src: url("../fonts/heydings_icons-webfont.eot");
-  src: url("../fonts/heydings_icons-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/heydings_icons-webfont.woff") format("woff"), url("../fonts/heydings_icons-webfont.ttf") format("truetype"), url("../fonts/heydings_icons-webfont.svg#heydings_iconsregular") format("svg");
+  src: url("/fonts/heydings_icons-webfont.eot");
+  src: url("/fonts/heydings_icons-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/heydings_icons-webfont.woff") format("woff"), url("/fonts/heydings_icons-webfont.ttf") format("truetype"), url("/fonts/heydings_icons-webfont.svg#heydings_iconsregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 .button {
@@ -3023,9 +3023,9 @@ ul, ol, dl {
     margin-bottom: 1em; }
     .open-recess-form .chosen-container .chosen-results li {
       padding: 0.625em; }
-    .open-recess-form .chosen-container a.chosen-single {
+    .open-recess-form .chosen-container option.chosen-single {
       height: 1.79167em; }
-      .open-recess-form .chosen-container a.chosen-single span {
+      .open-recess-form .chosen-container option.chosen-single span {
         color: #333333;
         margin-top: 0.375em;
         margin-left: 0.41667em; }
@@ -3042,7 +3042,7 @@ ul, ol, dl {
 .mygames {
   font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
   font-weight: 400;
-  font-size: 0.625em;
+  font-size: 1.875em;
   position: relative;
   bottom: -0.17143em; }
 
@@ -3126,6 +3126,7 @@ html, body {
 
 .footer {
   background-color: #333333;
+  padding: 1.25em;
   position: fixed;
   bottom: 0;
   width: 100%; }
@@ -3273,7 +3274,7 @@ html, body {
 
 .google-map {
   height: 500px;
-  background: url("../img/sample-google-map.png") no-repeat 50% 25%;
+  background: url("/img/sample-google-map.png") no-repeat 50% 25%;
   margin-bottom: 1.25em; }
 
 @media only screen and (min-width: 768px) {
@@ -3626,7 +3627,7 @@ html, body {
         .sub-filter-bar .option.date input {
           padding-left: 0.35714em;
           height: 2.35714em;
-          background: white url(../img/calendar-icon.svg) no-repeat 95% center;
+          background: white url(/img/calendar-icon.svg) no-repeat 95% center;
           background-size: auto 60%;
           margin-bottom: 0; }
       .sub-filter-bar .option.filter-by {

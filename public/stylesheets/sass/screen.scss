@@ -49,11 +49,11 @@ $orange: #ef7805;
 
 @font-face {
   font-family: 'heydings_iconsregular';
-  src: url('../fonts/heydings_icons-webfont.eot');
-  src: url('../fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/heydings_icons-webfont.woff') format('woff'),
-       url('../fonts/heydings_icons-webfont.ttf') format('truetype'),
-       url('../fonts/heydings_icons-webfont.svg#heydings_iconsregular') format('svg');
+  src: url('/fonts/heydings_icons-webfont.eot');
+  src: url('/fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/heydings_icons-webfont.woff') format('woff'),
+       url('/fonts/heydings_icons-webfont.ttf') format('truetype'),
+       url('/fonts/heydings_icons-webfont.svg#heydings_iconsregular') format('svg');
   font-weight: normal;
   font-style: normal;
  }
@@ -157,7 +157,7 @@ $orange: #ef7805;
  		.chosen-results li {
  			padding:em-calc(10);
  		}
- 		a.chosen-single {
+ 		option.chosen-single {
  			height: em-calc(43, 24);
 	 		span {
 	 			color: $dark-grey;
@@ -185,7 +185,7 @@ $orange: #ef7805;
 
 .mygames {
 		@include sans-serif-regular;
-		font-size:em-calc(10);
+		font-size:em-calc(30);
 		position:relative;
 		bottom:em-calc(-6, 35);
 }
@@ -304,6 +304,7 @@ height: 4em;
 
 .footer {
 	background-color:$dark-grey;
+	padding: em-calc(20);
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -512,7 +513,7 @@ height: 4em;
 
 .google-map {
 	height:500px;
-	background:url('../img/sample-google-map.png') no-repeat 50% 25%;
+	background:url('/img/sample-google-map.png') no-repeat 50% 25%;
 	margin-bottom:em-calc(20);
 }
 
@@ -1002,7 +1003,7 @@ height: 4em;
 				input {
 					padding-left: em-calc(5, 14);
 					height: em-calc(33, 14);
-					background: white url(../img/calendar-icon.svg) no-repeat 95% center;
+					background: white url(/img/calendar-icon.svg) no-repeat 95% center;
 					background-size: auto 60%;
 					margin-bottom:0;
 				}
