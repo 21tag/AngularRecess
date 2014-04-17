@@ -5,7 +5,6 @@ angular.module('angularSeeGame', [])
     //apr13 added
     $scope.moveToFindGames = function(){
       $location.path('/findGames');
-      alert('select a game to join first');
     };
 
     if($rootScope.joinGameList === undefined){
@@ -47,7 +46,7 @@ angular.module('angularSeeGame', [])
       });
 
       //apr12 added
-      $location.path('/myGames');
+      //$location.path('/myGames');
 
 
     };

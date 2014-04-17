@@ -2691,7 +2691,7 @@ a.th {
   padding: 0;
   border: 0;
   outline: none;
-  background: #333333 url("../img/close-btn.svg") left center no-repeat;
+  background: #333333 url("/img/close-btn.svg") left center no-repeat;
   background-size: 1.875em 1.875em;
   overflow: hidden;
   white-space: nowrap;
@@ -2946,8 +2946,8 @@ ul, ol, dl {
 
 @font-face {
   font-family: 'heydings_iconsregular';
-  src: url("../fonts/heydings_icons-webfont.eot");
-  src: url("../fonts/heydings_icons-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/heydings_icons-webfont.woff") format("woff"), url("../fonts/heydings_icons-webfont.ttf") format("truetype"), url("../fonts/heydings_icons-webfont.svg#heydings_iconsregular") format("svg");
+  src: url("/fonts/heydings_icons-webfont.eot");
+  src: url("/fonts/heydings_icons-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/heydings_icons-webfont.woff") format("woff"), url("/fonts/heydings_icons-webfont.ttf") format("truetype"), url("/fonts/heydings_icons-webfont.svg#heydings_iconsregular") format("svg");
   font-weight: normal;
   font-style: normal; }
 .button {
@@ -2997,40 +2997,54 @@ ul, ol, dl {
   .label.orange {
     background-color: #ef7805; }
 
-.open-recess-form .form-label {
+.open-recess-form {
+  margin-top: 2.5em; }
+  .open-recess-form .form-label {
+    font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-bottom: 0.41667em; }
+  .open-recess-form input[type="text"] {
+    font-size: 1.5em;
+    font-family: "adobe-text-pro", georgia, times, sans-serif;
+    font-weight: 400;
+    height: 2em; }
+  .open-recess-form textarea {
+    font-size: 1.5em;
+    font-family: "adobe-text-pro", georgia, times, sans-serif;
+    font-weight: 400;
+    height: 4.16667em; }
+  .open-recess-form .chosen-container {
+    font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    height: 2em;
+    width: 100% !important;
+    margin-bottom: 1em; }
+    .open-recess-form .chosen-container .chosen-results li {
+      padding: 0.625em; }
+    .open-recess-form .chosen-container option.chosen-single {
+      height: 1.79167em; }
+      .open-recess-form .chosen-container option.chosen-single span {
+        color: #333333;
+        margin-top: 0.375em;
+        margin-left: 0.41667em; }
+    .open-recess-form .chosen-container .chosen-single div b {
+      margin-top: 17px; }
+    .open-recess-form .chosen-container .no-results {
+      line-height: 1.4; }
+
+.listagame {
+  float: right;
+  vertical-align: bottom;
+  margin-top: 2.5em; }
+
+.mygames {
   font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
-  font-weight: 500;
-  font-size: 1.5em;
-  margin-bottom: 0.41667em; }
-.open-recess-form input[type="text"] {
-  font-size: 1.5em;
-  font-family: "adobe-text-pro", georgia, times, sans-serif;
   font-weight: 400;
-  height: 2em; }
-.open-recess-form textarea {
-  font-size: 1.5em;
-  font-family: "adobe-text-pro", georgia, times, sans-serif;
-  font-weight: 400;
-  height: 4.16667em; }
-.open-recess-form .chosen-container {
-  font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
-  font-weight: 500;
-  font-size: 1.5em;
-  height: 2em;
-  width: 100% !important;
-  margin-bottom: 1em; }
-  .open-recess-form .chosen-container .chosen-results li {
-    padding: 0.625em; }
-  .open-recess-form .chosen-container a.chosen-single {
-    height: 1.79167em; }
-    .open-recess-form .chosen-container a.chosen-single span {
-      color: #333333;
-      margin-top: 0.375em;
-      margin-left: 0.41667em; }
-  .open-recess-form .chosen-container .chosen-single div b {
-    margin-top: 17px; }
-  .open-recess-form .chosen-container .no-results {
-    line-height: 1.4; }
+  font-size: 1.875em;
+  position: relative;
+  bottom: -0.17143em; }
 
 .open-recess-table {
   width: 100%;
@@ -3094,6 +3108,49 @@ ul, ol, dl {
       bottom: -0.55556em; }
       #nav ul li.selected, #nav ul li:hover {
         background: url("../img/nav-triangle-small.png") no-repeat 64% bottom; }
+
+* {
+  margin: 0; }
+
+html, body {
+  height: 100%; }
+
+#main {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em auto; }
+
+.footer, .push {
+  height: 4em; }
+
+.footer {
+  background-color: #333333;
+  padding: 1.25em;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  .footer .row {
+    padding-top: 0.75em; }
+    @media only screen and (min-width: 768px) {
+      .footer .row {
+        background-size: auto 92%; } }
+    @media only screen and (max-width: 768px) {
+      .footer .row {
+        background-position: 98% bottom;
+        background-size: auto 90%; } }
+  .footer span {
+    font-family: "adobe-text-pro", georgia, times, sans-serif;
+    font-weight: 400;
+    color: white; }
+    @media only screen and (min-width: 768px) {
+      .footer span {
+        font-size: 1em;
+        line-height: .5; } }
+    @media only screen and (max-width: 768px) {
+      .footer span {
+        font-size: 0.75em;
+        text-shadow: 0 0 4px black; } }
 
 .intro-strip {
   background-color: #333333; }
@@ -3217,21 +3274,20 @@ ul, ol, dl {
 
 .google-map {
   height: 500px;
-  background: url("../img/sample-google-map.png") no-repeat 50% 25%;
+  background: url("/img/sample-google-map.png") no-repeat 50% 25%;
   margin-bottom: 1.25em; }
 
 @media only screen and (min-width: 768px) {
   .game-tiles {
-    margin: 0 0 1.25em -1.25em; } }
+    margin: 0 auto 1.25em auto; } }
 @media only screen and (max-width: 768px) {
   .game-tiles {
     margin: 0 0 1.25em 0; } }
 @media only screen and (min-width: 768px) {
   .game-tiles .item {
-    width: 292px;
+    width: 17.8125em;
     position: relative;
-    margin-bottom: 1.25em;
-    margin-left: 1.25em;
+    margin: 0 1.25em 0 auto;
     display: inline-block;
     vertical-align: top; } }
 .game-tiles .item a, .game-tiles .item a:hover, .game-tiles .item a:focus {
@@ -3571,7 +3627,7 @@ ul, ol, dl {
         .sub-filter-bar .option.date input {
           padding-left: 0.35714em;
           height: 2.35714em;
-          background: white url(../img/calendar-icon.svg) no-repeat 95% center;
+          background: white url(/img/calendar-icon.svg) no-repeat 95% center;
           background-size: auto 60%;
           margin-bottom: 0; }
       .sub-filter-bar .option.filter-by {

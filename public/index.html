@@ -14,7 +14,7 @@
   <meta property="og:image" content="http://example.com/sample.jpg" /> <!-- An image URL which should represent your object within the graph -->
 
   <link rel="canonical" href="XXX" /> <!-- Same as meta property og:url -->
-  <!-- <link rel="stylesheet" href="/lib/vendor/chosen-1.0.0/chosen.css"> -->
+  <link rel="stylesheet" href="/lib/vendor/chosen-1.0.0/chosen.css">
   <link rel="stylesheet" href="/stylesheets/sass/screen.css">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   
@@ -95,12 +95,13 @@
         </nav>
         <div id="main" role="main">
           <div ui-view> </div>
-        </div>
-        <div id="footer">
-          Open Recess
+          <div class="push"></div>
         </div>
       </div>
     </div>
+        <div class="footer">
+          <span>Open Recess</span>
+        </div>
   </body>
 
     <!-- /////// END CONTENT /////////////////////////////////// -->         

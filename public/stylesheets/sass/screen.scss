@@ -49,11 +49,11 @@ $orange: #ef7805;
 
 @font-face {
   font-family: 'heydings_iconsregular';
-  src: url('../fonts/heydings_icons-webfont.eot');
-  src: url('../fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/heydings_icons-webfont.woff') format('woff'),
-       url('../fonts/heydings_icons-webfont.ttf') format('truetype'),
-       url('../fonts/heydings_icons-webfont.svg#heydings_iconsregular') format('svg');
+  src: url('/fonts/heydings_icons-webfont.eot');
+  src: url('/fonts/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/heydings_icons-webfont.woff') format('woff'),
+       url('/fonts/heydings_icons-webfont.ttf') format('truetype'),
+       url('/fonts/heydings_icons-webfont.svg#heydings_iconsregular') format('svg');
   font-weight: normal;
   font-style: normal;
  }
@@ -132,6 +132,7 @@ $orange: #ef7805;
 
 
 .open-recess-form { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
+	margin-top: em-calc(40);
 	.form-label {
 		@include sans-serif-medium;
 		font-size:em-calc(24);
@@ -156,7 +157,7 @@ $orange: #ef7805;
  		.chosen-results li {
  			padding:em-calc(10);
  		}
- 		a.chosen-single {
+ 		option.chosen-single {
  			height: em-calc(43, 24);
 	 		span {
 	 			color: $dark-grey;
@@ -173,9 +174,21 @@ $orange: #ef7805;
  	}
 }
 
+.listagame {
+	float: right;
+	vertical-align: bottom;
+	margin-top: em-calc(40);
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// CUSTOM TABLE STYLES ////////////////////////////////////////////////////////////////////////////
 
+.mygames {
+		@include sans-serif-regular;
+		font-size:em-calc(30);
+		position:relative;
+		bottom:em-calc(-6, 35);
+}
 .open-recess-table { // Be sure to attach this class to any form that needs OpenRecess' custom form styles
 	width:100%;
 	@include sans-serif-medium;
@@ -267,6 +280,64 @@ $orange: #ef7805;
 	}
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// PUSH FOOTER /////////////////////////////////////////////////////////////////////
+
+* {
+margin: 0;
+}
+html, body {
+height: 100%;
+}
+#main {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em auto;
+}
+.footer, .push {
+height: 4em;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////// FOOTER /////////////////////////////////////////////////////////////////////
+
+.footer {
+	background-color:$dark-grey;
+	padding: em-calc(20);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	.row {
+		padding-top:em-calc(12);
+
+
+		@include media(desktop) {
+			background-size: auto 92%;
+		}
+
+		@include media(mobile) {
+			background-position: 98% bottom;
+			background-size: auto 90%;
+		}
+
+	}
+	span {
+		@include serif-regular;
+		color:white;
+
+		@include media(desktop) {
+			font-size: em-calc(16);
+			line-height:.5;
+		}
+
+		@include media(mobile) {
+			font-size: em-calc(12);
+			text-shadow: 0 0 4px rgba(0,0,0,1);
+		}
+
+	}
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// HOMEPAGE INTRO /////////////////////////////////////////////////////////////////////
@@ -442,7 +513,7 @@ $orange: #ef7805;
 
 .google-map {
 	height:500px;
-	background:url('../img/sample-google-map.png') no-repeat 50% 25%;
+	background:url('/img/sample-google-map.png') no-repeat 50% 25%;
 	margin-bottom:em-calc(20);
 }
 
@@ -452,7 +523,7 @@ $orange: #ef7805;
 	.game-tiles {
 		
 		@include media(desktop) {
-			margin: 0 0 em-calc(20) em-calc(-20);
+			margin:0 auto em-calc(20) auto;
 		}
 
 		@include media(mobile) {
@@ -462,10 +533,9 @@ $orange: #ef7805;
 		.item {
 			
 			@include media(desktop) {
-				width:292px;
+				width: em-calc(285);
 				position:relative;
-				margin-bottom:em-calc(20);
-				margin-left:em-calc(20);
+				margin: 0 em-calc(20) 0 auto;
 				display: inline-block;
 				vertical-align:top;
 			}
@@ -933,7 +1003,7 @@ $orange: #ef7805;
 				input {
 					padding-left: em-calc(5, 14);
 					height: em-calc(33, 14);
-					background: white url(../img/calendar-icon.svg) no-repeat 95% center;
+					background: white url(/img/calendar-icon.svg) no-repeat 95% center;
 					background-size: auto 60%;
 					margin-bottom:0;
 				}

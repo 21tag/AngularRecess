@@ -14,15 +14,11 @@
         Show me:
       </div>
       <div class="small-12 large-5 columns game-type-container">
-      <!-- <input type='text' placeholder='All Games' ng-model='search.gameType'> -->
-      
-
-      <!-- 15Apr added -->
+        <div class="chosen-container chosen-container-single">
       <select class="game-type chosen-select" ng-options='sport for sport in sports' ng-model='search.gameType'>
-        <option value="">All Games</option>
+        <option class="chosen-single" value="">All Games</option>
       </select>
-
-
+        </div>
       </div>
       <div class="large-1 columns in hide-for-small">
         in
@@ -51,17 +47,12 @@
     <div class="option date"> 
       <input type='text' class="datepicker" ng-model='search.gameDate' placeholder='Date'>
     </div>
-
-    
-    <!-- 15Apr added -->
     <div class="option filter-by">
       <span>Players Needed: </span>
     </div>
     <div class="option players-needed">
       <input type='text' ng-model='search.playersNeeded'>
     </div>
-
-
   </div>
 </div>
 
@@ -72,27 +63,19 @@
 </div>
 
 
-    <div class="game-tiles js-masonry"
-          data-masonry-options='{ "columnWidth": 292, "itemSelector": ".item", "gutter": 20 }'>
-<!-- 
-          <span ng-repeat='header in headers'>{{ header }}</span> -->
-
-<!--         <ul> -->
-            <!-- <li ng-repeat='games in game | filter:search:strict'> -->
-              <div class="item" ng-repeat="games in game | filter:search:strict | filter:filterOrg" ng-click='selectGame(games, $index)'>
-                    <!-- <a ui-sref="#"> -->
-                    <img src="style/img/sample-940x940.jpg" alt="#" />
-                      <div class="caption">
-                      <h2 class="hide-for-small">{{ games.gameName }}</h2>
-                      <h1>{{ games.gameDescription }}</h1>
-                      <time datetime="2009-11-13T20:00Z">
-                        <span class="hide-for-medium hide-for-large hide-for-xlarge">
-                          {{ games.gameDate | date:'yyyy-MM-dd' }} {{ games.gameTime }}
-                        </span>
-                      </time>
-                    </div>
-                    </a>
-                </div>
-              </div>
-
-
+<div class="row game-tiles js-masonry"
+      data-masonry-options='{ "columnWidth": 292, "itemSelector": ".item", "gutter": 20 }'>
+  <div class="item" ng-repeat="games in game | filter:search:strict | filter:filterOrg" ng-click='selectGame(games, $index)'>
+    <img src="/img/sample-940x940.jpg" alt="#" />
+    <div class="caption">
+      <h2 class="hide-for-small">{{ games.gameName }}</h2>
+      <h1>{{ games.gameDescription }}</h1>
+      <time datetime="2009-11-13T20:00Z">
+        <span class="hide-for-medium hide-for-large hide-for-xlarge">
+          {{ games.gameDate | date:'yyyy-MM-dd' }} {{ games.gameTime }}
+        </span>
+      </time>
+    </div>
+    </a>
+  </div>
+</div>
