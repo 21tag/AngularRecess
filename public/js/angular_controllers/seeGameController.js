@@ -1,30 +1,26 @@
 angular.module('angularSeeGame', ['leaflet-directive'])
-  .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', 'leafletData', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames, leafletData) {
-    $scope.map = function($scope, leafletData) {
-      angular.extend($scope, {
-          center: {
-              lat: 40.095,
-              lng: -3.823,
-              zoom: 4
-          },
-          markers: {
-            Madrid: {
-              lat: 40.095,
-              lng: -3.823,
-              message: "Drag me to your position",
-              focus: true,
-              draggable: true
-            }
-          },
-          defaults: {
-            tileLayer: "http://a.tiles.mapbox.com/v3/mapbox.world-light/{z}/{x}/{y}.png"
+  .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
+
+    angular.extend($scope, {
+        markers: {
+          Madrid: {
+            lat: 40.095,
+            lng: -3.823,
+            message: "Drag me to your position",
+            focus: true,
+            draggable: true,
+            scrollWheelZoom: false
           }
-      });
-    };
+        },
+        defaults: {
+          tileLayer: "http://a.tiles.mapbox.com/v3/mapbox.world-light/{z}/{x}/{y}.png"
+        }
+    })
 
     //apr13 added
     $scope.moveToFindGames = function(){
-      $location.path('/findGames');
+      //$location.path('/findGames');
+      console.log($rootScope.joinGameList);
     };
 
     if($rootScope.joinGameList === undefined){
