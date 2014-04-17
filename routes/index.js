@@ -79,13 +79,15 @@ module.exports = function(app){
 
       //apr16 added
       invitedPlayers: req.body.playerArray,
+      confirmedPlayers: req.body.confirmedPlayers,
+
       manager: req.body.user,
       gameCode : temp,
       gameDate : req.body.gameDate,
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
-
+      
       //added
       gameDescription : req.body.gameDescription,
       //
@@ -108,18 +110,47 @@ module.exports = function(app){
     });
   });
 
+  // app.put('/game', function(req, res, next){
+  //   console.log('the req', req.body);
+  //   var code = req.body.code;
+  //   var digits = req.body.phone;
+  //   Game.findOneAndUpdate(
+  //   {
+  //     _id : code,
+  //     confirmedPlayers : { $nin: [digits] }
+  //   },
+  //   {
+  //     $pull : { invitedPlayers : digits },
+  //     $addToSet : { confirmedPlayers : digits },
+  //     $inc : { confirmedPlayersCount : 1 }
+  //   },
+  //   function(err, thisGame){
+  //     if(err) {
+  //       console.log('error', err);
+  //       //return 'no such game found';
+  //     } else {
+  //       console.log(thisGame);
+  //       //twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);
+  //     }
+  //   });
+  //   res.json(200, 'updated game');
+  // });
+
+
+  //apr16 added
   app.put('/game', function(req, res, next){
     console.log('the req', req.body);
     var code = req.body.code;
-    var digits = req.body.phone;
+    var currentUserId = req.body.id;
+    var currentUserInfo = req.body;
     Game.findOneAndUpdate(
     {
       _id : code,
-      confirmedPlayers : { $nin: [digits] }
+      confirmedPlayers : { $nin: {'id':currentUserId}}
     },
     {
-      $pull : { invitedPlayers : digits },
-      $addToSet : { confirmedPlayers : digits },
+      $pull : { invitedPlayers : currentUserInfo },
+      $addToSet : { confirmedPlayers : currentUserInfo },
       $inc : { confirmedPlayersCount : 1 }
     },
     function(err, thisGame){
@@ -133,6 +164,7 @@ module.exports = function(app){
     });
     res.json(200, 'updated game');
   });
+
 
   app.get('/games', function(req, res, next) {
     // TODO: implement error handling

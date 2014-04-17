@@ -1,7 +1,7 @@
 angular.module('angularSeeGame', [])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
     
-
+     
     //apr13 added
     $scope.moveToFindGames = function(){
       $location.path('/findGames');
@@ -51,15 +51,27 @@ angular.module('angularSeeGame', [])
 
     };
 
+    // $scope.joinGame = function () {
+    //   $scope.gameToSend = {};
+    //   $scope.gameToSend.code = $scope.gameId;
+    //   $scope.gameToSend.phone = $rootScope.currentUser.phone;
+    //   $scope.addUserToGame();
+    //   $scope.userToSend = {};
+    //   $scope.userToSend.id = $rootScope.currentUser.id;
+    //   $scope.userToSend.game = $scope.gameId;
+
+    // };
+    
+    //apr16 added
     $scope.joinGame = function () {
       $scope.gameToSend = {};
       $scope.gameToSend.code = $scope.gameId;
-      $scope.gameToSend.phone = $rootScope.currentUser.phone;
+      $scope.gameToSend.display_name = $rootScope.currentUser.display_name;
+      $scope.gameToSend.email = $rootScope.currentUser.email;
       $scope.addUserToGame();
       $scope.userToSend = {};
       $scope.userToSend.id = $rootScope.currentUser.id;
       $scope.userToSend.game = $scope.gameId;
-
     };
 
   }])
