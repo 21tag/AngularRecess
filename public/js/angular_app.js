@@ -28,7 +28,7 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
     $rootScope.getUsers = function(){
       getAllUsers.get(function(users){
         $rootScope.allUsers = users;
-        // console.log('$rootScope.allUser', $rootScope.allUsers);
+        console.log('$rootScope.allUser', $rootScope.allUsers);
       });
     };
 

@@ -46,7 +46,7 @@ angular.module('angularListAGame', [])
     minimumPlayers: 'undefined',
     playerLimit: 'undefined',
     playerArray: [],
-
+    confirmedPlayers: [],
     //12apr added
     user: 'undefined'
   };
@@ -100,8 +100,22 @@ angular.module('angularListAGame', [])
 
 
   //apr16 added
-  // console.log($rootScope.allUsers);
-  $scope.allAvailableUsers = _.filter($rootScope.allUsers, function(item){return item._id !== $rootScope.currentUser.id});
+  // console.log('$rootScope.allUsers', $rootScope.allUsers);
+  // console.log('hit', _.filter($rootScope.allUsers, function(item){
+  //   return item._id !== $rootScope.currentUser.id
+  // }));
+  
+  var allAvailableUsers = _.map(_.filter($rootScope.allUsers, function(item){
+    return item._id !== $rootScope.currentUser.id
+  }), function(item){
+    // console.log(item);
+    // console.log(_.pick(item, '_id', 'email', 'display_name'));
+    return _.pick(item, '_id', 'email', 'display_name');
+  });
+  console.log('allAvailableUsers', allAvailableUsers);
+
+  // $scope.allAvailableUsers = $rootScope.allUsers;
+  $scope.allAvailableUsers = allAvailableUsers;
 
   $scope.addToInvitePlayer = function(user){
     $scope.gameInfo.playerArray.push(user);
@@ -129,6 +143,8 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.gameTime = time;
     $scope.gameInfo.minimumPlayers = minimum;
     $scope.gameInfo.playerLimit = maximum;
+    $scope.gameInfo.confirmedPlayers.push({'code':$rootScope.currentUser.id, 'display_name':$rootScope.currentUser.display_name, 'email':$rootScope.currentUser.email});
+    console.log($scope.gameInfo.confirmedPlayers);
     // $scope.gameInfo.playerArray  = invited;
     console.log($scope.gameInfo.playerArray);
     // if($scope.gameInfo.playerArray.length ){
@@ -140,12 +156,13 @@ angular.module('angularListAGame', [])
     console.log('$rootScope.currentUser', $rootScope.currentUser);
     $scope.gameInfo.user = $rootScope.currentUser.id;
     console.log('$scope.gameInfo', $scope.gameInfo);
+
     //apr14 added
     if(!_.contains($scope.gameInfo, undefined)){
       $scope.sendGame($scope.gameInfo);
     }
   };
-
+  
   $scope.sendGame = function(game) {
     angularListGames.post('/game', game, function(data) {
       console.log('posted');
