@@ -4,13 +4,13 @@
       <div class="form-label">Create an Account</div>
       </br>
       <div class="form-label">Name:</div>
-      <input type='text' name='fullName' ng-model='userInfo.fullName'required>
+      <input type="text" name="fullName" ng-model="userInfo.fullName"required>
       <div class="form-label">Email:</div>
-      <input type='text' name='email' ng-model='userInfo.email' required>
-      <div class="form-label">Phone Number:</div><input type='text' name='phoneNumber' ng-model='userInfo.phoneNumber' required>
+      <input type="text" name="email" ng-model="userInfo.email" required>
+      <div class="form-label">Phone Number:</div><input type="text" name="phoneNumber" ng-model="userInfo.phoneNumber" required>
       <div class="form-label">Password:</div>
-      <input type='password' name='password' ng-model='userInfo.password' required>
-      <input class="button teal medium join-this-game" type='submit' value='submit' ng-disabled='signupForm.$invalid' ng-click='submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)'>
+      <input type="password" name="password" ng-model="userInfo.password" required>
+      <input class="button teal medium join-this-game" type="submit" value="submit" ng-disabled="signupForm.$invalid" ng-click="submitTheForm(userInfo.fullName, userInfo.email, userInfo.phoneNumber, userInfo.password)">
       <div>{{response}}</div>
     </div>
   </div>

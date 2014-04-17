@@ -2,10 +2,8 @@ var Games = require('../models/game.js');
 
 module.exports = {
 
-
   findById: function(req, res) {
     var id = req.params.id;
-
     Games.findById(id, function(err, game) {
       if (err) {
         console.log(err);
@@ -16,16 +14,13 @@ module.exports = {
 
   findOneAndUpdate: function(req, res) {
     var id = req.params.id;
-
     Games.findOneAndUpdate(id, function(err, game) {
       if (err) {
         console.log(err);
       }
-      console.log('&&&&&&', game);
       res.json(200, game);
     });
   }
-
 };
 
 

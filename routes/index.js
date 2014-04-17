@@ -51,43 +51,10 @@ module.exports = function(app){
   app.get('/usersQuery/:id', users.findQuery);
 
   app.post('/users', users.createUser);
-  app.put('/users', function(req, res, next) {
-
-    var id = req.body.id;
-    var game = req.body.game;
-    User.findOneAndUpdate(
-    {
-      _id : id,
-      upcomingGames : { $nin: [game] }
-    },
-    {
-      $addToSet : { upcomingGames : game }
-    },
-    function(err, thisUser){
-      if(err) {
-        console.log('error', err);
-      } else {
-        console.log(thisUser);
-      }
-    });
-    res.json(200, 'user updated');
-  });
+  app.put('/users', users.updateGames);
   app.delete('/users/:id', users.deleteUser);
 
-  app.get('/user/current', function(req, res ,next){
-    if(req.user) {
-      // Return subset of fields
-      var user = {};
-      user.email = req.user.email;
-      user.phone = req.user.phone;
-      user.display_name = req.user.display_name;
-      user.upcomingGames = req.user.upcomingGames;
-      user.gamesPlayed = req.user.gamesPlayed;
-      user.id = req.user._id;
-      return res.json(user);
-    }
-    else return res.json();
-  });
+  app.get('/user/current', users.getCurrentUser);
 
   app.get('/logout', function(req, res, next){
     // req.logout()  // I believe we'll need this line of code ~Andrew

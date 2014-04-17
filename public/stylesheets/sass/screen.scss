@@ -274,7 +274,7 @@ $orange: #ef7805;
 			position:relative;
 			bottom:em-calc(-10, 18);
 			&.selected, &:hover {
-			background: url('../img/nav-triangle-small.png') no-repeat 64% bottom;
+			background: url('/img/nav-triangle-small.png') no-repeat 64% bottom;
 			}
 		}
 	}
@@ -535,7 +535,7 @@ height: 4em;
 			@include media(desktop) {
 				width: em-calc(285);
 				position:relative;
-				margin: 0 em-calc(20) 0 auto;
+				margin: em-calc(20) em-calc(20) 0 auto;
 				display: inline-block;
 				vertical-align:top;
 			}

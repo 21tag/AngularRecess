@@ -3107,7 +3107,7 @@ ul, ol, dl {
       position: relative;
       bottom: -0.55556em; }
       #nav ul li.selected, #nav ul li:hover {
-        background: url("../img/nav-triangle-small.png") no-repeat 64% bottom; }
+        background: url("/img/nav-triangle-small.png") no-repeat 64% bottom; }
 
 * {
   margin: 0; }
@@ -3287,7 +3287,7 @@ html, body {
   .game-tiles .item {
     width: 17.8125em;
     position: relative;
-    margin: 0 1.25em 0 auto;
+    margin: 1.25em 1.25em 0 auto;
     display: inline-block;
     vertical-align: top; } }
 .game-tiles .item a, .game-tiles .item a:hover, .game-tiles .item a:focus {

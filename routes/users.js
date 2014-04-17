@@ -71,5 +71,42 @@ module.exports = {
         res.json(400);
       }
    });
+  },
+
+  updateGames: function(req, res, next) {
+
+    var id = req.body.id;
+    var game = req.body.game;
+    User.findOneAndUpdate(
+    {
+      _id : id,
+      upcomingGames : { $nin: [game] }
+    },
+    {
+      $addToSet : { upcomingGames : game }
+    },
+    function(err, thisUser){
+      if(err) {
+        console.log('error', err);
+      } else {
+        console.log(thisUser);
+      }
+    });
+    res.json(200, 'user updated');
+  },
+
+  getCurrentUser: function(req, res ,next){
+    if(req.user) {
+      // Return subset of fields
+      var user = {};
+      user.email = req.user.email;
+      user.phone = req.user.phone;
+      user.display_name = req.user.display_name;
+      user.upcomingGames = req.user.upcomingGames;
+      user.gamesPlayed = req.user.gamesPlayed;
+      user.id = req.user._id;
+      return res.json(user);
+    }
+    else return res.json();
   }
 };

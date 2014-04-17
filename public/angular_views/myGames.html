@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat='game in myUpcomingGames track by $index' ng-click='showDetails = !showDetails'>
+          <tr ng-repeat="game in myUpcomingGames track by $index" ng-click="showDetails = !showDetails">
             <td>{{game.gameName}}</td> 
             <td>{{game.gameDescription}}</td> 
             <td>{{game.gameType}}</td> 
@@ -23,7 +23,7 @@
 
 
             <!-- apr15 need managers to be shown -->
-            <td ng-show='showDetails'>msg: {{game.messages}} max: {{game.playerLimit}} min: {{game.minimumPlayers}} </td>
+            <td ng-show="showDetails">msg: {{game.messages}} max: {{game.playerLimit}} min: {{game.minimumPlayers}} </td>
 
           </tr>
         </tbody>
