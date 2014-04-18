@@ -10,6 +10,15 @@ angular.module('angularFindGames', [])
   //   playersLimit: 'undefined',
   //   playerArray: 'undefined',
   // };
+
+  $scope.map = {
+    center: {
+      latitude: 37.7836083,
+      longitude: -122.40927020000001
+    },
+    zoom: 13
+  };
+
   $scope.game = [];
 
   $scope.sports = [

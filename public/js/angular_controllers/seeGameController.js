@@ -13,6 +13,7 @@ angular.module('angularSeeGame', ['google-maps'])
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
       $scope.map.center.longitude = position.coords.longitude;
+      console.log(position);
     });
     };
 
