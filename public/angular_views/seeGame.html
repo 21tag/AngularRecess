@@ -1,6 +1,8 @@
 <div class="row game-detail">
   <div class="small-12 columns">
-    <leaflet markers="markers"></leaflet>
+    <div>
+        <google-map center="map.center" zoom="map.zoom"></google-map>
+    </div>
     <img src="/img/sample-290x290.jpg" alt="#" />
     <div class="primary-info row">
       <h2 class="hide-for-small">{{game.gameType}}</h2>
@@ -9,6 +11,7 @@
       </br>
       <div class="button-group">
         <a class="button teal medium join-this-game" ng-click="joinGame()">Join this game!</a>
+        <a class="button teal medium join-this-game" ng-click="mapUser()">Find me!</a>
         <div class="settings-holder">
           <ul class="button grey medium settings">
             <li class="icon">&#9881;</li>

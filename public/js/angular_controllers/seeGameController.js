@@ -1,10 +1,25 @@
-angular.module('angularSeeGame', [])
+angular.module('angularSeeGame', ['google-maps'])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
-    
-     
+
+    $scope.map = {
+      center: {
+        latitude: 45,
+        longitude: -73
+      },
+      zoom: 8
+    };
+
+    $scope.mapUser = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+    });
+    };
+
     //apr13 added
     $scope.moveToFindGames = function(){
-      $location.path('/findGames');
+      //$location.path('/findGames');
+      console.log($rootScope.joinGameList);
     };
 
     if($rootScope.joinGameList === undefined){
@@ -51,27 +66,15 @@ angular.module('angularSeeGame', [])
 
     };
 
-    // $scope.joinGame = function () {
-    //   $scope.gameToSend = {};
-    //   $scope.gameToSend.code = $scope.gameId;
-    //   $scope.gameToSend.phone = $rootScope.currentUser.phone;
-    //   $scope.addUserToGame();
-    //   $scope.userToSend = {};
-    //   $scope.userToSend.id = $rootScope.currentUser.id;
-    //   $scope.userToSend.game = $scope.gameId;
-
-    // };
-    
-    //apr16 added
     $scope.joinGame = function () {
       $scope.gameToSend = {};
       $scope.gameToSend.code = $scope.gameId;
-      $scope.gameToSend.display_name = $rootScope.currentUser.display_name;
-      $scope.gameToSend.email = $rootScope.currentUser.email;
+      $scope.gameToSend.phone = $rootScope.currentUser.phone;
       $scope.addUserToGame();
       $scope.userToSend = {};
       $scope.userToSend.id = $rootScope.currentUser.id;
       $scope.userToSend.game = $scope.gameId;
+
     };
 
   }])
@@ -119,4 +122,3 @@ angular.module('angularSeeGame', [])
       }
     };
   }]);
-

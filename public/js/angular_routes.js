@@ -53,6 +53,6 @@ angular.module('angularAppRoutes', ['ui.router'])
       })
       ;
 
-      $urlRouterProvider.otherwise('/findGames.html');
+      $urlRouterProvider.otherwise('/findGames');
 
   }]);
