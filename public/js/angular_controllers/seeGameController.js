@@ -9,12 +9,19 @@ angular.module('angularSeeGame', ['google-maps'])
       zoom: 8
     };
 
+    $scope.marker = {latitude: 45, longitude: -73};
+
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
       $scope.map.center.longitude = position.coords.longitude;
       console.log(position);
     });
+    };
+
+    $scope.setMarker = function() {
+      
+      console.log(marker.getposition());
     };
 
     //apr13 added
