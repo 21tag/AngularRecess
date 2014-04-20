@@ -4,20 +4,20 @@
   <div class="row">
     <div class="small-12 large-6 columns">
       <div class="form-label">What kind of game?</div>
-      <select class="game-type chosen-select" ng-options="sport for sport in sports" ng-model="game.type">
+      <select class="game-type chosen-select" ng-options="sport for sport in sports" ng-model="game.type" required>
         <option value="">All Games</option>
       </select>
     </div>
     <div class="small-12  large-6 columns">
       <div class="form-label">Give it a catchy title</div>
-      <input type="text" name="name" ng-model="game.name"/>
+      <input class = 'sanitize' type="text" name="name" ng-model="game.name" required>
     </div>
   </div>
   
   <div class="row">
     <div class="small-12 columns">
       <div class="form-label">Give it an exciting description:</div>
-      <textarea type="text" name="desc" ng-model="game.desc"></textarea>
+      <textarea type="text" name="desc" ng-model="game.desc" required></textarea>
     </div>
   </div>
 
@@ -30,34 +30,43 @@
 
   <div class="row">
     <div class="small-12 large-6 columns">
-      <div class="form-label">When"s it happening?</div>
-      <input class="datepicker" type="date" name="date" ng-model="game.date" />
+      <div class="form-label">When's it happening?</div>
+      <input class="sanitize datepicker" type="date" name="date" ng-model="game.date" min='{{date.start}}' max='{{date.end}}' required>
     </div>
     <div class="small-12 large-6 columns">
       <div class="form-label">What time?</div>
-      <input type="time" name="time" ng-model="game.time" />
+      <input class="sanitize" type="time" name="time" ng-model="game.time" required>
     </div>
   </div>
-
 
   <div class="row"> 
     <div class="small-12 large-6 columns">
       <div class="form-label">Minimum players</div>
-      <input type="number" name="min" min="0" ng-model="game.min">
+      <input class="sanitize" type="number" name="min" min="0" ng-model="game.min" required>
     </div>
 
     <div class="small-12 large-6 columns">
       <div class="form-label">Maximum players</div>
-      <input type="number" name="max" min="0" ng-model="game.max">
+      <input class="sanitize" type="number" name="max" min="0" ng-model="game.max" required>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row">    
     <div class="small-12 large-6 columns">
       <div class="form-label">Invited Players</div>
-      <input type="text" name="invite" ng-model="game.invite">
+      <h1 style='color:blue;'> click on names to add to the Invited Players list</h1>
+      <div ng-repeat='user in allAvailableUsers | filter' ng-click='addToInvitePlayer(user) ;removeFromAllusers($index)'> 
+        <h2> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
+      </div>
+      <h1 style='color:blue;'> Invited Players list </h1>
+      <div ng-repeat='user in gameInfo.playerArray' ng-click='addToAllUsers(user) ; removeFromInvitePlayer($index)'> 
+        <h2> Name: {{user.display_name}} / Email: {{user.email}}</h2>
+      </div>
     </div>
-    <input class="button teal medium join-this-game listagame" type="submit" value="submit" ng-click="submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)">
+  </div>
+  
+  <div class="row">
+    <input class="button teal medium join-this-game listagame" type="submit" value="submit" ng-click="submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)" required>
   </div>
 </form>
 

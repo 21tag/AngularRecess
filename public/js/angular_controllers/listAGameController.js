@@ -1,15 +1,6 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser',function($scope, $rootScope, angularListGames) {
-  // $scope.game = {
-  //   gameName: 'undefined',
-  //   gameType: 'undefined',
-  //   gameDescription: 'undefined',
-  //   gameDate: 'undefined',
-  //   gameTime: 'undefined',
-  //   minimumPlayers: 'undefined',
-  //   playersLimit: 'undefined',
-  //   playerArray: 'undefined',
-  // };
+.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'getAllUsers',function($scope, $rootScope, angularListGames, getAllUsers) {
+  
   $scope.date = {
     start: 'undefined',
     end: 'undefined'
@@ -24,7 +15,6 @@ angular.module('angularListAGame', [])
   }
   $scope.date.start = dateMaker(0,0,0);
   $scope.date.end = dateMaker(1,0,0);
-  console.log($scope.date);
 
   $scope.headers = [
     'gameName',
@@ -98,40 +88,39 @@ angular.module('angularListAGame', [])
     'Other',
   ];
 
+  var getUsers = function(){
+    getAllUsers.get()
+      .then(function(users){
+        var allAvailableUsers = _.map(_.filter(users, function(item){
+          return item._id !== $rootScope.currentUser.id
+        }), function(item){
+          return _.pick(item, '_id', 'email', 'display_name');
+        });
+        $scope.allAvailableUsers = allAvailableUsers;
+        console.log('$scope.allAvailableUsers', $scope.allAvailableUsers);
+      });
+  };
 
-  //apr16 added
-  // console.log('$rootScope.allUsers', $rootScope.allUsers);
-  // console.log('hit', _.filter($rootScope.allUsers, function(item){
-  //   return item._id !== $rootScope.currentUser.id
-  // }));
-  
-  var allAvailableUsers = _.map(_.filter($rootScope.allUsers, function(item){
-    return item._id !== $rootScope.currentUser.id
-  }), function(item){
-    // console.log(item);
-    // console.log(_.pick(item, '_id', 'email', 'display_name'));
-    return _.pick(item, '_id', 'email', 'display_name');
-  });
-  console.log('allAvailableUsers', allAvailableUsers);
-
-  // $scope.allAvailableUsers = $rootScope.allUsers;
-  $scope.allAvailableUsers = allAvailableUsers;
+  getUsers();
 
   $scope.addToInvitePlayer = function(user){
     $scope.gameInfo.playerArray.push(user);
+    // console.log($scope.gameInfo.playerArray);
   };
 
   $scope.removeFromAllusers = function(index){
-    $scope.allAvailableUsers[index].refNo = index;
     $scope.allAvailableUsers.splice(index, 1);
+    // console.log($scope.allAvailableUsers);
   };
   
   $scope.addToAllUsers = function(user){
-    $scope.allAvailableUsers.splice(user.refNo, 0, user);
+    $scope.allAvailableUsers.push(user);
+    // console.log($scope.allAvailableUsers);
   };
 
   $scope.removeFromInvitePlayer = function(index){
     $scope.gameInfo.playerArray.splice(index,1);
+    // console.log($scope.gameInfo.playerArray);
   };
 
 
@@ -145,41 +134,36 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.playerLimit = maximum;
     $scope.gameInfo.confirmedPlayers.push({'code':$rootScope.currentUser.id, 'display_name':$rootScope.currentUser.display_name, 'email':$rootScope.currentUser.email});
     console.log($scope.gameInfo.confirmedPlayers);
-    // $scope.gameInfo.playerArray  = invited;
     console.log($scope.gameInfo.playerArray);
-    // if($scope.gameInfo.playerArray.length ){
-    //   $scope.gameInfo.playerArray = undefined;
-    // }
     console.log($scope.gameInfo);
 
-    //apr12 added
     console.log('$rootScope.currentUser', $rootScope.currentUser);
     $scope.gameInfo.user = $rootScope.currentUser.id;
     console.log('$scope.gameInfo', $scope.gameInfo);
 
-    //apr14 added
-    if(!_.contains($scope.gameInfo, undefined)){
+    if(!_.contains($scope.gameInfo, undefined) && ($scope.date.start < day && $scope.date.end > day) && maximum > minimum){
       $scope.sendGame($scope.gameInfo);
+      alert('game submitted');
+
+    }else if(maximum < minimum){
+      alert('check max and min num');
     }
   };
   
   $scope.sendGame = function(game) {
-    angularListGames.post('/game', game, function(data) {
+    angularListGames.post('/game', game, function(data) {      
       console.log('posted');
+      $('form .sanitize').val('');
+      $('form textarea').val('');
+      $('select').prop('selectedIndex', 0);
+      var num = $scope.gameInfo.playerArray.length;
+      for(var i = 0; i < num; i++){
+        $scope.allAvailableUsers.push($scope.gameInfo.playerArray.pop());
+      }
     });
   };
 
-  
-//4/8
-  // $scope.retreiveGames = function(){
-  //   angularGames.get('/games', function(data) {
-  //     $scope.game = data;
-  //     console.log('list retrieve success');
-  //   });
-  // };
 
-  // $scope.retreiveGames();
-//
 }])
 
 .factory('angularListGames', ['$http', function($http){
@@ -193,33 +177,33 @@ angular.module('angularListAGame', [])
         console.log(error);
       });
     },
-//4/8
-    // get: function(url ,cb) {
-    //   var getData = $http.get(url);
-    //   getData.success(function(data) {
-    //     cb(data);
-    //   });
-    //   getData.error(function(error) {
-    //     console.log(error);
-    //   });
-    // }
-//
-
   };
 }])
 
-.factory('angularGetQueryUser', ['$http', function($http) {
-    return {
-      get: function(name, cb) {
-        var getGames = $http.get('/users/' + name, cb);
-        getGames.success(function(data) {
-          cb(data);
-        });
-        getGames.error(function() {
-          cb(undefined, 'Could not retrieve games');
-        });
+// .factory('angularGetQueryUser', ['$http', function($http) {
+//     return {
+//       get: function(name, cb) {
+//         var getGames = $http.get('/users/' + name, cb);
+//         getGames.success(function(data) {
+//           cb(data);
+//         });
+//         getGames.error(function() {
+//           cb(undefined, 'Could not retrieve games');
+//         });
+//       }
+//     };
+// }]);
+
+  .factory('getAllUsers', ['$http', function($http){
+    return{
+      get: function(cb) {
+          return $http.get('/users')
+          .then(function(response) {
+            return response.data;
+          },function(error) {
+            console.log(error);
+          }
+          );
       }
-    };
-}]);
-
-
+    }
+  }]);
