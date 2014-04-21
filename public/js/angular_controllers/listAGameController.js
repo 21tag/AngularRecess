@@ -37,7 +37,6 @@ angular.module('angularListAGame', [])
     playerLimit: 'undefined',
     playerArray: [],
     confirmedPlayers: [],
-    //12apr added
     user: 'undefined'
   };
 
@@ -90,39 +89,12 @@ angular.module('angularListAGame', [])
 
   $scope.queryUser = [];
  
-  var getUsers = function(){
-    getAllUsers.get()
-      .then(function(users){
-        var allAvailableUsers = _.map(_.filter(users, function(item){
-          return item._id !== $rootScope.currentUser.id
-        }), function(item){
-          return _.pick(item, '_id', 'email', 'display_name');
-        });
-        $scope.allAvailableUsers = allAvailableUsers;
-        console.log('$scope.allAvailableUsers', $scope.allAvailableUsers);
-      });
-  };
-
-  getUsers();
-
   $scope.addToInvitePlayer = function(user){
     $scope.gameInfo.playerArray.push(user);
-    // console.log($scope.gameInfo.playerArray);
-  };
-
-  $scope.removeFromAllusers = function(index){
-    $scope.allAvailableUsers.splice(index, 1);
-    // console.log($scope.allAvailableUsers);
-  };
-  
-  $scope.addToAllUsers = function(user){
-    $scope.allAvailableUsers.push(user);
-    // console.log($scope.allAvailableUsers);
   };
 
   $scope.removeFromInvitePlayer = function(index){
     $scope.gameInfo.playerArray.splice(index,1);
-    // console.log($scope.gameInfo.playerArray);
   };
 
 
@@ -164,7 +136,6 @@ angular.module('angularListAGame', [])
       }
     });
   };
-
 
   $scope.query = function (game) {
     angularGetQueryUser.get(game, function(returnedGame, response) {
@@ -208,18 +179,4 @@ angular.module('angularListAGame', [])
         });
       }
     };
-}])
-
-.factory('getAllUsers', ['$http', function($http){
-  return{
-    get: function(cb) {
-        return $http.get('/users')
-        .then(function(response) {
-          return response.data;
-        },function(error) {
-          console.log(error);
-        }
-        );
-    }
-  }
 }]);

@@ -54,14 +54,22 @@
   <div class="row">    
     <div class="small-12 large-6 columns">
       <div class="form-label">Invited Players</div>
+      <h1 style='color:blue;'> find players to add to the Invited Players list by inserting a name below and click find</h1>
+      <input class="sanitize" type="text" ng-model="queryInput">
+        
+          <input class="button" type="submit" value="find" ng-click="query(queryInput)">
+      <br>
+      <br>
       <h1 style='color:blue;'> click on names to add to the Invited Players list</h1>
-      <div ng-repeat='user in allAvailableUsers | filter' ng-click='addToInvitePlayer(user) ;removeFromAllusers($index)'> 
+
+      <div ng-repeat='user in queryUser | filter' ng-click='addToInvitePlayer(user)'>
         <h2> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
       </div>
       <h1 style='color:blue;'> Invited Players list </h1>
-      <div ng-repeat='user in gameInfo.playerArray' ng-click='addToAllUsers(user) ; removeFromInvitePlayer($index)'> 
+      <div ng-repeat='user in gameInfo.playerArray' ng-click='removeFromInvitePlayer($index)'> 
         <h2> Name: {{user.display_name}} / Email: {{user.email}}</h2>
       </div>
+    
     </div>
   </div>
   
@@ -69,17 +77,3 @@
     <input class="button teal medium join-this-game listagame" type="submit" value="submit" ng-click="submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)" required>
   </div>
 </form>
-
-
-<div class="small-12  large-6 columns">
-  <label> Users: </label>
-  <input class = 'sanitize' type="text" name="name" ng-model="queryInput">
-</div>
-<div class="small-12  large-6 columns">
-  <input class="button blue medium join-this-game listagame" type="submit" value="query" ng-click="query(queryInput)" required>
-</div>
-
-<div>
-  Result:
-  <div ng-repeat='user in queryUser'>{{user.display_name}} {{user.email}} </div>
-</div>
