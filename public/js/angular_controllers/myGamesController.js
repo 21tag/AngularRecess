@@ -5,6 +5,11 @@ angular.module('angularMyGames', [])
     $scope.getMyGames = function (game) {
       angularGetGames.get(game, function(returnedGame, response) {
         if (returnedGame) {
+          if(returnedGame.manager == $rootScope.currentUser.id){
+            returnedGame.gameOwned = 'my game'
+          }else{
+            returnedGame.gameOwned = 'not my Game'
+          }
           $scope.myUpcomingGames.push(returnedGame);
         } else {
           $scope.response = response || 'No games found';

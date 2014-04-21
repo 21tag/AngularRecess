@@ -131,9 +131,6 @@ angular.module('angularListAGame', [])
       $('form textarea').val('');
       $('select').prop('selectedIndex', 0);
       var num = $scope.gameInfo.playerArray.length;
-      for(var i = 0; i < num; i++){
-        $scope.allAvailableUsers.push($scope.gameInfo.playerArray.pop());
-      }
     });
   };
 
