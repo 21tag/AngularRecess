@@ -38,8 +38,8 @@ angular.module('angularSeeGame', ['google-maps'])
     });
 
     $scope.map.marker = {
-      latitude: 37.7836083,
-      longitude: -122.40927020000001
+      latitude: 37.74757548736071,
+      longitude: -122.37894058227539
     }
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
