@@ -6,24 +6,46 @@
       <table class="open-recess-table my-games">
         <thead class="hide-for-small">
           <tr>
+            <th>Manager</th>
             <th class="status">Game</th>
             <th>Description</th>
             <th>Game Type</th>
             <th>Date & Time</th>
             <th>Confirmed Players</th>
+            <th>Max players<th>
+            <th>Min players<th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="game in myUpcomingGames track by $index" ng-click="showDetails = !showDetails">
+          <tr ng-repeat="game in myUpcomingGames track by $index">
+            <td>{{game.gameOwned}}</td>
             <td>{{game.gameName}}</td> 
             <td>{{game.gameDescription}}</td> 
             <td>{{game.gameType}}</td> 
             <td>{{game.gameTime | date: h:mma}} </br> {{game.gameDate | date: yyyy-MM-dd}}</td>
             <!-- <td>{{game.confirmedPlayers}}</td> -->
-            <td><div ng-repeat='player in game.confirmedPlayers'>{{player.display_name}} / {{player.email}}</div></td>
 
+<!--             <td><div ng-repeat='player in game.confirmedPlayers'>{{player.display_name}} / {{player.email}}</div></td> -->
+            <td>
+              <table>
+                <thead style="background-color:blue">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th> 
+                  </tr>
+                </thead>
+              <tr ng-repeat="player in game.confirmedPlayers">
+                <td>{{player.display_name}}</td>
+                <td>{{player.email}}</td>
+              </table>
+            </td>
+            <td>{{game.playerLimit}}</td> 
+            <td>{{game.minimumPlayers}}</td> 
             <!-- apr15 need managers to be shown -->
-            <td ng-show="showDetails">msg: {{game.messages}} max: {{game.playerLimit}} min: {{game.minimumPlayers}} </td>
+<!--             <td ng-show="showDetails">msg: {{game.messages}} max: {{game.playerLimit}} min: {{game.minimumPlayers}} </td>
+ -->
+            <!-- <td ng-show="showDetails"> max: {{game.playerLimit}} min: {{game.minimumPlayers}} </td>
+ -->
 
           </tr>
         </tbody>
