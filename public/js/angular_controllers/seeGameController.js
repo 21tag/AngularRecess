@@ -1,27 +1,49 @@
 angular.module('angularSeeGame', ['google-maps'])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
 
-    $scope.map = {
-      center: {
-        latitude: 45,
-        longitude: -73
-      },
-      zoom: 8
-    };
-
-    $scope.marker = {latitude: 45, longitude: -73};
+    angular.extend($scope, {
+        map: {
+            control: {},
+            zoom: 13,
+            center: {
+              latitude: 37.7836083,
+              longitude: -122.40927020000001
+            },
+            options: {
+                streetViewControl: false,
+                panControl: false,
+                maxZoom: 20,
+                minZoom: 3
+            },
+            dragging: true,
+            bounds: {},
+            events: {
+              tilesloaded: function (map, eventName, originalEventArgs) {
+              },
+              click: function (mapModel, eventName, originalEventArgs) {
+                $scope.map.clickedMarker = {};
+                var e = originalEventArgs[0];
+                  $scope.map.clickedMarker.latitude = e.latLng.lat();
+                  $scope.map.clickedMarker.longitude = e.latLng.lng()
+                  console.log($scope.map.clickedMarker);
+                $scope.$apply();
+              }
+            }
+        }
+    });
+    $scope.map.clickedMarker = {
+      latitude: 37.7836083,
+      longitude: -122.40927020000001
+    }
 
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
       $scope.map.center.longitude = position.coords.longitude;
+      $scope.marker.latitude = position.coords.latitude;
+      $scope.marker.longitude = position.coords.longitude;
       console.log(position);
     });
-    };
-
-    $scope.setMarker = function() {
-      
-      console.log(marker.getposition());
     };
 
     //apr13 added

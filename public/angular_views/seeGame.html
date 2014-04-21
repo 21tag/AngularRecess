@@ -1,8 +1,9 @@
 <div class="row game-detail">
   <div class="small-12 columns">
     <div>
-        <google-map center="map.center" zoom="map.zoom" ng-click="addMarker()">
-            <marker coords="marker" click="setMarker()"></marker>
+        <google-map center="map.center" zoom="map.zoom" events="map.events">
+            <marker coords="map.clickedMarker"></marker>
+      </div>
         </google-map>
     </div>
     <img src="/img/sample-290x290.jpg" alt="#" />
