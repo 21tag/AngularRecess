@@ -1,10 +1,55 @@
-angular.module('angularSeeGame', [])
+angular.module('angularSeeGame', ['google-maps'])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
-    
-     
+
+    angular.extend($scope, {
+        map: {
+            control: {},
+            zoom: 13,
+            center: {
+              latitude: 37.7836083,
+              longitude: -122.40927020000001
+            },
+            options: {
+                streetViewControl: false,
+                panControl: false,
+                maxZoom: 20,
+                minZoom: 3
+            },
+            dragging: true,
+            bounds: {},
+            events: {
+              tilesloaded: function (map, eventName, originalEventArgs) {
+              },
+              click: function (mapModel, eventName, originalEventArgs) {
+                $scope.map.clickedMarker = {};
+                var e = originalEventArgs[0];
+                  $scope.map.clickedMarker.latitude = e.latLng.lat();
+                  $scope.map.clickedMarker.longitude = e.latLng.lng()
+                  console.log($scope.map.clickedMarker);
+                $scope.$apply();
+              }
+            }
+        }
+    });
+    $scope.map.clickedMarker = {
+      latitude: 37.7836083,
+      longitude: -122.40927020000001
+    }
+
+    $scope.mapUser = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+      $scope.marker.latitude = position.coords.latitude;
+      $scope.marker.longitude = position.coords.longitude;
+      console.log(position);
+    });
+    };
+
     //apr13 added
     $scope.moveToFindGames = function(){
-      $location.path('/findGames');
+      //$location.path('/findGames');
+      console.log($rootScope.joinGameList);
     };
 
     if($rootScope.joinGameList === undefined){
@@ -51,27 +96,15 @@ angular.module('angularSeeGame', [])
 
     };
 
-    // $scope.joinGame = function () {
-    //   $scope.gameToSend = {};
-    //   $scope.gameToSend.code = $scope.gameId;
-    //   $scope.gameToSend.phone = $rootScope.currentUser.phone;
-    //   $scope.addUserToGame();
-    //   $scope.userToSend = {};
-    //   $scope.userToSend.id = $rootScope.currentUser.id;
-    //   $scope.userToSend.game = $scope.gameId;
-
-    // };
-    
-    //apr16 added
     $scope.joinGame = function () {
       $scope.gameToSend = {};
       $scope.gameToSend.code = $scope.gameId;
-      $scope.gameToSend.display_name = $rootScope.currentUser.display_name;
-      $scope.gameToSend.email = $rootScope.currentUser.email;
+      $scope.gameToSend.phone = $rootScope.currentUser.phone;
       $scope.addUserToGame();
       $scope.userToSend = {};
       $scope.userToSend.id = $rootScope.currentUser.id;
       $scope.userToSend.game = $scope.gameId;
+
     };
 
   }])
@@ -119,4 +152,3 @@ angular.module('angularSeeGame', [])
       }
     };
   }]);
-

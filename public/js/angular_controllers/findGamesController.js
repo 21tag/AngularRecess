@@ -10,6 +10,30 @@ angular.module('angularFindGames', [])
   //   playersLimit: 'undefined',
   //   playerArray: 'undefined',
   // };
+
+  $scope.map = {
+    center: {
+      latitude: 37.7836083,
+      longitude: -122.40927020000001
+    },
+    zoom: 13
+  };
+
+  $scope.map.marker = {
+    latitude: $scope.map.center.latitude,
+    longitude: $scope.map.center.longitude
+  }
+
+  $scope.mapUser = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+      $scope.marker.latitude = position.coords.latitude;
+      $scope.marker.longitude = position.coords.longitude;
+      console.log(position);
+    });
+  };
+
   $scope.game = [];
 
   $scope.sports = [

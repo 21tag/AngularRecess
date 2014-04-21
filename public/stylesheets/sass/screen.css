@@ -3086,6 +3086,10 @@ ul, ol, dl {
     .open-recess-table tr:last-child {
       border-bottom: none; }
 
+.angular-google-map-container {
+  height: 500px;
+  margin-bottom: 1.25em; }
+
 #nav {
   font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
   font-weight: 400;
@@ -3274,7 +3278,6 @@ html, body {
 
 .google-map {
   height: 500px;
-  background: url("/img/sample-google-map.png") no-repeat 50% 25%;
   margin-bottom: 1.25em; }
 
 @media only screen and (min-width: 768px) {
