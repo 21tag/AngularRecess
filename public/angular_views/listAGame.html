@@ -70,3 +70,16 @@
   </div>
 </form>
 
+
+<div class="small-12  large-6 columns">
+  <label> Users: </label>
+  <input class = 'sanitize' type="text" name="name" ng-model="queryInput">
+</div>
+<div class="small-12  large-6 columns">
+  <input class="button blue medium join-this-game listagame" type="submit" value="query" ng-click="query(queryInput)" required>
+</div>
+
+<div>
+  Result:
+  <div ng-repeat='user in queryUser'>{{user.display_name}} {{user.email}} </div>
+</div>

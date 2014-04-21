@@ -1,5 +1,5 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'getAllUsers',function($scope, $rootScope, angularListGames, getAllUsers) {
+.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser', 'getAllUsers',function($scope, $rootScope, angularListGames, angularGetQueryUser, getAllUsers) {
   
   $scope.date = {
     start: 'undefined',
@@ -88,6 +88,8 @@ angular.module('angularListAGame', [])
     'Other',
   ];
 
+  $scope.queryUser = [];
+ 
   var getUsers = function(){
     getAllUsers.get()
       .then(function(users){
@@ -164,6 +166,20 @@ angular.module('angularListAGame', [])
   };
 
 
+  $scope.query = function (game) {
+    angularGetQueryUser.get(game, function(returnedGame, response) {
+      if (returnedGame) {
+        console.log('returnedGame', returnedGame);
+        $scope.queryUser = returnedGame;
+        console.log('$scope.queryUser', $scope.queryUser);
+      } else {
+        $scope.response = response || 'No users found';
+      }
+    });
+  };
+
+
+
 }])
 
 .factory('angularListGames', ['$http', function($http){
@@ -180,30 +196,30 @@ angular.module('angularListAGame', [])
   };
 }])
 
-// .factory('angularGetQueryUser', ['$http', function($http) {
-//     return {
-//       get: function(name, cb) {
-//         var getGames = $http.get('/users/' + name, cb);
-//         getGames.success(function(data) {
-//           cb(data);
-//         });
-//         getGames.error(function() {
-//           cb(undefined, 'Could not retrieve games');
-//         });
-//       }
-//     };
-// }]);
-
-  .factory('getAllUsers', ['$http', function($http){
-    return{
-      get: function(cb) {
-          return $http.get('/users')
-          .then(function(response) {
-            return response.data;
-          },function(error) {
-            console.log(error);
-          }
-          );
+.factory('angularGetQueryUser', ['$http', function($http) {
+    return {
+      get: function(name, cb) {
+        var getGames = $http.get('/search_member/' + name, cb);
+        getGames.success(function(data) {
+          cb(data);
+        });
+        getGames.error(function() {
+          cb(undefined, 'Could not retrieve games');
+        });
       }
+    };
+}])
+
+.factory('getAllUsers', ['$http', function($http){
+  return{
+    get: function(cb) {
+        return $http.get('/users')
+        .then(function(response) {
+          return response.data;
+        },function(error) {
+          console.log(error);
+        }
+        );
     }
-  }]);
+  }
+}]);
