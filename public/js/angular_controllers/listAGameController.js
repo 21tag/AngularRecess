@@ -1,5 +1,5 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser', 'getAllUsers',function($scope, $rootScope, angularListGames, angularGetQueryUser, getAllUsers) {
+.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser', function($scope, $rootScope, angularListGames, angularGetQueryUser) {
   
   $scope.date = {
     start: 'undefined',
