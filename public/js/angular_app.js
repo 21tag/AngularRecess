@@ -12,7 +12,7 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
             return $rootScope.currentUser;
           } else {
             //checks route on refresh
-            var restricted = ['/listAGame', '/myGames', '/userProfile'];
+            var restricted = ['/listAGame', '/myGames', '/seeGame', '/userProfile'];
             if (_.contains(restricted, $location.$$path)) {
               $state.go('login');
             }
