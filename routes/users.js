@@ -55,16 +55,17 @@ module.exports = {
   },
 
 
-  //apr16 added
-  findQuery:function(req, res) {
-    var regex = new RegExp(req.params.id, 'i');
-    var query = User.find({display_name: regex}, { 'email': 1 }).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
+  //apr20 added
+  searchMember:function(req, res) {
+    console.log('req.params', req.params.name);
+    var regex = new RegExp('^' + req.params.name, 'i');
+    console.log(regex);
+    var query = User.find({display_name: regex}, { 'email': 1, 'display_name':1 });
         
       // Execute query in a callback and return users list
     query.exec(function(err, users) {
       if (!err) {
-        // Method to construct the json result set
-        // var result = buildResultSet(users); 
+        console.log('users', users);
         res.json(200, users);
       } else {
         console.log(err);
