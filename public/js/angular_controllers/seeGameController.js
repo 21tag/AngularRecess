@@ -1,6 +1,5 @@
 angular.module('angularSeeGame', ['google-maps'])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
-
     angular.extend($scope, {
         map: {
             control: {},
@@ -18,31 +17,36 @@ angular.module('angularSeeGame', ['google-maps'])
             dragging: true,
             bounds: {},
             events: {
-              tilesloaded: function (map, eventName, originalEventArgs) {
-              },
-              click: function (mapModel, eventName, originalEventArgs) {
-                $scope.map.clickedMarker = {};
+              tilesloaded: function (mapModel, eventName, originalEventArgs) {
+                $scope.map.marker = {};
                 var e = originalEventArgs[0];
-                  $scope.map.clickedMarker.latitude = e.latLng.lat();
-                  $scope.map.clickedMarker.longitude = e.latLng.lng()
-                  console.log($scope.map.clickedMarker);
+                  $scope.map.marker.latitude = $scope.game.coord.lat;
+                  $scope.map.marker.longitude = $scope.game.coord.lon;
+                  console.log($scope.map.marker);
                 $scope.$apply();
               }
+              // click: function (mapModel, eventName, originalEventArgs) {
+              //   $scope.map.clickedMarker = {};
+              //   var e = originalEventArgs[0];
+              //     $scope.map.clickedMarker.latitude = e.latLng.lat();
+              //     $scope.map.clickedMarker.longitude = e.latLng.lng()
+              //     console.log($scope.map.clickedMarker);
+              //   $scope.$apply();
+              // }
             }
         }
     });
-    $scope.map.clickedMarker = {
-      latitude: 37.7836083,
-      longitude: -122.40927020000001
-    }
 
+    $scope.map.marker = {
+      latitude: 37.74757548736071,
+      longitude: -122.37894058227539
+    }
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
       $scope.map.center.longitude = position.coords.longitude;
       $scope.marker.latitude = position.coords.latitude;
       $scope.marker.longitude = position.coords.longitude;
-      console.log(position);
     });
     };
 
@@ -63,9 +67,13 @@ angular.module('angularSeeGame', ['google-maps'])
       angularGetGames.get($scope.gameId, function(returnedGame, response) {
         if (returnedGame) {
           $scope.game = returnedGame;
+          // $scope.map.clickedMarker = {
+          //   latitude: $scope.game.coord.lat,
+          //   longitude: $scope.game.coord.lon
+          // }
           $scope.game.playersNeeded = ($scope.game.playerLimit - $scope.game.confirmedPlayers.length);
         } else {
-          console.log('error');
+          console.log('error fetching game');
         }
       });
     }

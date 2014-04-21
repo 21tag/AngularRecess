@@ -1,6 +1,50 @@
 angular.module('angularListAGame', [])
 .controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser', function($scope, $rootScope, angularListGames, angularGetQueryUser) {
   
+  angular.extend($scope, {
+        map: {
+            control: {},
+            zoom: 13,
+            center: {
+              latitude: 37.7836083,
+              longitude: -122.40927020000001
+            },
+            options: {
+                streetViewControl: false,
+                panControl: false,
+                maxZoom: 20,
+                minZoom: 3
+            },
+            dragging: true,
+            bounds: {},
+            events: {
+              tilesloaded: function (map, eventName, originalEventArgs) {
+              },
+              click: function (mapModel, eventName, originalEventArgs) {
+                $scope.map.clickedMarker = {};
+                var e = originalEventArgs[0];
+                  $scope.map.clickedMarker.latitude = e.latLng.lat();
+                  $scope.map.clickedMarker.longitude = e.latLng.lng()
+                  console.log($scope.map.clickedMarker);
+                $scope.$apply();
+              }
+            }
+        }
+    });
+    $scope.map.clickedMarker = {
+      latitude: 37.7836083,
+      longitude: -122.40927020000001
+    }
+
+    $scope.mapUser = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      $scope.map.center.latitude = position.coords.latitude;
+      $scope.map.center.longitude = position.coords.longitude;
+      $scope.marker.latitude = position.coords.latitude;
+      $scope.marker.longitude = position.coords.longitude;
+      console.log(position);
+    });
+    };
   $scope.date = {
     start: 'undefined',
     end: 'undefined'
@@ -107,6 +151,8 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.minimumPlayers = minimum;
     $scope.gameInfo.playerLimit = maximum;
     $scope.gameInfo.confirmedPlayers.push({'code':$rootScope.currentUser.id, 'display_name':$rootScope.currentUser.display_name, 'email':$rootScope.currentUser.email});
+    $scope.gameInfo.latitude = $scope.map.clickedMarker.latitude;
+    $scope.gameInfo.longitude = $scope.map.clickedMarker.longitude;
     console.log($scope.gameInfo.confirmedPlayers);
     console.log($scope.gameInfo.playerArray);
     console.log($scope.gameInfo);
@@ -117,7 +163,7 @@ angular.module('angularListAGame', [])
 
     if(!_.contains($scope.gameInfo, undefined) && ($scope.date.start < day && $scope.date.end > day) && maximum > minimum){
       $scope.sendGame($scope.gameInfo);
-      alert('game submitted');
+      $scope.response = 'Game Listed Successfully';
 
     }else if(maximum < minimum){
       alert('check max and min num');
