@@ -3,7 +3,6 @@ angular.module('angularMyGames', [])
     $scope.show = true;
     $scope.myUpcomingGames = [];
   
-    $rootScope.checkUser();
 
     $scope.getMyGames = function (game) {
       angularGetGames.get(game, function(returnedGame, response) {
