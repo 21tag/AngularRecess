@@ -3,10 +3,10 @@ angular.module('angularSeeGame', ['google-maps'])
     angular.extend($scope, {
         map: {
             control: {},
-            zoom: 13,
+            zoom: 12,
             center: {
-              latitude: 37.7836083,
-              longitude: -122.40927020000001
+              latitude: null,
+              longitude: null
             },
             options: {
                 streetViewControl: false,
@@ -22,17 +22,10 @@ angular.module('angularSeeGame', ['google-maps'])
                 var e = originalEventArgs[0];
                   $scope.map.marker.latitude = $scope.game.coord.lat;
                   $scope.map.marker.longitude = $scope.game.coord.lon;
-                  console.log($scope.map.marker);
+                  $scope.map.center.latitude = $scope.game.coord.lat;
+                  $scope.map.center.longitude = $scope.game.coord.lon;
                 $scope.$apply();
               }
-              // click: function (mapModel, eventName, originalEventArgs) {
-              //   $scope.map.clickedMarker = {};
-              //   var e = originalEventArgs[0];
-              //     $scope.map.clickedMarker.latitude = e.latLng.lat();
-              //     $scope.map.clickedMarker.longitude = e.latLng.lng()
-              //     console.log($scope.map.clickedMarker);
-              //   $scope.$apply();
-              // }
             }
         }
     });

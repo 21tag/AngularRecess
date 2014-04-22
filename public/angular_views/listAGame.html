@@ -1,6 +1,5 @@
 
 <form class="open-recess-form">
-  
   <div class="row">
     <div class="small-12 large-6 columns">
       <div class="form-label">What kind of game?</div>
@@ -60,12 +59,10 @@
       <div class="form-label">Invited Players</div>
       <h1 "form-label"> find players to add to the Invited Players list by inserting a name below and click find</h1>
       <input class="sanitize" type="text" ng-model="queryInput">
-        
-          <input class="button" type="submit" value="find" ng-click="query(queryInput)">
+        <input class="button" type="submit" value="find" ng-click="query(queryInput)">
       <br>
       <br>
       <h1 class"form-label"> click on names to add to the Invited Players list</h1>
-
       <div ng-repeat='user in queryUser | filter' ng-click='addToInvitePlayer(user)'>
         <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
       </div>
@@ -73,11 +70,9 @@
       <div ng-repeat='user in gameInfo.playerArray' ng-click='removeFromInvitePlayer($index)'> 
         <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2>
       </div>
-    
     </div>
     <input class="button teal medium join-this-game listagame" type="submit" value="submit" ng-click="submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)" required>
     </br>
     <span class"form-label">{{response}}</span>
-  </div>
-  
+  </div> 
 </form>
