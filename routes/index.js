@@ -49,16 +49,9 @@ module.exports = function(app){
   app.post('/users', users.createUser);
   app.put('/users', users.updateGames);
   app.delete('/users/:id', users.deleteUser);
-
   app.get('/user/current', users.getCurrentUser);
-
-
-  //apr20 
   app.get('/search_member/:name', users.searchMember);
-
-
   app.get('/logout', function(req, res, next){
-    // req.logout()  // I believe we'll need this line of code ~Andrew
     res.redirect('/');
   });
 
@@ -69,30 +62,21 @@ module.exports = function(app){
   app.get('/game', function(req, res, next) {
     res.render('game');
   });
-///Emily added
   app.get('/games/:id', games.findById);
 
   app.post('/game', function(req, res, next) {
     // possible collision alert!: this generates a random 3 digit code for every game:
     var temp = Math.floor(Math.random() * 1000);
     newGame = new Game({
-      // invitedPlayers: req.body.playerArray.split(','),
-
-      //apr16 added
       invitedPlayers: req.body.playerArray,
       confirmedPlayers: req.body.confirmedPlayers,
-
       manager: req.body.user,
       gameCode : temp,
       gameDate : req.body.gameDate,
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
-      
-      //added
-      gameDescription : req.body.gameDescription,
-      //
-
+      gameDescription : req.body.gameDescription,      
       coord: {lat: req.body.latitude, lon: req.body.longitude},
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit
@@ -103,42 +87,12 @@ module.exports = function(app){
         res.json(403, {err: 'Invalid params'});
       else
         res.json(200, {gameId: data._id});
-      //added4/9
         User.findOneAndUpdate({ _id: req.body.user}, {$push: {upcomingGames: data._id}}, function(err, manager){
           console.log(err);
         });
-      //
     });
   });
 
-  // app.put('/game', function(req, res, next){
-  //   console.log('the req', req.body);
-  //   var code = req.body.code;
-  //   var digits = req.body.phone;
-  //   Game.findOneAndUpdate(
-  //   {
-  //     _id : code,
-  //     confirmedPlayers : { $nin: [digits] }
-  //   },
-  //   {
-  //     $pull : { invitedPlayers : digits },
-  //     $addToSet : { confirmedPlayers : digits },
-  //     $inc : { confirmedPlayersCount : 1 }
-  //   },
-  //   function(err, thisGame){
-  //     if(err) {
-  //       console.log('error', err);
-  //       //return 'no such game found';
-  //     } else {
-  //       console.log(thisGame);
-  //       //twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);
-  //     }
-  //   });
-  //   res.json(200, 'updated game');
-  // });
-
-
-  //apr16 added
   app.put('/game', function(req, res, next){
     console.log('the req', req.body);
     var code = req.body.code;
@@ -157,7 +111,6 @@ module.exports = function(app){
     function(err, thisGame){
       if(err) {
         console.log('error', err);
-        //return 'no such game found';
       } else {
         console.log(thisGame);
         //twil.sendSMS('Game on for ' + thisGame.gameType + '#' + thisGame.gameCode + ' on ' + moment(thisGame.gameDate).format('LL') + ' at ' + thisGame.gameTime + '. Stay tuned for more text message updates.', digits, twilioPhoneNumber);

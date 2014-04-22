@@ -3,6 +3,54 @@ angular.module('angularApp', ['angularAppRoutes', 'angularLogin', 'angularSignup
 
   .run(function($rootScope, $location, $state, getCurrentUser) {
 
+  $rootScope.sports = [
+    'Badminton',
+    'Baseball',
+    'Basketball',
+    'Billiards',
+    'Board Games',
+    'Bocce',
+    'Bowling',
+    'Capture the Flag',
+    'Cards',
+    'Checkers',
+    'Chess',
+    'Climbing',
+    'Cricket',
+    'D&D',
+    'Disc Golf',
+    'Dodgeball',
+    'Dominoes',
+    'Flag Football',
+    'Football',
+    'Foursquare',
+    'Go',
+    'Golf',
+    'Ice Hockey',
+    'Kickball',
+    'Lacrosse',
+    'Martial Arts',
+    'Quidditch',
+    'Racquetball',
+    'Rugby',
+    'Shuffleboard',
+    'Soccer',
+    'Softball',
+    'Speed-ball',
+    'Squash',
+    'Street Hockey',
+    'Tag',
+    'Tennis',
+    'Tennis (doubles)',
+    'Ultimate Frisbee',
+    'Volleyball',
+    'Water Polo',
+    'Wiffleball',
+    'Yoga',
+    'Other',
+  ];
+
+
     //checks user on initial pageload to see if session is established, sets to public if not.
     $rootScope.checkUser = function() {
         getCurrentUser.get(function(user) {
