@@ -42,7 +42,6 @@ angular.module('angularListAGame', [])
       $scope.map.center.longitude = position.coords.longitude;
       $scope.marker.latitude = position.coords.latitude;
       $scope.marker.longitude = position.coords.longitude;
-      console.log(position);
     });
     };
   $scope.date = {
@@ -84,53 +83,6 @@ angular.module('angularListAGame', [])
     user: 'undefined'
   };
 
-  $scope.sports = [
-    'Badminton',
-    'Baseball',
-    'Basketball',
-    'Billiards',
-    'Board Games',
-    'Bocce',
-    'Bowling',
-    'Capture the Flag',
-    'Cards',
-    'Checkers',
-    'Chess',
-    'Climbing',
-    'Cricket',
-    'D&D',
-    'Disc Golf',
-    'Dodgeball',
-    'Dominoes',
-    'Flag Football',
-    'Football',
-    'Foursquare',
-    'Go',
-    'Golf',
-    'Ice Hockey',
-    'Kickball',
-    'Lacrosse',
-    'Martial Arts',
-    'Quidditch',
-    'Racquetball',
-    'Rugby',
-    'Shuffleboard',
-    'Soccer',
-    'Softball',
-    'Speed-ball',
-    'Squash',
-    'Street Hockey',
-    'Tag',
-    'Tennis',
-    'Tennis (doubles)',
-    'Ultimate Frisbee',
-    'Volleyball',
-    'Water Polo',
-    'Wiffleball',
-    'Yoga',
-    'Other',
-  ];
-
   $scope.queryUser = [];
  
   $scope.addToInvitePlayer = function(user){
@@ -153,13 +105,7 @@ angular.module('angularListAGame', [])
     $scope.gameInfo.confirmedPlayers.push({'code':$rootScope.currentUser.id, 'display_name':$rootScope.currentUser.display_name, 'email':$rootScope.currentUser.email});
     $scope.gameInfo.latitude = $scope.map.clickedMarker.latitude;
     $scope.gameInfo.longitude = $scope.map.clickedMarker.longitude;
-    console.log($scope.gameInfo.confirmedPlayers);
-    console.log($scope.gameInfo.playerArray);
-    console.log($scope.gameInfo);
-
-    console.log('$rootScope.currentUser', $rootScope.currentUser);
     $scope.gameInfo.user = $rootScope.currentUser.id;
-    console.log('$scope.gameInfo', $scope.gameInfo);
 
     if(!_.contains($scope.gameInfo, undefined) && ($scope.date.start < day && $scope.date.end > day) && maximum > minimum){
       $scope.sendGame($scope.gameInfo);
@@ -183,17 +129,12 @@ angular.module('angularListAGame', [])
   $scope.query = function (game) {
     angularGetQueryUser.get(game, function(returnedGame, response) {
       if (returnedGame) {
-        console.log('returnedGame', returnedGame);
         $scope.queryUser = returnedGame;
-        console.log('$scope.queryUser', $scope.queryUser);
       } else {
         $scope.response = response || 'No users found';
       }
     });
   };
-
-
-
 }])
 
 .factory('angularListGames', ['$http', function($http){

@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "angular": "~1.2.15",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "angular-google-maps": "~1.0.18"
   }
 }

@@ -22,17 +22,8 @@ angular.module('angularSeeGame', ['google-maps'])
                 var e = originalEventArgs[0];
                   $scope.map.marker.latitude = $scope.game.coord.lat;
                   $scope.map.marker.longitude = $scope.game.coord.lon;
-                  console.log($scope.map.marker);
                 $scope.$apply();
               }
-              // click: function (mapModel, eventName, originalEventArgs) {
-              //   $scope.map.clickedMarker = {};
-              //   var e = originalEventArgs[0];
-              //     $scope.map.clickedMarker.latitude = e.latLng.lat();
-              //     $scope.map.clickedMarker.longitude = e.latLng.lng()
-              //     console.log($scope.map.clickedMarker);
-              //   $scope.$apply();
-              // }
             }
         }
     });
@@ -50,10 +41,7 @@ angular.module('angularSeeGame', ['google-maps'])
     });
     };
 
-    //apr13 added
     $scope.moveToFindGames = function(){
-      //$location.path('/findGames');
-      console.log($rootScope.joinGameList);
     };
 
     if($rootScope.joinGameList === undefined){
@@ -67,10 +55,6 @@ angular.module('angularSeeGame', ['google-maps'])
       angularGetGames.get($scope.gameId, function(returnedGame, response) {
         if (returnedGame) {
           $scope.game = returnedGame;
-          // $scope.map.clickedMarker = {
-          //   latitude: $scope.game.coord.lat,
-          //   longitude: $scope.game.coord.lon
-          // }
           $scope.game.playersNeeded = ($scope.game.playerLimit - $scope.game.confirmedPlayers.length);
         } else {
           console.log('error fetching game');
@@ -97,11 +81,6 @@ angular.module('angularSeeGame', ['google-maps'])
       angularPutUser.put($scope.userToSend, function(data) {
         console.log(data);
       });
-
-      //apr12 added
-      //$location.path('/myGames');
-
-
     };
 
     $scope.joinGame = function () {
