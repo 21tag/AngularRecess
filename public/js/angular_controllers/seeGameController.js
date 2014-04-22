@@ -1,33 +1,33 @@
 angular.module('angularSeeGame', ['google-maps'])
   .controller('seeGameController', ['$rootScope', '$scope', '$location', 'angularPutGame', 'angularPutUser', 'angularGetGames', function($rootScope, $scope, $location, angularPutGame, angularPutUser, angularGetGames) {
     angular.extend($scope, {
-        map: {
-            control: {},
-            zoom: 12,
-            center: {
-              latitude: null,
-              longitude: null
-            },
-            options: {
-                streetViewControl: false,
-                panControl: false,
-                maxZoom: 20,
-                minZoom: 3
-            },
-            dragging: true,
-            bounds: {},
-            events: {
-              tilesloaded: function (mapModel, eventName, originalEventArgs) {
-                $scope.map.marker = {};
-                var e = originalEventArgs[0];
-                  $scope.map.marker.latitude = $scope.game.coord.lat;
-                  $scope.map.marker.longitude = $scope.game.coord.lon;
-                  $scope.map.center.latitude = $scope.game.coord.lat;
-                  $scope.map.center.longitude = $scope.game.coord.lon;
-                $scope.$apply();
-              }
-            }
+      map: {
+        control: {},
+        zoom: 12,
+        center: {
+          latitude: null,
+          longitude: null
+        },
+        options: {
+            streetViewControl: false,
+            panControl: false,
+            maxZoom: 20,
+            minZoom: 3
+        },
+        dragging: true,
+        bounds: {},
+        events: {
+          tilesloaded: function (mapModel, eventName, originalEventArgs) {
+            $scope.map.marker = {};
+            var e = originalEventArgs[0];
+              $scope.map.marker.latitude = $scope.game.coord.lat;
+              $scope.map.marker.longitude = $scope.game.coord.lon;
+              $scope.map.center.latitude = $scope.game.coord.lat;
+              $scope.map.center.longitude = $scope.game.coord.lon;
+            $scope.$apply();
+          }
         }
+      }
     });
 
     $scope.map.marker = {

@@ -10,29 +10,41 @@ angular.module('angularFindGames', [])
   //   playersLimit: 'undefined',
   //   playerArray: 'undefined',
   // };
-
-  $scope.map = {
-    center: {
-      latitude: 37.7836083,
-      longitude: -122.40927020000001
-    },
-    zoom: 13
-  };
-
-  $scope.map.marker = {
-    latitude: $scope.map.center.latitude,
-    longitude: $scope.map.center.longitude
-  }
+  angular.extend($scope, {
+    map: {
+      control: {},
+      zoom: 14,
+      center: {
+        latitude: null,
+        longitude: null
+      },
+      options: {
+          streetViewControl: false,
+          panControl: false,
+          maxZoom: 20,
+          minZoom: 3
+      },
+      dragging: true,
+      bounds: {},
+      events: {
+        tilesloaded: function (mapModel, eventName, originalEventArgs) {
+          $scope.map.marker = {};
+          var e = originalEventArgs[0];
+          $scope.$apply();
+        }
+      }
+    }
+  });
 
   $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
       $scope.map.center.longitude = position.coords.longitude;
-      $scope.marker.latitude = position.coords.latitude;
-      $scope.marker.longitude = position.coords.longitude;
+      $scope.$apply();
       console.log(position);
     });
   };
+  $scope.mapUser();
 
   $scope.game = [];
 

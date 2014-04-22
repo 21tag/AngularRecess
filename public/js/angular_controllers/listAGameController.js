@@ -6,8 +6,8 @@ angular.module('angularListAGame', [])
             control: {},
             zoom: 13,
             center: {
-              latitude: 37.7836083,
-              longitude: -122.40927020000001
+              latitude: null,
+              longitude: null
             },
             options: {
                 streetViewControl: false,
@@ -32,9 +32,19 @@ angular.module('angularListAGame', [])
         }
     });
     $scope.map.clickedMarker = {
-      latitude: 37.7836083,
-      longitude: -122.40927020000001
+      latitude: null,
+      longitude: null
     }
+
+    $scope.mapUser = function() {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        $scope.map.center.latitude = position.coords.latitude;
+        $scope.map.center.longitude = position.coords.longitude;
+        $scope.$apply();
+        console.log(position);
+      });
+    };
+  $scope.mapUser();
 
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
