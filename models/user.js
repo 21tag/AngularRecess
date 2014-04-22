@@ -9,7 +9,6 @@ function validatePresenceOf(value) {
 }
 
 function validatePhone(string) {
-  console.log(string);
   return (string).length === 12;
 }
 
@@ -76,7 +75,6 @@ var User = mongoose.model('User', UserSchema);
 User.login = function(username, password, cb){
   console.log('User logging in: ', username, password);
   User.findOne({email: username}, function(err, user){
-    // console.log(err, user);
     if(err) return cb(err);
     if(!user) return cb(null, null);
     if(user.checkPassword(password)) return cb(null, user);

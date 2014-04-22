@@ -1,5 +1,5 @@
 var passport = require('passport'),
-    twil = require('../src/twilio.js'),
+    twil = require('../lib/twilio.js'),
     mongoose = require('mongoose'),
     users = require('./users.js'),
     games = require('./games.js'),
