@@ -57,12 +57,12 @@
   <div class="row">    
     <div class="small-12 large-6 columns">
       <div class="form-label">Invited Players</div>
-      <h1 class="form-label" style="color:blue"> find players to add to the Invited Players list by inserting a name below and click find</h1>
-      <input class="sanitize" type="text" ng-model="queryInput">
+      <h1 class="form-label" style="color:blue"> Type a letter and press find to search players</h1>
+      <input class="sanitize" type="text" ng-model="queryInput" placeholder="ex)Type in e to look for names start with e">
         <input class="button" type="submit" value="find" ng-click="query(queryInput)">
       <br>
       <br>
-      <h1 class"form-label"> click on names to add to the Invited Players list</h1>
+      <h1 class"form-label" style="color:blue"> click on names below to add to the Invited Players list</h1>
       <div ng-repeat='user in queryUser | filter' ng-click='addToInvitePlayer(user)'>
         <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
       </div>

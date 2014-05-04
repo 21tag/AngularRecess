@@ -1,5 +1,5 @@
 angular.module('angularListAGame', [])
-.controller('listAGameController', ['$scope', '$rootScope', 'angularListGames', 'angularGetQueryUser', function($scope, $rootScope, angularListGames, angularGetQueryUser) {
+.controller('listAGameController', ['$scope', '$rootScope', '$location', 'angularListGames', 'angularGetQueryUser', function($scope, $rootScope, $location, angularListGames, angularGetQueryUser) {
   
   angular.extend($scope, {
         map: {
@@ -96,13 +96,17 @@ angular.module('angularListAGame', [])
   $scope.queryUser = [];
  
   $scope.addToInvitePlayer = function(user){
-    $scope.gameInfo.playerArray.push(user);
+    var search = _.find($scope.gameInfo.playerArray, function(elem){
+      return user.email === elem.email;
+    });
+    if(!search){
+      $scope.gameInfo.playerArray.push(user);
+    }
   };
 
   $scope.removeFromInvitePlayer = function(index){
     $scope.gameInfo.playerArray.splice(index,1);
   };
-
 
   $scope.submitTheForm = function(name, type, description, day, time, minimum, maximum, invited) {
     $scope.gameInfo.gameName = name;
@@ -120,7 +124,8 @@ angular.module('angularListAGame', [])
     if(!_.contains($scope.gameInfo, undefined) && ($scope.date.start < day && $scope.date.end > day) && maximum > minimum){
       $scope.sendGame($scope.gameInfo);
       $scope.response = 'Game Listed Successfully';
-
+      console.log('hit');
+      $location.path('/findGames');
     }else if(maximum < minimum){
       alert('check max and min num');
     }
@@ -169,7 +174,7 @@ angular.module('angularListAGame', [])
           cb(data);
         });
         getGames.error(function() {
-          cb(undefined, 'Could not retrieve games');
+          cb(undefined, 'Could not retrieve users');
         });
       }
     };
