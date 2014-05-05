@@ -43,10 +43,11 @@ go to AngularRecess/public folder and run `bower install`
 `mongod --port 17017`
 
 ####Access to mongo db and look for users
-'mongo localhost:17017'
-'use openRecess'
-'show collections'
-'db.users.find()'
+steps to see users collection in a terminal
+1. `mongo localhost:17017`
+1. `use openRecess`
+1. `show collections`
+1. `db.users.find()`
 
 ##Contributors
 
