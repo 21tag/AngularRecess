@@ -1,8 +1,7 @@
 angular.module('angularMyGames', [])
-  .controller('myGamesController', ['$rootScope', '$scope', 'angularGetGames', function($rootScope, $scope, angularGetGames) {
+  .controller('myGamesController', ['$rootScope', '$scope', 'angularGetGames', 'angularGetUser', function($rootScope, $scope, angularGetGames, angularGetUser) {
     $scope.show = true;
     $scope.myUpcomingGames = [];
-  
 
     $scope.getMyGames = function (game) {
       angularGetGames.get(game, function(returnedGame, response) {
@@ -10,7 +9,7 @@ angular.module('angularMyGames', [])
           if(returnedGame.manager == $rootScope.currentUser.id){
             returnedGame.gameOwned = 'my game'
           }else{
-            returnedGame.gameOwned = 'not my Game'
+            returnedGame.gameOwned = 'other game'
           }
           $scope.myUpcomingGames.push(returnedGame);
         } else {
@@ -18,10 +17,16 @@ angular.module('angularMyGames', [])
         }
       });
     };
-
-    _.each($rootScope.currentUser.upcomingGames, function(game) {
-      $scope.getMyGames(game);
-    });
+    
+    $scope.getUserInfo = function(user) {
+      angularGetUser.get(user, function(data) {
+        $scope.currentUser = data;
+        _.each($scope.currentUser.upcomingGames, function(game) {
+          $scope.getMyGames(game);
+        });
+      });
+    };
+    $scope.getUserInfo($rootScope.currentUser.id);
 
   }])
 
@@ -37,5 +42,17 @@ angular.module('angularMyGames', [])
         });
       }
     };
+  }])
+  .factory('angularGetUser', ['$http', function($http) {
+    return {
+      get: function(userId, cb) {
+        var getUsers = $http.get('/users/' + userId, cb);
+        getUsers.success(function(data) {
+          cb(data);
+        });
+        getUsers.error(function() {
+          cb(undefined, 'Could not retrieve games');
+        });
+      }
+    };
   }]);
-

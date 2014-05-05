@@ -8,15 +8,8 @@ var validatePresenceOf = function(value) {
   return value && value.length;
 };
 
-// var InvitedUser = new Schema({
-//   'phone' : String,
-//   'userId' : Schema.Types.ObjectId
-// });
-
-// TODO: Validate the gameTime on the client before sending to the model as a Date.
 var GameSchema = new Schema({
-  // 'invitedPlayers': [Schema.Types.ObjectId], // make this an object of ObjectIds of users or user phone numbers
-  'invitedPlayers': Array, // make this an object of ObjectIds of users or user phone numbers
+  'invitedPlayers': Array,
   'manager': Schema.Types.ObjectId,
   'createdAt': { type: Date, 'default': Date.now },
   'updatedAt': Date,
@@ -24,9 +17,6 @@ var GameSchema = new Schema({
   'gameTime': { type: String, validate: [validatePresenceOf, 'please provide a game time'] },  // TODO: change to date
   'gameName': { type: String, validate: [validatePresenceOf, 'please provide a game title'] },
   'gameType': { type: String, validate: [validatePresenceOf, 'please choose a game type'] }, // eventually convert this into a foreign key for a collection of gameTypes 
-  // 'gameAddress': { type: String, validate: [validatePresenceOf, 'if you expect people to show up, you\'d better tell them where to go'] },
-
-  //added field
   'gameDescription': {type: String, validate: [validatePresenceOf, 'please provide a game description'] },
 
   'coord' : {
@@ -53,16 +43,9 @@ GameSchema.pre('save', function(next) {
     this.confirmedPlayersCount = this.confirmedPlayers.length;
 
     // Update player limit boolean
-    if(this.confirmedPlayersCount > this.playerLimit)
-      this.playerLimitMet = true;
-    else
-      this.playerLimitMet = false;
-
+    this.playerLimitMet = this.confirmedPlayersCount > this.playerLimit;
     // Update minimum player boolean
-    if(this.confirmedPlayersCount >= this.minimumPlayers)
-      this.minimumPlayersMet = true;
-    else
-      this.minimumPlayersMet = false;
+    this.minimumPlayersMet = this.confirmedPlayersCount >= this.minimumPlayers;
   }
 
   next();

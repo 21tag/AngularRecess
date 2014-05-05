@@ -25,7 +25,6 @@ angular.module('angularListAGame', [])
                 var e = originalEventArgs[0];
                   $scope.map.clickedMarker.latitude = e.latLng.lat();
                   $scope.map.clickedMarker.longitude = e.latLng.lng()
-                  console.log($scope.map.clickedMarker);
                 $scope.$apply();
               }
             }
@@ -41,7 +40,6 @@ angular.module('angularListAGame', [])
         $scope.map.center.latitude = position.coords.latitude;
         $scope.map.center.longitude = position.coords.longitude;
         $scope.$apply();
-        console.log(position);
       });
     };
   $scope.mapUser();
@@ -124,7 +122,6 @@ angular.module('angularListAGame', [])
     if(!_.contains($scope.gameInfo, undefined) && ($scope.date.start < day && $scope.date.end > day) && maximum > minimum){
       $scope.sendGame($scope.gameInfo);
       $scope.response = 'Game Listed Successfully';
-      console.log('hit');
       $location.path('/findGames');
     }else if(maximum < minimum){
       alert('check max and min num');
@@ -133,7 +130,6 @@ angular.module('angularListAGame', [])
   
   $scope.sendGame = function(game) {
     angularListGames.post('/game', game, function(data) {      
-      console.log('posted');
       $('form .sanitize').val('');
       $('form textarea').val('');
       $('select').prop('selectedIndex', 0);
@@ -144,7 +140,11 @@ angular.module('angularListAGame', [])
   $scope.query = function (game) {
     angularGetQueryUser.get(game, function(returnedGame, response) {
       if (returnedGame) {
-        $scope.queryUser = returnedGame;
+        var userList = returnedGame;
+        userList = _.reject(userList, function(userObj){
+          return userObj._id === $rootScope.currentUser.id;
+        });
+        $scope.queryUser = userList;
       } else {
         $scope.response = response || 'No users found';
       }

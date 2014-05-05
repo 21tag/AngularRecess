@@ -35,7 +35,6 @@ app.use(passport.session());
 app.use(app.router);
 app.use(require('stylus').middleware({
   src: __dirname + '/public/stylesheets',
-  // dest: __dirname + '/public/stylesheets',
   compile: function (str, path, fn) {
     stylus(str)
     .set('filename', path)
@@ -47,8 +46,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 passport.serializeUser(function(user, done) {
   console.log('User serialize');
-  console.log(user);
-  console.log(user.email);
   done(null, user.email);
 });
 
@@ -66,7 +63,6 @@ passport.use(new LocalStrategy({
   },
   function(username, password, done) {
     User.login(username, password, function(err, user) {
-      //console.log('*****', err, user);
       return done(null, user);
     });
   })

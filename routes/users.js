@@ -32,7 +32,7 @@ module.exports = {
   },
 
   findById: function(req, res, next) {
-    var id = req.param.id;
+    var id = req.params.id;
     User.findById(id, function(err, user) {
       if (err) {
         console.log(err);
@@ -51,17 +51,13 @@ module.exports = {
       }
       res.json(200, users);
     });
-    // res.json(200, 'Get allUser stub');
   },
 
-
-  //apr20 added
   searchMember:function(req, res) {
     console.log('req.params', req.params.name);
     var regex = new RegExp('^' + req.params.name, 'i');
     console.log(regex);
-    var query = User.find({display_name: regex}, { 'email': 1, 'display_name':1 });
-        
+    var query = User.find({display_name: regex}, { 'email': 1, 'display_name':1 });        
       // Execute query in a callback and return users list
     query.exec(function(err, users) {
       if (!err) {

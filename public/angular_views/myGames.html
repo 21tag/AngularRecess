@@ -6,19 +6,20 @@
       <table class="open-recess-table my-games">
         <thead class="hide-for-small">
           <tr>
-            <th>Manager</th>
-            <th class="status">Game</th>
+            <th class="status">Game name</th>
             <th>Description</th>
             <th>Game Type</th>
             <th>Date & Time</th>
             <th>Confirmed Players</th>
+            
+            <th>Invited Players</th>
+
             <th>Max players<th>
             <th>Min players<th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="game in myUpcomingGames track by $index">
-            <td>{{game.gameOwned}}</td>
             <td>{{game.gameName}}</td> 
             <td>{{game.gameDescription}}</td> 
             <td>{{game.gameType}}</td> 
@@ -32,6 +33,19 @@
                   </tr>
                 </thead>
               <tr ng-repeat="player in game.confirmedPlayers">
+                <td>{{player.display_name}}</td>
+                <td>{{player.email}}</td>
+              </table>
+            </td>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th> 
+                  </tr>
+                </thead>
+              <tr ng-repeat="player in game.invitedPlayers">
                 <td>{{player.display_name}}</td>
                 <td>{{player.email}}</td>
               </table>

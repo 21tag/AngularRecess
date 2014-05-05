@@ -34,6 +34,9 @@ To install and run this project, follow the following steps:
 ####Install Node Modules
 `npm install`
 
+####Install bower_components
+go to AngularRecess/public folder and run 'bower install'
+
 ####Install and run mongodb (using homebrew)
 `brew install mongodb`
 
@@ -44,8 +47,6 @@ To install and run this project, follow the following steps:
 'use openRecess'
 'show collections'
 'db.users.find()'
-
-NOTE: You will need to setup LocalTunnel and specify your own Twilio API key in order to get text messaging to work.
 
 ##Contributors
 
