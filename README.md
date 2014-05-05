@@ -35,7 +35,7 @@ To install and run this project, follow the following steps:
 `npm install`
 
 ####Install bower_components
-go to AngularRecess/public folder and run 'bower install'
+go to AngularRecess/public folder and run `bower install`
 
 ####Install and run mongodb (using homebrew)
 `brew install mongodb`
