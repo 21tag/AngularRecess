@@ -12,7 +12,8 @@ angular.module('angularSeeGame', ['google-maps'])
             streetViewControl: false,
             panControl: false,
             maxZoom: 20,
-            minZoom: 3
+            minZoom: 3,
+            scrollwheel: false
         },
         dragging: true,
         bounds: {},

@@ -38,7 +38,10 @@
 
 
 <div>
-  <google-map center="map.center" zoom="map.zoom"></google-map>
+  <google-map class="find-games-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds">
+  <marker coords="map.marker">
+        </marker>
+  </google-map>
 </div>
 
 <div class="row hide-for-small sub-filter-bar">
@@ -46,7 +49,7 @@
     <div class="option filter-by">
       <span>Filter Games By:</span>
     </div>
-    <div class="option date"> 
+    <div class="option date">
       <input type="text" class="datepicker" ng-model="search.gameDate" placeholder="Date">
     </div>
     <div class="option filter-by">

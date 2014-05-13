@@ -12,7 +12,7 @@
       <input class = 'sanitize' type="text" name="name" ng-model="game.name" required>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="small-12 columns">
       <div class="form-label">Give it an exciting description:</div>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div>
-      <google-map center="map.center" zoom="map.zoom" events="map.events">
+      <google-map center="map.center" zoom="map.zoom" events="map.events" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds">
           <marker coords="map.clickedMarker"></marker>
       </google-map>
   </div>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="row"> 
+  <div class="row">
     <div class="small-12 large-6 columns">
       <div class="form-label">Minimum players</div>
       <input class="sanitize" type="number" name="min" min="0" ng-model="game.min" required>
@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <div class="row">    
+  <div class="row">
     <div class="small-12 large-6 columns">
       <div class="form-label">Invited Players</div>
       <h1 class="form-label" style="color:blue"> Type a letter and press find to search players</h1>
@@ -64,15 +64,15 @@
       <br>
       <h1 class"form-label" style="color:blue"> click on names below to add to the Invited Players list</h1>
       <div ng-repeat='user in queryUser | filter' ng-click='addToInvitePlayer(user)'>
-        <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2> 
+        <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2>
       </div>
       <h1 class="form-label" style="color:blue"> Invited Players list </h1>
-      <div ng-repeat='user in gameInfo.playerArray' ng-click='removeFromInvitePlayer($index)'> 
+      <div ng-repeat='user in gameInfo.playerArray' ng-click='removeFromInvitePlayer($index)'>
         <h2 class"form-label"> Name: {{user.display_name}} / Email: {{user.email}}</h2>
       </div>
     </div>
     <input class="button teal medium join-this-game listagame" type="submit" value="submit" ng-click="submitTheForm(game.name, game.type, game.desc, game.date, game.time, game.min, game.max, game.invite)" required>
     </br>
     <span class"form-label">{{response}}</span>
-  </div> 
+  </div>
 </form>

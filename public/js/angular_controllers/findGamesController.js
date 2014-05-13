@@ -1,6 +1,6 @@
 angular.module('angularFindGames', [])
 .controller('findGamesController', ['$scope', '$rootScope', '$location', 'angularGames', function($scope, $rootScope, $location, angularGames) {
-  
+
   angular.extend($scope, {
     map: {
       control: {},
@@ -11,10 +11,15 @@ angular.module('angularFindGames', [])
       },
       options: {
           streetViewControl: false,
-          panControl: false,
+          panControl: true,
           maxZoom: 20,
-          minZoom: 3
+          minZoom: 3,
+          scrollwheel: false
       },
+      marker: {
+                latitude: 37.74757548736071,
+                longitude: -122.37894058227539
+            },
       dragging: true,
       bounds: {},
       events: {
@@ -26,6 +31,11 @@ angular.module('angularFindGames', [])
       }
     }
   });
+
+  $scope.map.marker = {
+    latitude: 37.74757548736071,
+    longitude: -122.37894058227539
+  };
 
   $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -41,7 +51,7 @@ angular.module('angularFindGames', [])
   $scope.filterOrg = function(data){
     return !_.contains($rootScope.currentUser.upcomingGames, data._id);
   };
-  
+
   $scope.retreiveGames = function(){
     angularGames.get('/games', function(data) {
       $scope.game = data;
@@ -52,11 +62,12 @@ angular.module('angularFindGames', [])
   };
 
   $scope.selectGame = function(data, index){
-    $rootScope.joinGameList = undefined; 
+    console.log($rootScope.joinGameList);
+    $rootScope.joinGameList = undefined;
     $rootScope.joinGameList = data;
     $location.path('/seeGame');
   };
-  
+
   $scope.retreiveGames();
 }])
 
