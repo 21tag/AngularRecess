@@ -4,7 +4,7 @@ angular.module('angularFindGames', [])
   angular.extend($scope, {
     map: {
       control: {},
-      zoom: 14,
+      zoom: 13,
       center: {
         latitude: null,
         longitude: null
@@ -16,15 +16,10 @@ angular.module('angularFindGames', [])
           minZoom: 3,
           scrollwheel: false
       },
-      marker: {
-                latitude: 37.74757548736071,
-                longitude: -122.37894058227539
-            },
       dragging: true,
       bounds: {},
       events: {
         tilesloaded: function (mapModel, eventName, originalEventArgs) {
-          $scope.map.marker = {};
           var e = originalEventArgs[0];
           $scope.$apply();
         }
@@ -32,10 +27,7 @@ angular.module('angularFindGames', [])
     }
   });
 
-  $scope.map.marker = {
-    latitude: 37.74757548736071,
-    longitude: -122.37894058227539
-  };
+  $scope.map.markers = [];
 
   $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -55,6 +47,11 @@ angular.module('angularFindGames', [])
   $scope.retreiveGames = function(){
     angularGames.get('/games', function(data) {
       $scope.game = data;
+      _.each($scope.game, function(game, i) {
+        if (game.coord){
+          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon});
+        }
+      });
       _.each($scope.game, function(item, index){
         item.playersNeeded = item.minimumPlayers - item.confirmedPlayers.length;
       });

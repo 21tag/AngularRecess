@@ -34,7 +34,8 @@ angular.module('angularSeeGame', ['google-maps'])
     $scope.map.marker = {
       latitude: 37.74757548736071,
       longitude: -122.37894058227539
-    }
+    };
+
     $scope.mapUser = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $scope.map.center.latitude = position.coords.latitude;
@@ -45,7 +46,7 @@ angular.module('angularSeeGame', ['google-maps'])
     };
 
     if($rootScope.joinGameList === undefined){
-      $scope.moveToFindGames();
+      console.log('error fetching game');
     }else{
       $scope.gameId = $rootScope.joinGameList._id;
     }
@@ -60,7 +61,7 @@ angular.module('angularSeeGame', ['google-maps'])
           console.log('error fetching game');
         }
       });
-    }
+    };
 
     $scope.getGameById();
 

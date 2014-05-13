@@ -1,6 +1,6 @@
 angular.module('angularListAGame', [])
 .controller('listAGameController', ['$scope', '$rootScope', '$location', 'angularListGames', 'angularGetQueryUser', function($scope, $rootScope, $location, angularListGames, angularGetQueryUser) {
-  
+
   angular.extend($scope, {
         map: {
             control: {},
@@ -13,7 +13,8 @@ angular.module('angularListAGame', [])
                 streetViewControl: false,
                 panControl: false,
                 maxZoom: 20,
-                minZoom: 3
+                minZoom: 3,
+                scrollwheel: false
             },
             dragging: true,
             bounds: {},
@@ -92,7 +93,7 @@ angular.module('angularListAGame', [])
   };
 
   $scope.queryUser = [];
- 
+
   $scope.addToInvitePlayer = function(user){
     var search = _.find($scope.gameInfo.playerArray, function(elem){
       return user.email === elem.email;
@@ -127,9 +128,9 @@ angular.module('angularListAGame', [])
       alert('check max and min num');
     }
   };
-  
+
   $scope.sendGame = function(game) {
-    angularListGames.post('/game', game, function(data) {      
+    angularListGames.post('/game', game, function(data) {
       $('form .sanitize').val('');
       $('form textarea').val('');
       $('select').prop('selectedIndex', 0);
