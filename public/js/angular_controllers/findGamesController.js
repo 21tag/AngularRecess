@@ -1,5 +1,5 @@
 angular.module('angularFindGames', [])
-.controller('findGamesController', ['$scope', '$rootScope', '$location', 'angularGames', function($scope, $rootScope, $location, angularGames) {
+.controller('findGamesController', ['$scope', '$rootScope', '$location', 'angularGames', 'googleMapsFind', function($scope, $rootScope, $location, angularGames, googleMapsFind) {
 
   angular.extend($scope, {
     map: {
@@ -36,7 +36,18 @@ angular.module('angularFindGames', [])
       $scope.$apply();
     });
   };
+
   $scope.mapUser();
+
+  $scope.findLocation = function() {
+    googleMapsFind.get('http://maps.googleapis.com/maps/api/geocode/json?address=porterville&sensor=true', function(data) {
+      console.log(data.results[0].geometry.location);
+      var foundLocation = data.results[0].geometry.location;
+      $scope.map.center.latitude = foundLocation.lat;
+      $scope.map.center.longitude = foundLocation.lng;
+      console.log($scope.map.center);
+    });
+  };
 
   $scope.game = [];
 
@@ -80,4 +91,19 @@ angular.module('angularFindGames', [])
       });
     }
   };
+}])
+
+.factory('googleMapsFind', ['$http', function($http){
+  return{
+    get: function(url ,cb) {
+      var getData = $http.get(url);
+      getData.success(function(data) {
+        cb(data);
+      });
+      getData.error(function(error) {
+        console.log(error);
+      });
+    }
+  };
 }]);
+
