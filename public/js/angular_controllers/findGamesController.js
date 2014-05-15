@@ -39,13 +39,12 @@ angular.module('angularFindGames', [])
 
   $scope.mapUser();
 
-  $scope.findLocation = function() {
-    googleMapsFind.get('http://maps.googleapis.com/maps/api/geocode/json?address=porterville&sensor=true', function(data) {
-      console.log(data.results[0].geometry.location);
+  $scope.findLocation = function(gameType, location) {
+    googleMapsFind.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&sensor=true', function(data) {
       var foundLocation = data.results[0].geometry.location;
       $scope.map.center.latitude = foundLocation.lat;
       $scope.map.center.longitude = foundLocation.lng;
-      console.log($scope.map.center);
+      $scope.retreiveGames(gameType);
     });
   };
 
@@ -55,12 +54,17 @@ angular.module('angularFindGames', [])
     return !_.contains($rootScope.currentUser.upcomingGames, data._id);
   };
 
-  $scope.retreiveGames = function(){
+  $scope.retreiveGames = function(gameSearched){
     angularGames.get('/games', function(data) {
       $scope.game = data;
       _.each($scope.game, function(game, i) {
-        if (game.coord){
+        if (game.coord && gameSearched === 'all'){
           $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon});
+        }
+        else if (game.coord && gameSearched === game.gameType) {
+          $scope.map.markers = [];
+          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon});
+          console.log($scope.map.markers);
         }
       });
       _.each($scope.game, function(item, index){
@@ -76,7 +80,7 @@ angular.module('angularFindGames', [])
     $location.path('/seeGame');
   };
 
-  $scope.retreiveGames();
+  $scope.retreiveGames('all');
 }])
 
 .factory('angularGames', ['$http', function($http){
@@ -96,6 +100,7 @@ angular.module('angularFindGames', [])
 .factory('googleMapsFind', ['$http', function($http){
   return{
     get: function(url ,cb) {
+      console.log(url);
       var getData = $http.get(url);
       getData.success(function(data) {
         cb(data);

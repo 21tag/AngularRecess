@@ -15,7 +15,7 @@
       </div>
       <div class="small-12 large-5 columns game-type-container">
         <div class="chosen-container chosen-container-single">
-      <select class="game-type chosen-select" ng-options="sport for sport in sports" ng-model="search.gameType">
+      <select ng-model="gameToFind" class="game-type chosen-select" ng-options="sport for sport in sports" ng-model="search.gameType">
         <option class="chosen-single" value="">All Games</option>
       </select>
         </div>
@@ -27,10 +27,10 @@
         Located in:
       </div>
       <div class="small-9 large-5 columns location">
-        <input type="text" placeholder="San Francisco, Ca (TODO)">
+        <input type="text" ng-model="locationToFind" placeholder="San Francisco, Ca">
       </div>
       <div class="small-3 large-1 columns search">
-        <input type="submit" value="M" ng-click="findLocation()" />
+        <input type="submit" value="M" ng-click="findLocation(gameToFind, locationToFind)" />
       </div>
     </form>
   </div>
@@ -39,10 +39,6 @@
 
 <div>
   <google-map class="find-games-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds">
-  <marker coords="map.marker">
-        </marker>
-  <marker coords="map.marker3">
-        </marker>
   <markers models="map.markers" coords="'self'"></markers>
   </google-map>
 </div>
