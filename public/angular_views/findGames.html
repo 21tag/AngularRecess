@@ -38,8 +38,13 @@
 
 
 <div>
-  <google-map class="find-games-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds">
-  <markers models="map.markers" coords="'self'"></markers>
+  <google-map class="find-games-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds" control="map.control">
+  <markers models="map.markers" coords="'self'">
+    <windows show="infoWindow.show" closeClick="'closeClick'" ng-cloak>
+      <span ng-non-bindable>{{name}}</span>
+      <p>{{description}}</p>
+    </windows>
+  </markers>
   </google-map>
 </div>
 
