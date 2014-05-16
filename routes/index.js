@@ -76,7 +76,7 @@ module.exports = function(app){
       gameTime : req.body.gameTime,
       gameName : req.body.gameName,
       gameType : req.body.gameType,
-      gameDescription : req.body.gameDescription,      
+      gameDescription : req.body.gameDescription,
       coord: {lat: req.body.latitude, lon: req.body.longitude},
       minimumPlayers : req.body.minimumPlayers,
       playerLimit: req.body.playerLimit
@@ -122,8 +122,12 @@ module.exports = function(app){
 
   app.get('/games', function(req, res, next) {
     // TODO: implement error handling
-    console.log('Getting All Games');
-
+// app.delete('/games/:id', games.remove(function (err, product) {
+//   if (err) return handleError(err);
+//   Product.findById(product._id, function (err, product) {
+//     console.log(product); // null
+//   });
+// }));
     // Return all games
     Game.find({}, function(err, results) {
       // Respond with either HTML or JSON depending on request

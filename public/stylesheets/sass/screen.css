@@ -3088,7 +3088,8 @@ ul, ol, dl {
 
 .angular-google-map-container {
   height: 500px;
-  margin-bottom: 1.25em; }
+  margin-bottom: 1.25em;
+  border: 0.3em solid #dadada; }
 
 #nav {
   font-family: "dejarip", "helvetica neue", helvetica, arial, sans-serif;
