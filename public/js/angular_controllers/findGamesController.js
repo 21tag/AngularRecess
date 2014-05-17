@@ -67,10 +67,10 @@ angular.module('angularFindGames', [])
       $scope.game = data;
       _.each($scope.game, function(game) {
         if (game.coord && gameSearched === 'All Games'){
-          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon, name: game.gameName, description: game.gameDescription});
+          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon, name: game.gameName, type: game.gameType});
         }
         else if (game.coord && gameSearched === game.gameType) {
-          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon, name: game.gameName, description: game.gameDescription});
+          $scope.map.markers.push({latitude: game.coord.lat, longitude: game.coord.lon, name: game.gameName, type: game.gameType});
         }
       });
       _.each($scope.game, function(item, index){

@@ -122,12 +122,7 @@ module.exports = function(app){
 
   app.get('/games', function(req, res, next) {
     // TODO: implement error handling
-// app.delete('/games/:id', games.remove(function (err, product) {
-//   if (err) return handleError(err);
-//   Product.findById(product._id, function (err, product) {
-//     console.log(product); // null
-//   });
-// }));
+
     // Return all games
     Game.find({}, function(err, results) {
       // Respond with either HTML or JSON depending on request

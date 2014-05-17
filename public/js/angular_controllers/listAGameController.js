@@ -25,7 +25,7 @@ angular.module('angularListAGame', [])
                 $scope.map.clickedMarker = {};
                 var e = originalEventArgs[0];
                   $scope.map.clickedMarker.latitude = e.latLng.lat();
-                  $scope.map.clickedMarker.longitude = e.latLng.lng();
+                  $scope.map.clickedMarker.longitude = e.latLng.lng()
                 $scope.$apply();
               }
             }
@@ -34,7 +34,7 @@ angular.module('angularListAGame', [])
     $scope.map.clickedMarker = {
       latitude: null,
       longitude: null
-    };
+    }
 
     $scope.mapUser = function() {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -56,7 +56,7 @@ angular.module('angularListAGame', [])
   $scope.date = {
     start: 'undefined',
     end: 'undefined'
-  };
+  }
 
   var newDate = new Date();
   var convertTwoDigit = function(num){

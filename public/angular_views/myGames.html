@@ -6,34 +6,43 @@
       <table class="open-recess-table my-games">
         <thead class="hide-for-small">
           <tr>
-            <th class="status">Status</th>
-            <th>Type</th>
-            <th>Title</th>
+            <th class="status">Game name</th>
+            <th>Description</th>
+            <th>Game Type</th>
             <th>Date & Time</th>
             <th>Confirmed Players</th>
+            
+            <th>Invited Players</th>
+
+            <th>Max players<th>
+            <th>Min players<th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="game in myUpcomingGames track by $index">
-            <td class="status">
-              <div class="label rounded green">Confirmed</div>
-              <a class="invite-players">Invite Players</a>
-            </td>
-            <td>{{game.gameType}}</td>
-            <td>{{game.gameName}}</td>
-            <td>{{game.gameDate | date: shortDate}} {{game.gameTime | date: shortTime}}</td>
-            <td>{{game.gameType}}</td>
+            <td>{{game.gameName}}</td> 
+            <td>{{game.gameDescription}}</td> 
+            <td>{{game.gameType}}</td> 
+            <td>{{game.gameTime | date: h:mma}} </br> {{game.gameDate | date: yyyy-MM-dd}}</td>
             <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th> 
+                  </tr>
+                </thead>
               <tr ng-repeat="player in game.confirmedPlayers">
                 <td>{{player.display_name}}</td>
                 <td>{{player.email}}</td>
+              </table>
             </td>
             <td>
               <table>
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Email</th> 
                   </tr>
                 </thead>
               <tr ng-repeat="player in game.invitedPlayers">
@@ -41,8 +50,8 @@
                 <td>{{player.email}}</td>
               </table>
             </td>
-            <td>{{game.playerLimit}}</td>
-            <td>{{game.minimumPlayers}}</td>
+            <td>{{game.playerLimit}}</td> 
+            <td>{{game.minimumPlayers}}</td> 
           </tr>
         </tbody>
       </table>

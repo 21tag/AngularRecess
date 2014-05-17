@@ -40,9 +40,11 @@
 <div>
   <google-map class="find-games-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true" dragging="map.dragging" bounds="map.bounds" control="map.control">
   <markers models="map.markers" coords="'self'">
-    <windows show="infoWindow.show" closeClick="'closeClick'" ng-cloak>
-      <span ng-non-bindable>{{name}}</span>
-      <p>{{description}}</p>
+    <windows class="map-windows" show="infoWindow.show" closeClick="'closeClick'" ng-cloak>
+      <div>
+      <p ng-non-bindable>{{name}}</p>
+      <p ng-non-bindable class="muted">{{type}}</p>
+      </div>
     </windows>
   </markers>
   </google-map>

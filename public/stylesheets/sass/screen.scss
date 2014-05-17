@@ -196,9 +196,9 @@ $orange: #ef7805;
 		text-transform: uppercase;
 	}
 	td {
-
+		
 		&.status {
-
+		
 		@include media(desktop) {
 			padding-left:em-calc(10);
 		}
@@ -209,9 +209,9 @@ $orange: #ef7805;
 	tr {
 		vertical-align:top;
 		border-bottom:1px solid $medium-grey;
-
+	
 		@include media(mobile) {
-		margin:em-calc(30) 0;
+		margin:em-calc(30) 0; 
 			td {
 				padding: 0;
 				display:block;
@@ -251,10 +251,9 @@ $orange: #ef7805;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// MAPS////////////////////////////////////////////////////////////////////////////
-.angular-google-map-container {
+.angular-google-map-container { 
 	height: 500px;
 	margin-bottom: em-calc(20);
-	border: 0.3em solid #dadada;
 }
 
 
@@ -403,8 +402,8 @@ height: 4em;
 	padding: em-calc(20) 0 em-calc(18) 0;
  	background-color:#dce5eb;
  	border-bottom:em-calc(2) solid #acb5bb;
- 	form {
-
+ 	form { 
+ 		
  		@include media(desktop) {
  			font-size:em-calc(24);
  		}
@@ -412,7 +411,7 @@ height: 4em;
  		@include media(mobile) {
  			font-size:em-calc(18);
  		}
-
+ 		
  		input {
  			width:100%;
  			padding-left:.3em;
@@ -467,7 +466,7 @@ height: 4em;
  		text-align: center;
  	}
  	.search input {
- 		font-family:"heydings_iconsregular";
+ 		font-family:"heydings_iconsregular"; 
  		width:100%;
  		background-color: $teal;
  		color:white;
@@ -526,9 +525,9 @@ height: 4em;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// GAME TILE /////////////////////////////////////////////////////////////////////////
-
+	
 	.game-tiles {
-
+		
 		@include media(desktop) {
 			margin:0 auto em-calc(20) auto;
 		}
@@ -538,7 +537,7 @@ height: 4em;
 		}
 
 		.item {
-
+			
 			@include media(desktop) {
 				width: em-calc(285);
 				position:relative;
@@ -550,7 +549,7 @@ height: 4em;
 			a, a:hover, a:focus {
 				color:$dark-grey;
 			}
-
+			
 			@include media(mobile) {
 				@include clearfix;
 				width:100%;
@@ -564,7 +563,7 @@ height: 4em;
 
 
 			.caption {
-
+				
 				@include media(desktop) {
 					position:absolute;
 					bottom:0;
@@ -589,7 +588,7 @@ height: 4em;
 					}
 
 				}
-
+				
 				h2 {
 					@include sans-serif-bold;
 					font-size:em-calc(12);
@@ -598,7 +597,7 @@ height: 4em;
 				}
 				h1 {
 					@include sans-serif-bold;
-
+					
 					@include media(desktop) {
 						font-size:em-calc(24);
 						margin-bottom:em-calc(5,24)
@@ -613,7 +612,7 @@ height: 4em;
 				}
 				time {
 					@include sans-serif-medium;
-
+					
 					@include media(desktop) {
 						font-size:em-calc(18);
 					}
@@ -657,7 +656,7 @@ height: 4em;
 		}
 		h1 {
 			@include sans-serif-bold;
-
+			
 			@include media(desktop) {
 				font-size:em-calc(36);
 				margin-bottom:em-calc(10, 36);
@@ -671,10 +670,10 @@ height: 4em;
 		}
 		time {
 			@include sans-serif-medium;
-			display:block;
+			display:block;	
 			font-size: em-calc(24);
 			margin-bottom: em-calc(20, 24);
-
+			
 			@include media(mobile) {
 				span {
 					display:inline !important;
@@ -683,9 +682,9 @@ height: 4em;
 
 		}
 		.button-group {
-			margin-bottom: em-calc(20);
+			margin-bottom: em-calc(20);			
 			.settings-holder {
-
+				
 				@include media(desktop) {
 					display:inline;
 				}
@@ -698,7 +697,7 @@ height: 4em;
 			}
 
 			.settings {
-
+				
 				height:2em;
 				vertical-align: bottom;
 				position:relative;
@@ -711,7 +710,7 @@ height: 4em;
 				.icon {
 					font-family:"heydings_iconsregular";
 					top:.1em;
-
+					
 					@include media(desktop) {
 						font-size:2em;
 						padding:0;
@@ -761,14 +760,14 @@ height: 4em;
 			}
 		}
 		.description {
-			@include serif-regular;
+			@include serif-regular;		
 			font-size:em-calc(24);
 			p {
 				margin-bottom: em-calc(24, 24);
 			}
 		}
 		.join-this-game {
-
+			
 			@include media(desktop){
 				margin-right:em-calc(5)
 			}
@@ -799,10 +798,10 @@ height: 4em;
 
 		}
 		.player-list {
-			background-color:$lightest-grey;
+			background-color:$lightest-grey;	
 			font-size:em-calc(18);
 			margin-bottom:em-calc(40, 18);
-
+			
 			@include media(desktop) {
 				padding-top:em-calc(10, 18);
 				padding-bottom:em-calc(30, 18);
@@ -895,7 +894,7 @@ height: 4em;
 			border-top:1px solid $dark-grey;
 			padding:em-calc(30) 0;
 			h1 {
-				@include sans-serif-medium;
+				@include sans-serif-medium;	
 				@include sans-serif-bold;
 				font-size:em-calc(18);
 			}
@@ -938,16 +937,16 @@ height: 4em;
 
 	}
 	.invite-players {
-
+		
 		text-decoration:underline;
 		display:block;
 		color:$dark-grey;
-
+		
 		@include media(desktop) {
 			margin-top:em-calc(5, 18);
 			font-size:em-calc(12, 18);
 		}
-
+	
 	}
 }
 
@@ -956,21 +955,21 @@ height: 4em;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-//
-//  ______ _____ _____ _   _______ ___________
+//  
+//  ______ _____ _____ _   _______ ___________ 
 //  |  _  \  ___/  ___| | / /_   _|  _  | ___ \
 //  | | | | |__ \ `--.| |/ /  | | | | | | |_/ /
-//  | | | |  __| `--. \    \  | | | | | |  __/
-//  | |/ /| |___/\__/ / |\  \ | | \ \_/ / |
-//  |___/ \____/\____/\_| \_/ \_/  \___/\_|
-//
-//   ___________ _____ _____ ___________ _____ _____
+//  | | | |  __| `--. \    \  | | | | | |  __/ 
+//  | |/ /| |___/\__/ / |\  \ | | \ \_/ / |    
+//  |___/ \____/\____/\_| \_/ \_/  \___/\_|    
+//  
+//   ___________ _____ _____ ___________ _____ _____ 
 //  /  ___| ___ \  ___/  __ \_   _|  ___|_   _/  __ \
 //  \ `--.| |_/ / |__ | /  \/ | | | |_    | | | /  \/
-//   `--. \  __/|  __|| |     | | |  _|   | | | |
+//   `--. \  __/|  __|| |     | | |  _|   | | | |    
 //  /\__/ / |   | |___| \__/\_| |_| |    _| |_| \__/\
 //  \____/\_|   \____/ \____/\___/\_|    \___/ \____/
-//
+//  
 //
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -993,7 +992,7 @@ height: 4em;
 /////// START SUB-NAV BAR ///////////////////////////////////////////////////////////////////////
 
 	.sub-filter-bar {
-		padding:em-calc(15) 10px;
+		padding:em-calc(15) 10px; 
 		margin:0 auto em-calc(20) auto;
 		border:1px solid $light-grey;
 		background-color:$lightest-grey;
@@ -1075,18 +1074,18 @@ height: 4em;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-//
-// ___  ______________ _____ _      _____
+// 
+// ___  ______________ _____ _      _____ 
 // |  \/  |  _  | ___ \_   _| |    |  ___|
-// | .  . | | | | |_/ / | | | |    | |__
-// | |\/| | | | | ___ \ | | | |    |  __|
-// | |  | \ \_/ / |_/ /_| |_| |____| |___
-// \_|  |_/\___/\____/ \___/\_____/\____/
-//
-//  ___________ _____ _____ ___________ _____ _____
+// | .  . | | | | |_/ / | | | |    | |__  
+// | |\/| | | | | ___ \ | | | |    |  __| 
+// | |  | \ \_/ / |_/ /_| |_| |____| |___ 
+// \_|  |_/\___/\____/ \___/\_____/\____/ 
+// 
+//  ___________ _____ _____ ___________ _____ _____ 
 // /  ___| ___ \  ___/  __ \_   _|  ___|_   _/  __ \
 // \ `--.| |_/ / |__ | /  \/ | | | |_    | | | /  \/
-//  `--. \  __/|  __|| |     | | |  _|   | | | |
+//  `--. \  __/|  __|| |     | | |  _|   | | | |    
 // /\__/ / |   | |___| \__/\_| |_| |    _| |_| \__/\
 // \____/\_|   \____/ \____/\___/\_|    \___/ \____/
 //
@@ -1100,7 +1099,7 @@ height: 4em;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////// GENERAL /////////////////////////////////////////////////////////////////////
-
+	
 	p {
 		line-height:1.2;
 	}

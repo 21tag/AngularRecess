@@ -1,0 +1,22 @@
+{
+  "name": "openrecess",
+  "version": "0.0.0",
+  "homepage": "https://github.com/emilycoco/OpenRecess",
+  "authors": [
+    "Hack Reactor Students <accounts@hackreactor.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.15",
+    "angular-ui-router": "~0.2.10",
+    "angular-google-maps": "~1.0.18"
+  }
+}
